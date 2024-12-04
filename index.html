@@ -19,11 +19,12 @@
       text-align: center;
     }
     section {
-      margin: 20px;
+      margin: 20px auto;
       padding: 20px;
-      background-color: #333; /* Dark grey for sections */
+      background-color: #333;
       color: white;
       border-radius: 10px;
+      max-width: 800px;
     }
     .search-bar {
       margin: 20px auto;
@@ -38,23 +39,33 @@
     .links a {
       margin: 10px;
       padding: 10px 15px;
-      background: #007BFF;
       color: white;
       text-decoration: none;
       border-radius: 5px;
     }
-    .links a:hover {
-      background: #0056b3;
+    .main-links a {
+      background: #9b59b6; /* Light purple for main links */
+    }
+    .main-links a:hover {
+      background: #8e44ad;
     }
     #fun-tools {
-      position: absolute;
-      top: 50px;
+      position: fixed;
+      top: 100px;
       right: 20px;
       width: 200px;
     }
     #fun-tools .links {
-      display: block;
+      display: flex;
+      flex-direction: column;
       text-align: left;
+    }
+    #fun-tools a {
+      background: #4b0082; /* Dark purple for fun tools */
+      margin-bottom: 10px;
+    }
+    #fun-tools a:hover {
+      background: #360066;
     }
     footer {
       margin-top: 20px;
@@ -73,46 +84,12 @@
 
 <section>
   <h2>Search Engines</h2>
-  <!-- Google Search -->
   <div class="search-bar">
     <form action="https://www.google.com/search" method="get" target="_blank">
       <input type="text" name="q" placeholder="Search Google..." required>
       <button type="submit">Search</button>
     </form>
   </div>
-
-  <!-- YouTube Search -->
   <div class="search-bar">
     <form action="https://www.youtube.com/results" method="get" target="_blank">
-      <input type="text" name="search_query" placeholder="Search YouTube..." required>
-      <button type="submit">Search</button>
-    </form>
-  </div>
-</section>
-
-<section>
-  <h2>Customizable Links</h2>
-  <div class="links">
-    <a href="https://x.com" target="_blank">X.com</a>
-    <a href="https://www.youtube.com" target="_blank">YouTube</a>
-    <a href="https://app.axieinfinity.com" target="_blank">App.Axie</a>
-    <a href="https://pluto.tv/live-tv/90s-kids" target="_blank">Saturday Morning Cartoons</a>
-  </div>
-</section>
-
-<section id="fun-tools">
-  <h2>Fun Tools</h2>
-  <div class="links">
-    <a href="https://chat.openai.com" target="_blank">ChatGPT</a>
-    <a href="https://suno.ai" target="_blank">Suno</a>
-    <a href="https://www.midjourney.com" target="_blank">MidJourney</a>
-    <a href="https://hailuoai.video/" target="_blank">Hailuo AI</a>
-  </div>
-</section>
-
-<footer>
-  <p>&copy; 2024 Mothership</p>
-</footer>
-
-</body>
-</html>
+      <input type="text" name="search_query" placeholder
