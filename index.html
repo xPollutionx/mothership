@@ -11,12 +11,12 @@
       padding: 0;
       background-color: black;
       color: white;
-      text-align: center;
     }
     header {
       background-color: #4CAF50;
       color: white;
       padding: 1rem;
+      text-align: center;
     }
     section {
       margin: 20px;
@@ -27,6 +27,7 @@
     }
     .search-bar {
       margin: 20px auto;
+      text-align: center;
     }
     .links {
       display: flex;
@@ -45,11 +46,22 @@
     .links a:hover {
       background: #0056b3;
     }
+    #fun-tools {
+      position: absolute;
+      top: 50px;
+      right: 20px;
+      width: 200px;
+    }
+    #fun-tools .links {
+      display: block;
+      text-align: left;
+    }
     footer {
       margin-top: 20px;
       padding: 1rem;
       background: #333;
       color: white;
+      text-align: center;
     }
   </style>
 </head>
@@ -76,14 +88,6 @@
       <button type="submit">Search</button>
     </form>
   </div>
-
-  <!-- ChatGPT Search (Placeholder) -->
-  <div class="search-bar">
-    <form action="https://chat.openai.com/" method="get" target="_blank">
-      <input type="text" placeholder="Fetch ChatGPT Query (Coming Soon)" disabled>
-      <button type="submit">Open ChatGPT</button>
-    </form>
-  </div>
 </section>
 
 <section>
@@ -92,11 +96,11 @@
     <a href="https://x.com" target="_blank">X.com</a>
     <a href="https://www.youtube.com" target="_blank">YouTube</a>
     <a href="https://app.axieinfinity.com" target="_blank">App.Axie</a>
-    <a href="https://www.wcostream.com" target="_blank">Saturday Cartoons</a>
+    <a href="https://pluto.tv/live-tv/90s-kids" target="_blank">Saturday Morning Cartoons</a>
   </div>
 </section>
 
-<section>
+<section id="fun-tools">
   <h2>Fun Tools</h2>
   <div class="links">
     <a href="https://chat.openai.com" target="_blank">ChatGPT</a>
