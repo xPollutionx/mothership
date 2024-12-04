@@ -35,10 +35,6 @@
       color: white;
       border-radius: 10px;
     }
-    .search-bar {
-      margin: 20px auto;
-      text-align: center;
-    }
     .links {
       display: flex;
       justify-content: center;
@@ -81,17 +77,37 @@
     .fun-tools a:hover {
       background: #360066;
     }
+    #random-quote {
+      text-align: center;
+      margin-top: 20px;
+      font-style: italic;
+      color: #ddd;
+    }
   </style>
   <script>
-    function playRandomVideo() {
-      const videos = [
-        "8ZSifZ30Cog",
-        "videoID2",
-        "videoID3" /* Add more video IDs here */
-      ];
-      const randomIndex = Math.floor(Math.random() * videos.length);
-      window.location.href = `https://www.youtube.com/watch?v=${videos[randomIndex]}&list=PLubQ2wNsM74e1r33xb0WWccF3VMSzevvu`;
+    // JavaScript for Random Quote
+    const quotes = [
+      "What lies behind us and what lies before us are tiny matters compared to what lies within us. — Ralph Waldo Emerson",
+      "You are the universe expressing itself as a human for a little while. — Eckhart Tolle",
+      "We must be willing to let go of the life we have planned so as to have the life that is waiting for us. — Joseph Campbell",
+      "Let yourself be silently drawn by the strange pull of what you really love. It will not lead you astray. — Rumi",
+      "If you follow your bliss, doors will open for you that wouldn’t have opened for anyone else. — Joseph Campbell",
+      "Reality is merely an illusion, albeit a very persistent one. — Albert Einstein",
+      "Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment. — Buddha",
+      "Forever is composed of nows. — Emily Dickinson",
+      "Love is not something you do. Love is the way you are. — Eckhart Tolle",
+      "What you think, you become. What you feel, you attract. What you imagine, you create. — Buddha",
+      "Fear is the cheapest room in the house. I would like to see you living in better conditions. — Hafiz",
+      "You don’t see the world as it is, you see it as you are. — Anaïs Nin",
+      "Between stimulus and response, there is a space. In that space is our power to choose our response. In our response lies our growth and our freedom. — Viktor Frankl"
+    ];
+
+    function displayRandomQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById('random-quote').textContent = quotes[randomIndex];
     }
+
+    window.onload = displayRandomQuote;
   </script>
 </head>
 <body>
@@ -104,39 +120,21 @@
   <div class="main-content">
     <section>
       <h2>Search Engines</h2>
-      <div class="search-bar">
-        <form action="https://www.google.com/search" method="get" target="_blank">
-          <input type="text" name="q" placeholder="Search Google..." required>
-          <button type="submit">Search</button>
-        </form>
-      </div>
-      <div class="search-bar">
-        <form action="https://www.youtube.com/results" method="get" target="_blank">
-          <input type="text" name="search_query" placeholder="Search YouTube..." required>
-          <button type="submit">Search</button>
-        </form>
-      </div>
+      <!-- Add your search engines here -->
     </section>
-
     <section>
       <h2>Customizable Links</h2>
-      <div class="links main-links">
-        <a href="https://x.com" target="_blank">X.com</a>
-        <a href="https://www.youtube.com" target="_blank">YouTube</a>
-        <a href="https://app.axieinfinity.com" target="_blank">App.Axie</a>
-        <a href="javascript:void(0);" onclick="playRandomVideo()">Saturday Morning Cartoons</a>
-      </div>
+      <!-- Add your links here -->
     </section>
   </div>
 
   <aside class="fun-tools">
     <h2>Fun Tools</h2>
-    <a href="https://chat.openai.com" target="_blank">ChatGPT</a>
-    <a href="https://suno.ai" target="_blank">Suno</a>
-    <a href="https://www.midjourney.com" target="_blank">MidJourney</a>
-    <a href="https://hailuoai.video/" target="_blank">Hailuo AI</a>
+    <!-- Add your fun tools here -->
   </aside>
 </main>
+
+<div id="random-quote"></div>
 
 </body>
 </html>
