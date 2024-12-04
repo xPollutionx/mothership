@@ -77,6 +77,10 @@
     .fun-tools a:hover {
       background: #360066;
     }
+    .search-bar {
+      margin: 10px auto;
+      text-align: center;
+    }
     #random-quote {
       text-align: center;
       margin-top: 20px;
@@ -120,11 +124,20 @@
   <div class="main-content">
     <section>
       <h2>Search Engines</h2>
-      <div class="links">
-        <a href="https://www.google.com" target="_blank">Google</a>
-        <a href="https://www.youtube.com" target="_blank">YouTube</a>
+      <div class="search-bar">
+        <form action="https://www.google.com/search" method="get" target="_blank">
+          <input type="text" name="q" placeholder="Search Google..." required>
+          <button type="submit">Search</button>
+        </form>
+      </div>
+      <div class="search-bar">
+        <form action="https://www.youtube.com/results" method="get" target="_blank">
+          <input type="text" name="search_query" placeholder="Search YouTube..." required>
+          <button type="submit">Search</button>
+        </form>
       </div>
     </section>
+
     <section>
       <h2>Customizable Links</h2>
       <div class="links main-links">
