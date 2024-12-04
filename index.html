@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Custom Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+      text-align: center;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 1rem;
+    }
+    section {
+      margin: 20px;
+    }
+    .search-bar {
+      margin: 20px auto;
+    }
+    .links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+    .links a {
+      margin: 10px;
+      padding: 10px 15px;
+      background: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .links a:hover {
+      background: #0056b3;
+    }
+    footer {
+      margin-top: 20px;
+      padding: 1rem;
+      background: #333;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Welcome to My Custom Website</h1>
+</header>
+
+<section>
+  <h2>Search Engines</h2>
+  <!-- Google Search -->
+  <div class="search-bar">
+    <form action="https://www.google.com/search" method="get" target="_blank">
+      <input type="text" name="q" placeholder="Search Google..." required>
+      <button type="submit">Search</button>
+    </form>
+  </div>
+
+  <!-- YouTube Search -->
+  <div class="search-bar">
+    <form action="https://www.youtube.com/results" method="get" target="_blank">
+      <input type="text" name="search_query" placeholder="Search YouTube..." required>
+      <button type="submit">Search</button>
+    </form>
+  </div>
+</section>
+
+<section>
+  <h2>Customizable Links</h2>
+  <div class="links">
+    <a href="#link1">Link 1</a>
+    <a href="#link2">Link 2</a>
+    <a href="#link3">Link 3</a>
+    <a href="#link4">Link 4</a>
+  </div>
+</section>
+
+<section>
+  <h2>Fun Tools</h2>
+  <div class="links">
+    <a href="https://www.midjourney.com" target="_blank">MidJourney</a>
+    <a href="https://chat.openai.com" target="_blank">ChatGPT</a>
+    <a href="https://dalle.openai.com" target="_blank">DALL-E</a>
+    <a href="https://bard.google.com" target="_blank">Google Bard</a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2024 My Custom Website</p>
+</footer>
+
+</body>
+</html>
