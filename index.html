@@ -81,14 +81,18 @@
     .fun-tools a:hover {
       background: #360066;
     }
-    footer {
-      margin-top: 20px;
-      padding: 1rem;
-      background: #333;
-      color: white;
-      text-align: center;
-    }
   </style>
+  <script>
+    function playRandomVideo() {
+      const videos = [
+        "8ZSifZ30Cog",
+        "videoID2",
+        "videoID3" /* Add more video IDs here */
+      ];
+      const randomIndex = Math.floor(Math.random() * videos.length);
+      window.location.href = `https://www.youtube.com/watch?v=${videos[randomIndex]}&list=PLubQ2wNsM74e1r33xb0WWccF3VMSzevvu`;
+    }
+  </script>
 </head>
 <body>
 
@@ -120,7 +124,7 @@
         <a href="https://x.com" target="_blank">X.com</a>
         <a href="https://www.youtube.com" target="_blank">YouTube</a>
         <a href="https://app.axieinfinity.com" target="_blank">App.Axie</a>
-        <a href="https://pluto.tv/live-tv/90s-kids" target="_blank">Saturday Morning Cartoons</a>
+        <a href="javascript:void(0);" onclick="playRandomVideo()">Saturday Morning Cartoons</a>
       </div>
     </section>
   </div>
@@ -133,10 +137,6 @@
     <a href="https://hailuoai.video/" target="_blank">Hailuo AI</a>
   </aside>
 </main>
-
-<footer>
-  <p>&copy; 2024 Mothership</p>
-</footer>
 
 </body>
 </html>
