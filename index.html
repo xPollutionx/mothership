@@ -111,6 +111,16 @@
       document.getElementById('random-quote').textContent = quotes[randomIndex];
     }
 
+    function playRandomVideo() {
+      const videos = [
+        "8ZSifZ30Cog",
+        "videoID2",
+        "videoID3" /* Add more video IDs here */
+      ];
+      const randomIndex = Math.floor(Math.random() * videos.length);
+      window.location.href = `https://www.youtube.com/watch?v=${videos[randomIndex]}&list=PLubQ2wNsM74e1r33xb0WWccF3VMSzevvu`;
+    }
+
     window.onload = displayRandomQuote;
   </script>
 </head>
@@ -146,7 +156,7 @@
         <a href="https://x.com">X.com</a>
         <a href="https://www.youtube.com">YouTube</a>
         <a href="https://app.axieinfinity.com">App.Axie</a>
-        <a href="https://pluto.tv/live-tv/90s-kids">Saturday Morning Cartoons</a>
+        <a href="javascript:void(0);" onclick="playRandomVideo()">Saturday Morning Cartoons</a>
         <a href="https://www.amazon.com">Amazon</a>
       </div>
     </section>
