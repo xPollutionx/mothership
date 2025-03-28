@@ -5,61 +5,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mothership</title>
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background-color: black;
       color: white;
+      min-height: 100vh;
+      background: linear-gradient(to bottom right, #000000, #1a0033);
     }
     header {
       background-color: #4CAF50;
       color: white;
       padding: 1rem;
       text-align: center;
+      animation: fadeIn 0.5s ease-out;
     }
     main {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       margin: 20px;
+      gap: 20px;
     }
     .main-content {
       flex: 3;
-      margin-right: 20px;
     }
     section {
       margin-bottom: 20px;
       padding: 20px;
-      background-color: #333;
+      background-color: rgba(51, 51, 51, 0.9);
       color: white;
       border-radius: 10px;
+      transition: all 0.3s ease;
+      animation: fadeIn 0.5s ease-out;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    section:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
     .links {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      gap: 10px;
       margin: 20px 0;
     }
     .links a {
-      margin: 10px;
-      padding: 10px 15px;
+      margin: 5px;
+      padding: 10px 20px;
       color: white;
       text-decoration: none;
       border-radius: 5px;
+      transition: all 0.3s ease;
+      transform: scale(1);
+      backdrop-filter: blur(5px);
+      background: rgba(155, 89, 182, 0.8);
+      border: 1px solid rgba(255,255,255,0.1);
     }
-    .main-links a {
-      background: #9b59b6; /* Light purple for main links */
-    }
-    .main-links a:hover {
-      background: #8e44ad;
+    .main-links a:hover, .games a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(155, 89, 182, 0.5);
+      background: rgba(155, 89, 182, 0.9);
     }
     .fun-tools {
       flex: 1;
-      padding: 10px;
-      background-color: #4b0082; /* Dark purple for fun tools */
+      padding: 20px;
+      background-color: rgba(75, 0, 130, 0.9);
       border-radius: 10px;
-      color: white;
+      backdrop-filter: blur(10px);
+      animation: fadeIn 0.5s ease-out;
     }
     .fun-tools h2 {
       text-align: center;
@@ -69,33 +90,97 @@
       margin: 10px 0;
       text-align: center;
       padding: 10px;
-      background: #4b0082;
       color: white;
       border-radius: 5px;
       text-decoration: none;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+      background: rgba(155, 89, 182, 0.8);
+      border: 1px solid rgba(255,255,255,0.1);
     }
     .fun-tools a:hover {
-      background: #360066;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(155, 89, 182, 0.5);
     }
     .search-bar {
       margin: 10px auto;
       text-align: center;
     }
+    .search-bar input[type="text"] {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.1);
+      color: white;
+      margin-right: 5px;
+      transition: all 0.3s ease;
+    }
+    .search-bar input[type="text"]:focus {
+      outline: none;
+      box-shadow: 0 0 10px rgba(155, 89, 182, 0.5);
+      background: rgba(255,255,255,0.2);
+    }
+    .search-bar button {
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      background: rgba(155, 89, 182, 0.8);
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .search-bar button:hover {
+      background: rgba(155, 89, 182, 0.9);
+      transform: scale(1.05);
+    }
     #random-quote {
       text-align: center;
-      margin-top: 20px;
+      margin: 20px;
+      padding: 20px;
       font-style: italic;
       color: #ddd;
+      transition: opacity 0.5s ease;
+      animation: fadeIn 1s ease-out;
     }
-    .games a { /* Added styling for games section */
-      background: #9b59b6; /* Match main links */
+    @keyframes fadeIn {
+      from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
     }
-    .games a:hover {
-      background: #8e44ad;
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+      }
+      
+      .main-content {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+      
+      .search-bar input[type="text"] {
+        width: 80%;
+        margin-bottom: 10px;
+      }
+      
+      .links a {
+        min-width: 120px;
+      }
+
+      .fun-tools {
+        width: auto;
+      }
     }
+    section:nth-child(1) { animation-delay: 0.1s; }
+    section:nth-child(2) { animation-delay: 0.2s; }
+    section:nth-child(3) { animation-delay: 0.3s; }
+    section:nth-child(4) { animation-delay: 0.4s; }
   </style>
   <script>
-    // JavaScript for Random Quote
     const quotes = [
       "What lies behind us and what lies before us are tiny matters compared to what lies within us. — Ralph Waldo Emerson",
       "You are the universe expressing itself as a human for a little while. — Eckhart Tolle",
@@ -112,6 +197,15 @@
       "Between stimulus and response, there is a space. In that space is our power to choose our response. In our response lies our growth and our freedom. — Viktor Frankl"
     ];
 
+    function updateQuote() {
+      const quoteElement = document.getElementById('random-quote');
+      quoteElement.style.opacity = '0';
+      setTimeout(() => {
+        displayRandomQuote();
+        quoteElement.style.opacity = '1';
+      }, 500);
+    }
+
     function displayRandomQuote() {
       const randomIndex = Math.floor(Math.random() * quotes.length);
       document.getElementById('random-quote').textContent = quotes[randomIndex];
@@ -121,13 +215,16 @@
       const videos = [
         "8ZSifZ30Cog",
         "videoID2",
-        "videoID3" /* Add more video IDs here */
+        "videoID3"
       ];
       const randomIndex = Math.floor(Math.random() * videos.length);
       window.location.href = `https://www.youtube.com/watch?v=${videos[randomIndex]}&list=PLubQ2wNsM74e1r33xb0WWccF3VMSzevvu`;
     }
 
-    window.onload = displayRandomQuote;
+    window.onload = () => {
+      displayRandomQuote();
+      setInterval(updateQuote, 30000);
+    };
   </script>
 </head>
 <body>
@@ -155,7 +252,7 @@
     </section>
 
     <section>
-      <h2>Hot Links</h2>
+      <h2>Customizable Links</h2>
       <div class="links main-links">
         <a href="https://discord.com">Discord</a>
         <a href="https://github.com">GitHub</a>
@@ -168,7 +265,7 @@
       </div>
     </section>
 
-    <section class="games">
+    <section>
       <h2>xPollutionx's Games:</h2>
       <div class="links games">
         <a href="https://xpollutionx.github.io/SnakePlus/" target="_blank" rel="noopener noreferrer">Snake Plus</a>
@@ -186,9 +283,9 @@
 
   <aside class="fun-tools">
     <h2>Fun Tools</h2>
-    <a href="https://suno.ai">Suno</a>
     <a href="https://chat.openai.com">ChatGPT</a>
     <a href="https://www.midjourney.com">MidJourney</a>
+    <a href="https://suno.ai">Suno</a>
     <a href="https://klingai.com/">KlingAI</a>
     <a href="https://hailuoai.video/">Hailuo AI</a>
     <a href="https://dream-machine.lumalabs.ai/">Luma Labs</a>
