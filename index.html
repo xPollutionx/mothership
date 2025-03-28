@@ -155,24 +155,87 @@
     @media (max-width: 768px) {
       main {
         flex-direction: column;
+        margin: 10px;
+        max-width: 100%;
       }
-      
-      .main-content {
-        margin-right: 0;
-        margin-bottom: 20px;
+
+      section {
+        margin-bottom: 5px;
+        padding: 0;
+        background: none;
       }
-      
-      .search-bar input[type="text"] {
-        width: 80%;
-        margin-bottom: 10px;
+
+      .section-header {
+        background-color: #333;
+        padding: 12px 15px;
+        margin: 2px 0;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
       }
-      
+
+      .section-header:after {
+        content: '▼';
+        font-size: 12px;
+        transition: transform 0.3s;
+      }
+
+      .section-header.active:after {
+        transform: rotate(180deg);
+      }
+
+      .section-content {
+        display: none;
+        padding: 10px;
+        background-color: #333;
+        border-radius: 0 0 5px 5px;
+        margin-bottom: 5px;
+      }
+
+      .section-content.active {
+        display: block;
+      }
+
+      /* Keep Search Engines and Apps open by default */
+      #search-engines .section-content,
+      #apps .section-content {
+        display: block;
+      }
+
+      .links {
+        flex-direction: column;
+        gap: 5px;
+      }
+
       .links a {
-        min-width: 120px;
+        margin: 2px 0;
+        text-align: center;
       }
 
       .fun-tools {
-        width: auto;
+        margin-top: 5px;
+        padding: 0;
+      }
+
+      .fun-tools .section-content {
+        background-color: #4b0082;
+      }
+
+      .fun-tools a {
+        margin: 5px 0;
+        padding: 8px;
+      }
+
+      .search-bar {
+        margin: 5px 0;
+      }
+
+      .search-bar input[type="text"] {
+        width: calc(100% - 80px);
+        margin-bottom: 5px;
       }
     }
     section:nth-child(1) { animation-delay: 0.1s; }
@@ -225,6 +288,38 @@
       displayRandomQuote();
       setInterval(updateQuote, 30000);
     };
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const headers = document.querySelectorAll('.section-header');
+        
+        // Initially collapse all sections except Search Engines and Apps
+        headers.forEach(header => {
+            const content = header.nextElementSibling;
+            const sectionId = header.parentElement.id;
+            
+            if (sectionId !== 'search-engines' && sectionId !== 'apps') {
+                content.style.display = 'none';
+            } else {
+                header.classList.add('active');
+            }
+        });
+
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const sectionId = header.parentElement.id;
+                
+                // Allow Search Engines and Apps to be collapsed/expanded
+                header.classList.toggle('active');
+                
+                if (content.style.display === 'none' || content.style.display === '') {
+                    content.style.display = 'block';
+                } else {
+                    content.style.display = 'none';
+                }
+            });
+        });
+    });
   </script>
 </head>
 <body>
