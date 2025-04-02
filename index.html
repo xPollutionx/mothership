@@ -12,7 +12,6 @@
       background-color: black;
       color: white;
       font-family: 'Press Start 2P', cursive;
-      height: 100%;
     }
 
     header {
@@ -20,14 +19,17 @@
       color: white;
       padding: 10px 0;
       text-align: center;
-      height: 100px;
+      position: relative;
+    }
+
+    .logo-container {
+      margin-bottom: 5px;
     }
 
     .logo-container img {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
-      margin-top: 5px;
     }
 
     h1 {
@@ -40,6 +42,10 @@
       justify-content: center;
       gap: 10px;
       margin: 5px 0;
+    }
+
+    .search-bar {
+      display: flex;
     }
 
     .search-bar input {
@@ -65,48 +71,52 @@
     .axie-container {
       position: absolute;
       right: 10px;
-      top: 65px;
+      top: 50%;
+      transform: translateY(-50%);
     }
 
     .axie-container img {
-      height: 40px;
-      width: 40px;
+      height: 50px;
+      width: 50px;
+    }
+
+    .content-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
     }
 
     .main-content {
       display: flex;
       justify-content: center;
+      gap: 10px;
       width: 90%;
       max-width: 1200px;
-      margin: 20px auto;
-      gap: 20px;
     }
 
     .section {
+      width: 30%;
+    }
+
+    .section-header {
+      background-color: #333;
+      padding: 5px 0;
       text-align: center;
-      width: 300px;
     }
 
-    .apps-section {
-      background-color: #333;
-      padding: 10px 0;
-    }
-
-    .links-section {
-      background-color: #333;
-      padding: 10px 0;
-    }
-
-    .tools-section {
+    .tools-header {
       background-color: #4b0082;
-      padding: 10px 0;
     }
 
     h2 {
-      text-align: center;
       font-size: 0.7em;
-      margin-top: 0;
-      margin-bottom: 10px;
+      margin: 0;
+      padding: 5px;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
     }
 
     .link-button {
@@ -114,32 +124,19 @@
       background-color: #9b59b6;
       color: white;
       text-decoration: none;
-      padding: 8px 10px;
+      padding: 8px 0;
       text-align: center;
-      margin: 5px 10px;
+      margin: 2px 0;
       font-size: 0.6em;
     }
 
     #random-quote {
       text-align: center;
-      margin: 20px auto;
-      padding: 10px;
+      padding: 20px 0;
       font-size: 0.7em;
       font-style: italic;
       color: #ddd;
-      max-width: 80%;
-    }
-
-    @media (max-width: 900px) {
-      .main-content {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .section {
-        width: 90%;
-        margin-bottom: 10px;
-      }
+      margin-top: 20px;
     }
   </style>
   <script>
@@ -203,35 +200,49 @@
   </div>
 </header>
 
-<div class="main-content">
-  <div class="section apps-section">
-    <h2>xPollutionx's Apps:</h2>
-    <a href="https://xpollutionx.github.io/RadioBox" class="link-button">RadioBox</a>
-    <a href="https://xpollutionx.github.io/ConFused/" class="link-button">CoinFused</a>
-    <a href="https://xpollutionx.github.io/SnakePlus/" class="link-button">Snake Plus</a>
-  </div>
-  
-  <div class="section links-section">
-    <h2>Hot Links</h2>
-    <a href="https://www.youtube.com" class="link-button">YouTube</a>
-    <a href="https://x.com" class="link-button">X.com</a>
-    <a href="https://drive.google.com" class="link-button">Google Drive</a>
-    <a href="https://discord.com" class="link-button">Discord</a>
-    <a href="https://app.axieinfinity.com" class="link-button">App.Axie</a>
-    <a href="https://www.amazon.com" class="link-button">Amazon</a>
-    <a href="https://github.com" class="link-button">GitHub</a>
-    <a href="javascript:void(0);" onclick="playRandomVideo()" class="link-button">Saturday Morning Cartoons</a>
-  </div>
-  
-  <div class="section tools-section">
-    <h2>Fun Tools</h2>
-    <a href="https://suno.ai" class="link-button">Suno</a>
-    <a href="https://chat.openai.com" class="link-button">ChatGPT</a>
-    <a href="https://www.midjourney.com" class="link-button">MidJourney</a>
-    <a href="https://klingai.com/" class="link-button">KlingAI</a>
-    <a href="https://hailuoai.video/" class="link-button">Hailuo AI</a>
-    <a href="https://dream-machine.lumalabs.ai/" class="link-button">Luma Labs</a>
-    <a href="https://app.runwayml.com/video-tools/teams/x35pollution/dashboard" class="link-button">Runway</a>
+<div class="content-wrapper">
+  <div class="main-content">
+    <div class="section">
+      <div class="section-header">
+        <h2>xPollutionx's Apps:</h2>
+      </div>
+      <div class="button-container">
+        <a href="https://xpollutionx.github.io/RadioBox" class="link-button">RadioBox</a>
+        <a href="https://xpollutionx.github.io/ConFused/" class="link-button">CoinFused</a>
+        <a href="https://xpollutionx.github.io/SnakePlus/" class="link-button">Snake Plus</a>
+      </div>
+    </div>
+    
+    <div class="section">
+      <div class="section-header">
+        <h2>Hot Links</h2>
+      </div>
+      <div class="button-container">
+        <a href="https://www.youtube.com" class="link-button">YouTube</a>
+        <a href="https://x.com" class="link-button">X.com</a>
+        <a href="https://drive.google.com" class="link-button">Google Drive</a>
+        <a href="https://discord.com" class="link-button">Discord</a>
+        <a href="https://app.axieinfinity.com" class="link-button">App.Axie</a>
+        <a href="https://www.amazon.com" class="link-button">Amazon</a>
+        <a href="https://github.com" class="link-button">GitHub</a>
+        <a href="javascript:void(0);" onclick="playRandomVideo()" class="link-button">Saturday Morning Cartoons</a>
+      </div>
+    </div>
+    
+    <div class="section">
+      <div class="section-header tools-header">
+        <h2>Fun Tools</h2>
+      </div>
+      <div class="button-container">
+        <a href="https://suno.ai" class="link-button">Suno</a>
+        <a href="https://chat.openai.com" class="link-button">ChatGPT</a>
+        <a href="https://www.midjourney.com" class="link-button">MidJourney</a>
+        <a href="https://klingai.com/" class="link-button">KlingAI</a>
+        <a href="https://hailuoai.video/" class="link-button">Hailuo AI</a>
+        <a href="https://dream-machine.lumalabs.ai/" class="link-button">Luma Labs</a>
+        <a href="https://app.runwayml.com/video-tools/teams/x35pollution/dashboard" class="link-button">Runway</a>
+      </div>
+    </div>
   </div>
 </div>
 
