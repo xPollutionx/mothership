@@ -18,7 +18,7 @@
     }
 
     header {
-      background-color: #551A8B;
+      background-color: #4B0082;
       color: white;
       padding: 0.5rem;
       text-align: center;
@@ -169,6 +169,32 @@
         width: calc(100% - 80px);
       }
     }
+
+    .main-layout {
+      display: flex;
+      position: relative;
+    }
+
+    .axie-container {
+      width: 200px;
+      height: 200px;
+      background-color: #4B0082;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .axie-container img {
+      width: 150px;
+      height: 150px;
+    }
+
+    .content-area {
+      flex-grow: 1;
+      background-color: black;
+      padding: 20px;
+    }
   </style>
   <script>
     const quotes = [
@@ -251,7 +277,7 @@
 </head>
 <body>
 
-<header style="background-color: #551A8B;">
+<header>
   <div class="logo-container">
     <img src="Ronke.jpg" alt="xPollutionx's Mothership">
   </div>
@@ -272,53 +298,54 @@
   </div>
 </header>
 
-<div class="axie-container">
-  <img src="AxieMechRun.gif" alt="Running Axie">
-</div>
-
-<main>
-  <div class="main-content">
-    <section id="links">
-      <h2>Hot Links</h2>
-      <div class="links main-links">
-        <a href="https://discord.com">Discord</a>
-        <a href="https://github.com">GitHub</a>
-        <a href="https://x.com">X.com</a>
-        <a href="https://www.youtube.com">YouTube</a>
-        <a href="https://app.axieinfinity.com">App.Axie</a>
-        <a href="javascript:void(0);" onclick="playRandomVideo()">Saturday Morning Cartoons</a>
-        <a href="https://www.amazon.com">Amazon</a>
-        <a href="https://drive.google.com">Google Drive</a>
-      </div>
-    </section>
-
-    <section id="games">
-      <h2>xPollutionx's Games:</h2>
-      <div class="links games">
-        <a href="https://xpollutionx.github.io/SnakePlus/" target="_blank" rel="noopener noreferrer">Snake Plus</a>
-      </div>
-    </section>
-
-    <section id="apps">
-      <h2>xPollutionx's Apps:</h2>
-      <div class="links main-links">
-        <a href="https://xpollutionx.github.io/ConFused/">CoinFused</a>
-        <a href="https://xpollutionx.github.io/RadioBox">RadioBox</a>
-      </div>
-    </section>
+<div class="main-layout">
+  <div class="axie-container">
+    <img src="AxieMechRun.gif" alt="Running Axie">
   </div>
+  <div class="content-area">
+    <div class="main-content">
+      <section id="links">
+        <h2>Hot Links</h2>
+        <div class="links main-links">
+          <a href="https://discord.com">Discord</a>
+          <a href="https://github.com">GitHub</a>
+          <a href="https://x.com">X.com</a>
+          <a href="https://www.youtube.com">YouTube</a>
+          <a href="https://app.axieinfinity.com">App.Axie</a>
+          <a href="javascript:void(0);" onclick="playRandomVideo()">Saturday Morning Cartoons</a>
+          <a href="https://www.amazon.com">Amazon</a>
+          <a href="https://drive.google.com">Google Drive</a>
+        </div>
+      </section>
 
-  <aside class="fun-tools">
-    <h2>Fun Tools</h2>
-    <a href="https://suno.ai">Suno</a>
-    <a href="https://chat.openai.com">ChatGPT</a>
-    <a href="https://www.midjourney.com">MidJourney</a>
-    <a href="https://klingai.com/">KlingAI</a>
-    <a href="https://hailuoai.video/">Hailuo AI</a>
-    <a href="https://dream-machine.lumalabs.ai/">Luma Labs</a>
-    <a href="https://app.runwayml.com/video-tools/teams/x35pollution/dashboard">Runway</a>
-  </aside>
-</main>
+      <section id="games">
+        <h2>xPollutionx's Games:</h2>
+        <div class="links games">
+          <a href="https://xpollutionx.github.io/SnakePlus/" target="_blank" rel="noopener noreferrer">Snake Plus</a>
+        </div>
+      </section>
+
+      <section id="apps">
+        <h2>xPollutionx's Apps:</h2>
+        <div class="links main-links">
+          <a href="https://xpollutionx.github.io/ConFused/">CoinFused</a>
+          <a href="https://xpollutionx.github.io/RadioBox">RadioBox</a>
+        </div>
+      </section>
+    </div>
+
+    <aside class="fun-tools">
+      <h2>Fun Tools</h2>
+      <a href="https://suno.ai">Suno</a>
+      <a href="https://chat.openai.com">ChatGPT</a>
+      <a href="https://www.midjourney.com">MidJourney</a>
+      <a href="https://klingai.com/">KlingAI</a>
+      <a href="https://hailuoai.video/">Hailuo AI</a>
+      <a href="https://dream-machine.lumalabs.ai/">Luma Labs</a>
+      <a href="https://app.runwayml.com/video-tools/teams/x35pollution/dashboard">Runway</a>
+    </aside>
+  </div>
+</div>
 
 <div id="random-quote"></div>
 
