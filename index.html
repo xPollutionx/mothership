@@ -13,197 +13,148 @@
       color: white;
       font-family: 'Press Start 2P', cursive;
       height: 100%;
+      overflow-x: hidden;
     }
 
     header {
       background-color: rgb(94, 67, 109);
       color: white;
-      padding: 10px 0;
-      position: relative;
+      padding: 5px 0;
       text-align: center;
     }
 
-    .logo-container {
-      margin-bottom: 5px;
-    }
-
     .logo-container img {
-      width: 60px;
-      height: 60px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
     }
 
     h1 {
-      font-size: 1em;
+      font-size: 0.8em;
       margin: 5px 0;
     }
 
     .search-container {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 5px;
       margin: 5px 0;
-      flex-wrap: wrap;
     }
 
-    .search-bar {
-      display: flex;
-      align-items: center;
-    }
-
-    .search-bar input[type="text"] {
-      padding: 5px;
-      border-radius: 3px;
-      border: none;
+    .search-bar input {
+      width: 120px;
+      padding: 3px;
+      font-size: 0.5em;
       background: #333;
       color: white;
-      width: 180px;
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.6em;
+      border: none;
+      border-radius: 3px;
     }
 
     .search-button {
-      padding: 5px;
-      background-color: #9b59b6;
+      padding: 3px;
+      font-size: 0.5em;
+      background: #9b59b6;
       color: white;
       border: none;
       border-radius: 3px;
-      cursor: pointer;
-      margin-left: 5px;
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.6em;
     }
 
     .axie-container {
       position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgb(94, 67, 109);
+      right: 5px;
+      top: 20px;
     }
 
     .axie-container img {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
     }
 
-    .content-container {
+    .main-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 5px;
+      gap: 5px;
+      max-height: calc(100vh - 120px);
+    }
+
+    .column {
+      flex: 1;
       display: flex;
       flex-direction: column;
-      max-width: 1200px;
-      margin: 10px auto;
-      gap: 10px;
-      padding: 0 10px;
+      align-items: center;
+      max-width: 33%;
     }
 
-    .main-row {
-      display: flex;
-      gap: 10px;
+    .section {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 5px;
+      border-radius: 3px;
     }
 
     .apps-section {
       background-color: #333;
-      padding: 10px;
-      border-radius: 5px;
-      text-align: center;
-      flex: 3;
+      padding: 5px;
     }
 
-    .hot-links-section {
+    .links-section {
       background-color: #333;
-      padding: 10px;
-      border-radius: 5px;
-      text-align: center;
-      flex: 3;
+      padding: 5px;
     }
 
-    .fun-tools-section {
+    .tools-section {
       background-color: #4b0082;
-      padding: 10px;
-      border-radius: 5px;
-      text-align: center;
-      flex: 2;
+      padding: 5px;
     }
 
     h2 {
-      font-size: 0.8em;
-      margin: 0 0 10px 0;
-    }
-
-    .button-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 5px;
+      font-size: 0.6em;
+      margin: 5px 0;
     }
 
     .button {
+      display: block;
+      width: 90%;
+      margin: 5px auto;
+      padding: 5px;
       background-color: #9b59b6;
       color: white;
-      padding: 8px;
-      border-radius: 3px;
       text-decoration: none;
-      font-size: 0.6em;
-      min-width: 80px;
-      display: inline-block;
-    }
-
-    .fun-tools-section .button {
-      display: block;
-      margin: 5px 0;
+      border-radius: 3px;
+      font-size: 0.5em;
       text-align: center;
     }
 
     #random-quote {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      font-size: 0.5em;
       text-align: center;
-      padding: 10px;
-      font-style: italic;
-      color: #ddd;
-      font-size: 0.7em;
-      margin: 10px 0;
+      padding: 5px;
+      background-color: black;
     }
 
-    /* Mobile layout */
-    @media (max-width: 800px) {
-      .main-row {
-        flex-direction: column;
-      }
-
+    @media (max-width: 600px) {
       .search-container {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
       }
-
-      .search-bar {
-        width: 100%;
-        max-width: 300px;
-        margin-bottom: 5px;
-        justify-content: center;
+      
+      .search-bar input {
+        width: 100px;
       }
-
-      .axie-container {
-        position: static;
-        transform: none;
-        margin: 10px auto;
-        display: flex;
-        justify-content: center;
-      }
-
-      .content-container {
-        padding: 0 5px;
-      }
-
+      
       .button {
-        min-width: 40%;
-        margin: 2px;
+        font-size: 0.4em;
+        padding: 4px;
+      }
+      
+      h2 {
         font-size: 0.5em;
-      }
-    }
-
-    /* Small mobile devices */
-    @media (max-width: 400px) {
-      .button {
-        min-width: 80%;
       }
     }
   </style>
@@ -252,34 +203,48 @@
   <div class="search-container">
     <div class="search-bar">
       <form action="https://www.google.com/search" method="get">
-        <input type="text" name="q" placeholder="Search Google..." required>
+        <input type="text" name="q" placeholder="Google..." required>
         <button type="submit" class="search-button">Search</button>
       </form>
     </div>
     <div class="search-bar">
       <form action="https://www.youtube.com/results" method="get">
-        <input type="text" name="search_query" placeholder="Search YouTube..." required>
+        <input type="text" name="search_query" placeholder="YouTube..." required>
         <button type="submit" class="search-button">Search</button>
       </form>
     </div>
-    <div class="axie-container">
-      <img src="AxieMechRun.gif" alt="Axie">
-    </div>
+  </div>
+  <div class="axie-container">
+    <img src="AxieMechRun.gif" alt="Axie">
   </div>
 </header>
 
-<div class="content-container">
-  <div class="main-row">
-    <div class="apps-section">
+<div class="main-container">
+  <div class="column">
+    <div class="section apps-section">
       <h2>xPollutionx's Apps:</h2>
-      <div class="button-container">
-        <a href="https://xpollutionx.github.io/RadioBox" class="button">RadioBox</a>
-        <a href="https://xpollutionx.github.io/ConFused/" class="button">CoinFused</a>
-        <a href="https://xpollutionx.github.io/SnakePlus/" class="button">Snake Plus</a>
-      </div>
+      <a href="https://xpollutionx.github.io/RadioBox" class="button">RadioBox</a>
+      <a href="https://xpollutionx.github.io/ConFused/" class="button">CoinFused</a>
+      <a href="https://xpollutionx.github.io/SnakePlus/" class="button">Snake Plus</a>
     </div>
-    
-    <div class="fun-tools-section">
+  </div>
+  
+  <div class="column">
+    <div class="section links-section">
+      <h2>Hot Links</h2>
+      <a href="https://www.youtube.com" class="button">YouTube</a>
+      <a href="https://x.com" class="button">X.com</a>
+      <a href="https://drive.google.com" class="button">Google Drive</a>
+      <a href="https://discord.com" class="button">Discord</a>
+      <a href="https://app.axieinfinity.com" class="button">App.Axie</a>
+      <a href="https://www.amazon.com" class="button">Amazon</a>
+      <a href="https://github.com" class="button">GitHub</a>
+      <a href="javascript:void(0);" onclick="playRandomVideo()" class="button">Saturday Cartoons</a>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="section tools-section">
       <h2>Fun Tools</h2>
       <a href="https://suno.ai" class="button">Suno</a>
       <a href="https://chat.openai.com" class="button">ChatGPT</a>
@@ -288,20 +253,6 @@
       <a href="https://hailuoai.video/" class="button">Hailuo AI</a>
       <a href="https://dream-machine.lumalabs.ai/" class="button">Luma Labs</a>
       <a href="https://app.runwayml.com/video-tools/teams/x35pollution/dashboard" class="button">Runway</a>
-    </div>
-  </div>
-  
-  <div class="hot-links-section">
-    <h2>Hot Links</h2>
-    <div class="button-container">
-      <a href="https://www.youtube.com" class="button">YouTube</a>
-      <a href="https://x.com" class="button">X.com</a>
-      <a href="https://drive.google.com" class="button">Google Drive</a>
-      <a href="https://discord.com" class="button">Discord</a>
-      <a href="https://app.axieinfinity.com" class="button">App.Axie</a>
-      <a href="https://www.amazon.com" class="button">Amazon</a>
-      <a href="https://github.com" class="button">GitHub</a>
-      <a href="javascript:void(0);" onclick="playRandomVideo()" class="button">Saturday Morning Cartoons</a>
     </div>
   </div>
 </div>
