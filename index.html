@@ -35,8 +35,8 @@
     .search-container {
       display: flex;
       justify-content: center;
+      align-items: center;
       margin: 5px 0;
-      position: relative;
     }
 
     .search-bar {
@@ -64,46 +64,46 @@
     }
 
     .axie-gif {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
+      margin-left: 10px;
     }
 
     .axie-gif img {
-      width: 40px;
-      height: 40px;
+      width: 70px;
+      height: 70px;
     }
 
     .content-wrapper {
-      width: 800px;
+      width: 90%;
+      max-width: 1200px;
       margin: 20px auto;
       display: flex;
       gap: 10px;
     }
 
+    .left-column, .middle-column, .right-column {
+      flex: 1;
+    }
+
     .left-column {
-      width: 220px;
       background-color: #333;
     }
 
     .middle-column {
-      width: 220px;
       background-color: #333;
     }
 
     .right-column {
-      width: 330px;
       background-color: rgb(94, 67, 109);
     }
 
     .section-header {
       padding: 5px 0;
       text-align: center;
+      background-color: rgb(75, 0, 130);
     }
 
     h2 {
-      font-size: 0.7em;
+      font-size: 0.8em;
       margin: 0;
     }
 
@@ -112,19 +112,25 @@
       background-color: #9b59b6;
       color: white;
       text-decoration: none;
-      padding: 8px 0;
+      padding: 10px 0;
       text-align: center;
-      margin: 2px 0;
-      font-size: 0.6em;
+      margin: 5px;
+      font-size: 0.7em;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #8e44ad;
     }
 
     #random-quote {
       text-align: center;
-      padding: 10px 0;
+      padding: 15px 0;
       font-size: 0.7em;
       font-style: italic;
       color: #ddd;
-      width: 800px;
+      width: 90%;
+      max-width: 1200px;
       margin: 0 auto;
     }
   </style>
@@ -160,7 +166,24 @@
       window.location.href = `https://www.youtube.com/watch?v=${videos[randomIndex]}&list=PLubQ2wNsM74e1r33xb0WWccF3VMSzevvu`;
     }
 
-    window.onload = displayRandomQuote;
+    function changeAxieGif() {
+      document.getElementById('axie-image').src = 'AxieBlack02.gif';
+    }
+
+    function resetAxieGif() {
+      document.getElementById('axie-image').src = 'AxieBlack01.gif';
+    }
+
+    window.onload = function() {
+      displayRandomQuote();
+      
+      // Add hover effects to all buttons
+      const buttons = document.querySelectorAll('.button');
+      buttons.forEach(button => {
+        button.addEventListener('mouseenter', changeAxieGif);
+        button.addEventListener('mouseleave', resetAxieGif);
+      });
+    };
   </script>
 </head>
 <body>
@@ -184,7 +207,7 @@
       </form>
     </div>
     <div class="axie-gif">
-      <img src="AxieBlack01.gif" alt="Axie">
+      <img id="axie-image" src="AxieBlack01.gif" alt="Axie">
     </div>
   </div>
 </header>
