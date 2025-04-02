@@ -16,44 +16,41 @@
 
     header {
       background-color: rgb(94, 67, 109);
-      padding: 15px 0;
+      padding: 10px 0;
       text-align: center;
+      position: relative;
     }
 
     .logo-container img {
-      width: 60px;
-      height: 60px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
+      margin-top: 3px;
     }
 
     h1 {
-      font-size: 1.2em;
-      margin: 8px 0;
-    }
-
-    .search-area {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 15px 0 5px;
+      font-size: 1em;
+      margin: 5px 0;
     }
 
     .search-container {
       display: flex;
-      gap: 10px;
+      justify-content: center;
+      margin: 5px 0;
+      position: relative;
     }
 
     .search-bar {
-      display: flex;
+      margin: 0 4px;
     }
 
     .search-bar input {
       background-color: #333;
       color: white;
       border: none;
-      padding: 8px;
-      width: 180px;
-      font-size: 0.7em;
+      padding: 5px;
+      width: 140px;
+      font-size: 0.6em;
       font-family: 'Press Start 2P', cursive;
     }
 
@@ -61,75 +58,88 @@
       background-color: #9b59b6;
       color: white;
       border: none;
-      padding: 8px;
+      padding: 5px;
       cursor: pointer;
-      font-size: 0.7em;
+      font-size: 0.6em;
       font-family: 'Press Start 2P', cursive;
     }
 
     .axie-gif {
-      margin-left: 15px;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
     }
 
     .axie-gif img {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
     }
 
-    .main-content {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
+    .content-wrapper {
+      width: 840px;
       margin: 20px auto;
-      width: 80%;
+      display: flex;
+      gap: 10px;
     }
 
-    .column {
-      width: 100%;
-      margin: 0;
-    }
-
-    .column-header {
-      padding: 8px 0;
-      text-align: center;
-    }
-
-    .apps-header, .links-header {
-      background-color: #333;
-    }
-
-    .tools-header {
-      background-color: #4b0082;
-    }
-
-    h2 {
-      font-size: 0.9em;
-      margin: 0;
-    }
-
-    .button-container {
+    .left-section {
+      width: 225px;
       display: flex;
       flex-direction: column;
     }
 
+    .center-section {
+      width: 225px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .right-section {
+      width: 370px;
+      background-color: #4b0082;
+    }
+
+    .links-header, .apps-header {
+      background-color: #333;
+      padding: 8px 0;
+      text-align: center;
+    }
+
+    .tools-header {
+      padding: 8px 0;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 0.7em;
+      margin: 0;
+    }
+
     .button {
+      display: block;
       background-color: #9b59b6;
       color: white;
       text-decoration: none;
+      padding: 8px 0;
       text-align: center;
-      padding: 10px 0;
       margin: 1px 0;
-      font-size: 0.8em;
+      font-size: 0.6em;
+    }
+
+    .apps-buttons, .links-buttons, .tools-buttons {
+      display: flex;
+      flex-direction: column;
     }
 
     #random-quote {
       text-align: center;
       padding: 15px 0;
-      font-size: 0.8em;
+      font-size: 0.7em;
       font-style: italic;
       color: #ddd;
-      margin: 15px auto;
-      width: 80%;
+      width: 840px;
+      margin: 0 auto;
     }
   </style>
   <script>
@@ -174,20 +184,18 @@
     <img src="Ronke.jpg" alt="xPollutionx's Mothership">
   </div>
   <h1>xPollutionx's Mothership</h1>
-  <div class="search-area">
-    <div class="search-container">
-      <div class="search-bar">
-        <form action="https://www.google.com/search" method="get">
-          <input type="text" name="q" placeholder="Search Google..." required>
-          <button type="submit" class="search-button">Search</button>
-        </form>
-      </div>
-      <div class="search-bar">
-        <form action="https://www.youtube.com/results" method="get">
-          <input type="text" name="search_query" placeholder="Search YouTube..." required>
-          <button type="submit" class="search-button">Search</button>
-        </form>
-      </div>
+  <div class="search-container">
+    <div class="search-bar">
+      <form action="https://www.google.com/search" method="get">
+        <input type="text" name="q" placeholder="Search Google..." required>
+        <button type="submit" class="search-button">Search</button>
+      </form>
+    </div>
+    <div class="search-bar">
+      <form action="https://www.youtube.com/results" method="get">
+        <input type="text" name="search_query" placeholder="Search YouTube..." required>
+        <button type="submit" class="search-button">Search</button>
+      </form>
     </div>
     <div class="axie-gif">
       <img src="AxieMechRun.gif" alt="Axie">
@@ -195,23 +203,12 @@
   </div>
 </header>
 
-<div class="main-content">
-  <div class="column">
-    <div class="column-header apps-header">
-      <h2>xPollutionx's Apps:</h2>
-    </div>
-    <div class="button-container">
-      <a href="https://xpollutionx.github.io/RadioBox" class="button">RadioBox</a>
-      <a href="https://xpollutionx.github.io/ConFused/" class="button">CoinFused</a>
-      <a href="https://xpollutionx.github.io/SnakePlus/" class="button">Snake Plus</a>
-    </div>
-  </div>
-
-  <div class="column">
-    <div class="column-header links-header">
+<div class="content-wrapper">
+  <div class="left-section">
+    <div class="links-header">
       <h2>Hot Links</h2>
     </div>
-    <div class="button-container">
+    <div class="links-buttons">
       <a href="https://www.youtube.com" class="button">YouTube</a>
       <a href="https://x.com" class="button">X.com</a>
       <a href="https://drive.google.com" class="button">Google Drive</a>
@@ -222,12 +219,23 @@
       <a href="javascript:void(0);" onclick="playRandomVideo()" class="button">Saturday Morning Cartoons</a>
     </div>
   </div>
-
-  <div class="column">
-    <div class="column-header tools-header">
+  
+  <div class="center-section">
+    <div class="apps-header">
+      <h2>xPollutionx's Apps:</h2>
+    </div>
+    <div class="apps-buttons">
+      <a href="https://xpollutionx.github.io/RadioBox" class="button">RadioBox</a>
+      <a href="https://xpollutionx.github.io/ConFused/" class="button">CoinFused</a>
+      <a href="https://xpollutionx.github.io/SnakePlus/" class="button">Snake Plus</a>
+    </div>
+  </div>
+  
+  <div class="right-section">
+    <div class="tools-header">
       <h2>Fun Tools</h2>
     </div>
-    <div class="button-container">
+    <div class="tools-buttons">
       <a href="https://suno.ai" class="button">Suno</a>
       <a href="https://chat.openai.com" class="button">ChatGPT</a>
       <a href="https://www.midjourney.com" class="button">MidJourney</a>
