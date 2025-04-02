@@ -12,14 +12,12 @@
       background-color: black;
       color: white;
       font-family: 'Press Start 2P', cursive;
-      height: 100%;
-      overflow-x: hidden;
     }
 
     header {
       background-color: rgb(94, 67, 109);
       color: white;
-      padding: 5px 0;
+      padding: 5px 0 10px 0;
       text-align: center;
     }
 
@@ -27,134 +25,128 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
+      margin-top: 5px;
     }
 
     h1 {
-      font-size: 0.8em;
+      font-size: 1em;
       margin: 5px 0;
     }
 
     .search-container {
       display: flex;
       justify-content: center;
-      gap: 5px;
+      gap: 10px;
       margin: 5px 0;
+      position: relative;
     }
 
     .search-bar input {
-      width: 120px;
-      padding: 3px;
-      font-size: 0.5em;
-      background: #333;
+      background-color: #333;
       color: white;
       border: none;
-      border-radius: 3px;
+      padding: 5px;
+      width: 120px;
+      font-size: 0.5em;
+      font-family: 'Press Start 2P', cursive;
     }
 
     .search-button {
-      padding: 3px;
-      font-size: 0.5em;
-      background: #9b59b6;
+      background-color: #9b59b6;
       color: white;
       border: none;
-      border-radius: 3px;
+      padding: 5px;
+      cursor: pointer;
+      font-size: 0.5em;
+      font-family: 'Press Start 2P', cursive;
     }
 
     .axie-container {
       position: absolute;
-      right: 5px;
-      top: 20px;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
     }
 
     .axie-container img {
-      width: 40px;
       height: 40px;
+      width: 40px;
     }
 
-    .main-container {
+    .content-area {
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 5px;
-      gap: 5px;
-      max-height: calc(100vh - 120px);
-    }
-
-    .column {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: 33%;
+      justify-content: space-between;
+      padding: 10px;
+      gap: 10px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .section {
-      width: 100%;
-      text-align: center;
-      margin-bottom: 5px;
-      border-radius: 3px;
+      padding: 10px;
+      border-radius: 5px;
     }
 
     .apps-section {
+      flex: 1;
       background-color: #333;
-      padding: 5px;
     }
 
     .links-section {
+      flex: 1;
       background-color: #333;
-      padding: 5px;
     }
 
     .tools-section {
+      flex: 1;
       background-color: #4b0082;
-      padding: 5px;
     }
 
     h2 {
-      font-size: 0.6em;
-      margin: 5px 0;
+      text-align: center;
+      font-size: 0.7em;
+      margin-top: 0;
+      margin-bottom: 10px;
     }
 
-    .button {
+    .link-button {
       display: block;
-      width: 90%;
-      margin: 5px auto;
-      padding: 5px;
       background-color: #9b59b6;
       color: white;
       text-decoration: none;
-      border-radius: 3px;
-      font-size: 0.5em;
+      padding: 8px;
       text-align: center;
+      margin: 5px 0;
+      font-size: 0.6em;
+      border-radius: 0;
     }
 
     #random-quote {
+      text-align: center;
+      padding: 10px;
+      font-size: 0.7em;
+      font-style: italic;
+      color: #ddd;
       position: fixed;
       bottom: 0;
-      left: 0;
-      right: 0;
-      font-size: 0.5em;
-      text-align: center;
-      padding: 5px;
+      width: 100%;
       background-color: black;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
+      .content-area {
+        flex-direction: column;
+      }
+
       .search-container {
-        flex-direction: row;
+        flex-direction: column;
+        align-items: center;
       }
-      
-      .search-bar input {
-        width: 100px;
-      }
-      
-      .button {
-        font-size: 0.4em;
-        padding: 4px;
-      }
-      
-      h2 {
-        font-size: 0.5em;
+
+      .axie-container {
+        position: static;
+        transform: none;
+        margin: 10px auto;
       }
     }
   </style>
@@ -203,57 +195,51 @@
   <div class="search-container">
     <div class="search-bar">
       <form action="https://www.google.com/search" method="get">
-        <input type="text" name="q" placeholder="Google..." required>
+        <input type="text" name="q" placeholder="Search Google..." required>
         <button type="submit" class="search-button">Search</button>
       </form>
     </div>
     <div class="search-bar">
       <form action="https://www.youtube.com/results" method="get">
-        <input type="text" name="search_query" placeholder="YouTube..." required>
+        <input type="text" name="search_query" placeholder="Search YouTube..." required>
         <button type="submit" class="search-button">Search</button>
       </form>
     </div>
-  </div>
-  <div class="axie-container">
-    <img src="AxieMechRun.gif" alt="Axie">
+    <div class="axie-container">
+      <img src="AxieMechRun.gif" alt="Axie">
+    </div>
   </div>
 </header>
 
-<div class="main-container">
-  <div class="column">
-    <div class="section apps-section">
-      <h2>xPollutionx's Apps:</h2>
-      <a href="https://xpollutionx.github.io/RadioBox" class="button">RadioBox</a>
-      <a href="https://xpollutionx.github.io/ConFused/" class="button">CoinFused</a>
-      <a href="https://xpollutionx.github.io/SnakePlus/" class="button">Snake Plus</a>
-    </div>
+<div class="content-area">
+  <div class="section apps-section">
+    <h2>xPollutionx's Apps:</h2>
+    <a href="https://xpollutionx.github.io/RadioBox" class="link-button">RadioBox</a>
+    <a href="https://xpollutionx.github.io/ConFused/" class="link-button">CoinFused</a>
+    <a href="https://xpollutionx.github.io/SnakePlus/" class="link-button">Snake Plus</a>
   </div>
   
-  <div class="column">
-    <div class="section links-section">
-      <h2>Hot Links</h2>
-      <a href="https://www.youtube.com" class="button">YouTube</a>
-      <a href="https://x.com" class="button">X.com</a>
-      <a href="https://drive.google.com" class="button">Google Drive</a>
-      <a href="https://discord.com" class="button">Discord</a>
-      <a href="https://app.axieinfinity.com" class="button">App.Axie</a>
-      <a href="https://www.amazon.com" class="button">Amazon</a>
-      <a href="https://github.com" class="button">GitHub</a>
-      <a href="javascript:void(0);" onclick="playRandomVideo()" class="button">Saturday Cartoons</a>
-    </div>
+  <div class="section links-section">
+    <h2>Hot Links</h2>
+    <a href="https://www.youtube.com" class="link-button">YouTube</a>
+    <a href="https://x.com" class="link-button">X.com</a>
+    <a href="https://drive.google.com" class="link-button">Google Drive</a>
+    <a href="https://discord.com" class="link-button">Discord</a>
+    <a href="https://app.axieinfinity.com" class="link-button">App.Axie</a>
+    <a href="https://www.amazon.com" class="link-button">Amazon</a>
+    <a href="https://github.com" class="link-button">GitHub</a>
+    <a href="javascript:void(0);" onclick="playRandomVideo()" class="link-button">Saturday Morning Cartoons</a>
   </div>
   
-  <div class="column">
-    <div class="section tools-section">
-      <h2>Fun Tools</h2>
-      <a href="https://suno.ai" class="button">Suno</a>
-      <a href="https://chat.openai.com" class="button">ChatGPT</a>
-      <a href="https://www.midjourney.com" class="button">MidJourney</a>
-      <a href="https://klingai.com/" class="button">KlingAI</a>
-      <a href="https://hailuoai.video/" class="button">Hailuo AI</a>
-      <a href="https://dream-machine.lumalabs.ai/" class="button">Luma Labs</a>
-      <a href="https://app.runwayml.com/video-tools/teams/x35pollution/dashboard" class="button">Runway</a>
-    </div>
+  <div class="section tools-section">
+    <h2>Fun Tools</h2>
+    <a href="https://suno.ai" class="link-button">Suno</a>
+    <a href="https://chat.openai.com" class="link-button">ChatGPT</a>
+    <a href="https://www.midjourney.com" class="link-button">MidJourney</a>
+    <a href="https://klingai.com/" class="link-button">KlingAI</a>
+    <a href="https://hailuoai.video/" class="link-button">Hailuo AI</a>
+    <a href="https://dream-machine.lumalabs.ai/" class="link-button">Luma Labs</a>
+    <a href="https://app.runwayml.com/video-tools/teams/x35pollution/dashboard" class="link-button">Runway</a>
   </div>
 </div>
 
