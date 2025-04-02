@@ -6,31 +6,21 @@
   <title>Mothership</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Press Start 2P', cursive;
+    html, body {
       margin: 0;
       padding: 0;
       background-color: black;
       color: white;
+      font-family: 'Press Start 2P', cursive;
+      text-align: center;
     }
 
     header {
       background-color: rgb(94, 67, 109);
       color: white;
-      padding: 0.5rem;
+      padding: 10px 0;
+      position: relative;
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      filter: none;
-      backdrop-filter: none;
-      box-shadow: none;
-      opacity: 1;
-      background-image: none;
     }
 
     .logo-container {
@@ -38,59 +28,58 @@
     }
 
     .logo-container img {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
     }
 
     h1 {
-      margin: 10px 0;
       font-size: 1.2em;
-    }
-
-    h2 {
-      font-size: 1em;
-      margin-bottom: 15px;
+      margin: 10px 0;
     }
 
     .search-container {
       display: flex;
-      align-items: center;
       justify-content: center;
-      margin-top: 5px;
-      position: relative;
+      gap: 10px;
+      margin: 10px auto;
+      max-width: 600px;
     }
 
     .search-bar {
-      margin: 0 5px;
+      display: flex;
+      align-items: center;
     }
 
     .search-bar input[type="text"] {
-      padding: 5px 10px;
-      border-radius: 5px;
+      padding: 5px;
+      border-radius: 3px;
       border: none;
       background: #333;
       color: white;
-      width: 180px;
+      width: 150px;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.6em;
     }
 
     .search-button {
-      padding: 5px 10px;
+      padding: 5px;
       background-color: #9b59b6;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 3px;
       cursor: pointer;
+      margin-left: 5px;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.6em;
     }
 
     .axie-container {
-      display: inline-block;
-      margin-left: 5px;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
       background-color: rgb(94, 67, 109);
-      filter: none;
-      backdrop-filter: none;
-      box-shadow: none;
-      opacity: 1;
     }
 
     .axie-container img {
@@ -100,108 +89,124 @@
     }
 
     main {
-      max-width: 90%;
-      margin: 20px auto;
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 15px;
+      flex-direction: row;
+      justify-content: center;
+      margin: 20px auto;
+      max-width: 1000px;
+      gap: 20px;
     }
 
     .main-content {
-      flex: 3;
+      flex: 1;
+      max-width: 700px;
     }
 
-    section {
-      margin-bottom: 15px;
-      padding: 15px;
+    .compact-layout {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .app-section {
+      flex: 1;
+      min-width: 200px;
       background-color: #333;
-      color: white;
-      border-radius: 10px;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 0.8em;
+      margin-bottom: 10px;
+      text-align: center;
     }
 
     .links {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
-      gap: 10px;
-      margin: 10px 0;
+      justify-content: center;
+      gap: 5px;
     }
 
     .links a {
-      margin: 5px;
-      padding: 10px 15px;
+      padding: 8px;
       background-color: #9b59b6;
       color: white;
       text-decoration: none;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-      font-size: 0.7em;
-    }
-
-    .links a:hover {
-      background-color: #8e44ad;
-      transform: scale(1.05);
+      border-radius: 3px;
+      font-size: 0.6em;
+      min-width: 80px;
+      text-align: center;
     }
 
     .fun-tools {
-      flex: 1;
-      padding: 15px;
       background-color: #4b0082;
-      border-radius: 10px;
+      border-radius: 5px;
+      padding: 10px;
+      width: 250px;
     }
 
     .fun-tools h2 {
-      text-align: center;
-      margin-top: 0;
+      font-size: 0.8em;
+      margin: 0 0 10px 0;
     }
 
     .fun-tools a {
       display: block;
       margin: 5px 0;
-      text-align: center;
-      padding: 10px;
+      padding: 8px;
       background-color: #9b59b6;
       color: white;
       text-decoration: none;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-      font-size: 0.7em;
-    }
-
-    .fun-tools a:hover {
-      background-color: #8e44ad;
-      transform: scale(1.02);
+      border-radius: 3px;
+      font-size: 0.6em;
     }
 
     #random-quote {
       text-align: center;
-      margin: 20px;
+      margin: 20px auto;
       padding: 10px;
       font-style: italic;
       color: #ddd;
+      max-width: 800px;
+      font-size: 0.7em;
     }
 
     @media (max-width: 768px) {
       main {
         flex-direction: column;
-        margin: 10px;
-        max-width: 100%;
+        align-items: center;
+        padding: 0 10px;
+      }
+
+      .fun-tools {
+        width: 100%;
+        max-width: 400px;
       }
 
       .search-container {
         flex-direction: column;
+        align-items: center;
       }
 
-      .axie-container {
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
+      .search-bar {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 5px;
       }
 
       .search-bar input[type="text"] {
-        width: calc(100% - 80px);
+        width: 100%;
+      }
+
+      .axie-container {
+        position: static;
+        transform: none;
+        margin: 10px auto;
       }
     }
   </style>
@@ -260,42 +265,38 @@
         <button type="submit" class="search-button">Search</button>
       </form>
     </div>
-    <div class="axie-container">
-      <img src="AxieMechRun.gif" alt="Axie">
-    </div>
+  </div>
+  <div class="axie-container">
+    <img src="AxieMechRun.gif" alt="Axie">
   </div>
 </header>
 
 <main>
   <div class="main-content">
-    <section id="links">
-      <h2>Hot Links</h2>
-      <div class="links main-links">
-        <a href="https://discord.com">Discord</a>
-        <a href="https://github.com">GitHub</a>
-        <a href="https://x.com">X.com</a>
+    <div class="compact-layout">
+      <div class="app-section">
+        <h2 class="section-title">xPollutionx's Apps:</h2>
+        <div class="links">
+          <a href="https://xpollutionx.github.io/RadioBox">RadioBox</a>
+          <a href="https://xpollutionx.github.io/ConFused/">CoinFused</a>
+          <a href="https://xpollutionx.github.io/SnakePlus/" target="_blank" rel="noopener noreferrer">Snake Plus</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="app-section">
+      <h2 class="section-title">Hot Links</h2>
+      <div class="links">
         <a href="https://www.youtube.com">YouTube</a>
-        <a href="https://app.axieinfinity.com">App.Axie</a>
-        <a href="javascript:void(0);" onclick="playRandomVideo()">Saturday Morning Cartoons</a>
-        <a href="https://www.amazon.com">Amazon</a>
+        <a href="https://x.com">X.com</a>
         <a href="https://drive.google.com">Google Drive</a>
+        <a href="https://discord.com">Discord</a>
+        <a href="https://app.axieinfinity.com">App.Axie</a>
+        <a href="https://www.amazon.com">Amazon</a>
+        <a href="https://github.com">GitHub</a>
+        <a href="javascript:void(0);" onclick="playRandomVideo()">Saturday Morning Cartoons</a>
       </div>
-    </section>
-
-    <section id="games">
-      <h2>xPollutionx's Games:</h2>
-      <div class="links games">
-        <a href="https://xpollutionx.github.io/SnakePlus/" target="_blank" rel="noopener noreferrer">Snake Plus</a>
-      </div>
-    </section>
-
-    <section id="apps">
-      <h2>xPollutionx's Apps:</h2>
-      <div class="links main-links">
-        <a href="https://xpollutionx.github.io/ConFused/">CoinFused</a>
-        <a href="https://xpollutionx.github.io/RadioBox">RadioBox</a>
-      </div>
-    </section>
+    </div>
   </div>
 
   <aside class="fun-tools">
