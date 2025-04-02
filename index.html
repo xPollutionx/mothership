@@ -22,7 +22,9 @@
       color: white;
       padding: 0.5rem;
       text-align: center;
-      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .logo-container {
@@ -42,9 +44,43 @@
 
     .search-container {
       display: flex;
-      justify-content: center;
-      gap: 10px;
       align-items: center;
+      justify-content: center;
+      margin-top: 5px;
+      position: relative;
+    }
+
+    .search-bar {
+      margin: 0 5px;
+    }
+
+    .search-bar input[type="text"] {
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: none;
+      background: #333;
+      color: white;
+      width: 180px;
+    }
+
+    .search-button {
+      padding: 5px 10px;
+      background-color: #9b59b6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .axie-container {
+      display: inline-block;
+      margin-left: 5px;
+    }
+
+    .axie-container img {
+      width: 40px;
+      height: 40px;
+      vertical-align: middle;
     }
 
     main {
@@ -66,30 +102,6 @@
       background-color: #333;
       color: white;
       border-radius: 10px;
-    }
-
-    .search-bar {
-      margin: 5px auto;
-      text-align: center;
-    }
-
-    .search-bar input[type="text"] {
-      padding: 5px 10px;
-      border-radius: 5px;
-      border: none;
-      background: #333;
-      color: white;
-      margin-right: 5px;
-      width: 180px;
-    }
-
-    .search-button {
-      padding: 5px 10px;
-      background-color: #9b59b6;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
     }
 
     .links {
@@ -163,45 +175,16 @@
         flex-direction: column;
       }
 
+      .axie-container {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
       .search-bar input[type="text"] {
         width: calc(100% - 80px);
       }
-    }
-
-    .main-layout {
-      display: flex;
-      position: relative;
-    }
-
-    .axie-container {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .axie-container img {
-      width: 50px;
-      height: 50px;
-    }
-
-    .content-area {
-      flex-grow: 1;
-      background-color: black;
-      padding: 20px;
-    }
-
-    .header-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .axie-gif {
-      width: 40px;
-      height: 40px;
-      margin-left: 10px;
     }
   </style>
   <script>
@@ -221,15 +204,6 @@
       "Between stimulus and response, there is a space. In that space is our power to choose our response. In our response lies our growth and our freedom. — Viktor Frankl"
     ];
 
-    function updateQuote() {
-      const quoteElement = document.getElementById('random-quote');
-      quoteElement.style.opacity = '0';
-      setTimeout(() => {
-        displayRandomQuote();
-        quoteElement.style.opacity = '1';
-      }, 500);
-    }
-
     function displayRandomQuote() {
       const randomIndex = Math.floor(Math.random() * quotes.length);
       document.getElementById('random-quote').textContent = quotes[randomIndex];
@@ -245,42 +219,7 @@
       window.location.href = `https://www.youtube.com/watch?v=${videos[randomIndex]}&list=PLubQ2wNsM74e1r33xb0WWccF3VMSzevvu`;
     }
 
-    window.onload = () => {
-      displayRandomQuote();
-      setInterval(updateQuote, 30000);
-    };
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const headers = document.querySelectorAll('.section-header');
-        
-        // Initially collapse all sections except Search Engines and Apps
-        headers.forEach(header => {
-            const content = header.nextElementSibling;
-            const sectionId = header.parentElement.id;
-            
-            if (sectionId !== 'search-engines' && sectionId !== 'apps') {
-                content.style.display = 'none';
-            } else {
-                header.classList.add('active');
-            }
-        });
-
-        headers.forEach(header => {
-            header.addEventListener('click', () => {
-                const content = header.nextElementSibling;
-                const sectionId = header.parentElement.id;
-                
-                // Allow Search Engines and Apps to be collapsed/expanded
-                header.classList.toggle('active');
-                
-                if (content.style.display === 'none' || content.style.display === '') {
-                    content.style.display = 'block';
-                } else {
-                    content.style.display = 'none';
-                }
-            });
-        });
-    });
+    window.onload = displayRandomQuote;
   </script>
 </head>
 <body>
@@ -290,71 +229,68 @@
     <img src="Ronke.jpg" alt="xPollutionx's Mothership">
   </div>
   <h1>xPollutionx's Mothership</h1>
-  <div class="header-content">
+  <div class="search-container">
     <div class="search-bar">
       <form action="https://www.google.com/search" method="get">
         <input type="text" name="q" placeholder="Search Google..." required>
-        <button type="submit">Search</button>
+        <button type="submit" class="search-button">Search</button>
       </form>
     </div>
     <div class="search-bar">
       <form action="https://www.youtube.com/results" method="get">
         <input type="text" name="search_query" placeholder="Search YouTube..." required>
-        <button type="submit">Search</button>
+        <button type="submit" class="search-button">Search</button>
       </form>
     </div>
-    <img src="AxieMechRun.gif" alt="Axie" class="axie-gif">
+    <div class="axie-container">
+      <img src="AxieMechRun.gif" alt="Axie">
+    </div>
   </div>
 </header>
 
-<div class="main-layout">
-  <div class="axie-container">
-    <img src="AxieMechRun.gif" alt="Running Axie">
+<main>
+  <div class="main-content">
+    <section id="links">
+      <h2>Hot Links</h2>
+      <div class="links main-links">
+        <a href="https://discord.com">Discord</a>
+        <a href="https://github.com">GitHub</a>
+        <a href="https://x.com">X.com</a>
+        <a href="https://www.youtube.com">YouTube</a>
+        <a href="https://app.axieinfinity.com">App.Axie</a>
+        <a href="javascript:void(0);" onclick="playRandomVideo()">Saturday Morning Cartoons</a>
+        <a href="https://www.amazon.com">Amazon</a>
+        <a href="https://drive.google.com">Google Drive</a>
+      </div>
+    </section>
+
+    <section id="games">
+      <h2>xPollutionx's Games:</h2>
+      <div class="links games">
+        <a href="https://xpollutionx.github.io/SnakePlus/" target="_blank" rel="noopener noreferrer">Snake Plus</a>
+      </div>
+    </section>
+
+    <section id="apps">
+      <h2>xPollutionx's Apps:</h2>
+      <div class="links main-links">
+        <a href="https://xpollutionx.github.io/ConFused/">CoinFused</a>
+        <a href="https://xpollutionx.github.io/RadioBox">RadioBox</a>
+      </div>
+    </section>
   </div>
-  <div class="content-area">
-    <div class="main-content">
-      <section id="links">
-        <h2>Hot Links</h2>
-        <div class="links main-links">
-          <a href="https://discord.com">Discord</a>
-          <a href="https://github.com">GitHub</a>
-          <a href="https://x.com">X.com</a>
-          <a href="https://www.youtube.com">YouTube</a>
-          <a href="https://app.axieinfinity.com">App.Axie</a>
-          <a href="javascript:void(0);" onclick="playRandomVideo()">Saturday Morning Cartoons</a>
-          <a href="https://www.amazon.com">Amazon</a>
-          <a href="https://drive.google.com">Google Drive</a>
-        </div>
-      </section>
 
-      <section id="games">
-        <h2>xPollutionx's Games:</h2>
-        <div class="links games">
-          <a href="https://xpollutionx.github.io/SnakePlus/" target="_blank" rel="noopener noreferrer">Snake Plus</a>
-        </div>
-      </section>
-
-      <section id="apps">
-        <h2>xPollutionx's Apps:</h2>
-        <div class="links main-links">
-          <a href="https://xpollutionx.github.io/ConFused/">CoinFused</a>
-          <a href="https://xpollutionx.github.io/RadioBox">RadioBox</a>
-        </div>
-      </section>
-    </div>
-
-    <aside class="fun-tools">
-      <h2>Fun Tools</h2>
-      <a href="https://suno.ai">Suno</a>
-      <a href="https://chat.openai.com">ChatGPT</a>
-      <a href="https://www.midjourney.com">MidJourney</a>
-      <a href="https://klingai.com/">KlingAI</a>
-      <a href="https://hailuoai.video/">Hailuo AI</a>
-      <a href="https://dream-machine.lumalabs.ai/">Luma Labs</a>
-      <a href="https://app.runwayml.com/video-tools/teams/x35pollution/dashboard">Runway</a>
-    </aside>
-  </div>
-</div>
+  <aside class="fun-tools">
+    <h2>Fun Tools</h2>
+    <a href="https://suno.ai">Suno</a>
+    <a href="https://chat.openai.com">ChatGPT</a>
+    <a href="https://www.midjourney.com">MidJourney</a>
+    <a href="https://klingai.com/">KlingAI</a>
+    <a href="https://hailuoai.video/">Hailuo AI</a>
+    <a href="https://dream-machine.lumalabs.ai/">Luma Labs</a>
+    <a href="https://app.runwayml.com/video-tools/teams/x35pollution/dashboard">Runway</a>
+  </aside>
+</main>
 
 <div id="random-quote"></div>
 
