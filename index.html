@@ -15,143 +15,139 @@
       padding: 0;
       background-color: black;
       color: white;
-      min-height: 100vh;
-      background: linear-gradient(to bottom right, #000000, #1a0033);
     }
+
     header {
       background-color: #4CAF50;
       color: white;
       padding: 1rem;
       text-align: center;
-      animation: fadeIn 0.5s ease-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
+
+    .logo-container {
+      margin-bottom: 15px;
+    }
+
+    .logo-container img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+    }
+
+    .search-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
     main {
+      max-width: 90%;
+      margin: 20px auto;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin: 20px;
-      gap: 20px;
+      gap: 15px;
     }
+
     .main-content {
       flex: 3;
     }
+
     section {
-      margin-bottom: 20px;
-      padding: 20px;
-      background-color: rgba(51, 51, 51, 0.9);
+      margin-bottom: 15px;
+      padding: 15px;
+      background-color: #333;
       color: white;
       border-radius: 10px;
-      transition: all 0.3s ease;
-      animation: fadeIn 0.5s ease-out;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.1);
     }
-    section:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
+    .search-bar {
+      margin: 10px auto;
+      text-align: center;
     }
+
+    .search-bar input[type="text"] {
+      padding: 8px 15px;
+      border-radius: 5px;
+      border: none;
+      background: #333;
+      color: white;
+      margin-right: 5px;
+      width: 200px;
+    }
+
+    .search-button {
+      padding: 8px 15px;
+      background-color: #9b59b6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
     .links {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 10px;
-      margin: 20px 0;
+      margin: 10px 0;
     }
+
     .links a {
       margin: 5px;
-      padding: 10px 20px;
+      padding: 10px 15px;
+      background-color: #9b59b6;
       color: white;
       text-decoration: none;
       border-radius: 5px;
       transition: all 0.3s ease;
-      transform: scale(1);
-      backdrop-filter: blur(5px);
-      background: rgba(155, 89, 182, 0.8);
-      border: 1px solid rgba(255,255,255,0.1);
     }
-    .main-links a:hover, .games a:hover {
+
+    .links a:hover {
+      background-color: #8e44ad;
       transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(155, 89, 182, 0.5);
-      background: rgba(155, 89, 182, 0.9);
     }
+
     .fun-tools {
       flex: 1;
-      padding: 20px;
-      background-color: rgba(75, 0, 130, 0.9);
+      padding: 15px;
+      background-color: #4b0082;
       border-radius: 10px;
-      backdrop-filter: blur(10px);
-      animation: fadeIn 0.5s ease-out;
     }
+
     .fun-tools h2 {
       text-align: center;
+      margin-top: 0;
     }
+
     .fun-tools a {
       display: block;
-      margin: 10px 0;
+      margin: 5px 0;
       text-align: center;
       padding: 10px;
+      background-color: #9b59b6;
       color: white;
-      border-radius: 5px;
       text-decoration: none;
+      border-radius: 5px;
       transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
-      background: rgba(155, 89, 182, 0.8);
-      border: 1px solid rgba(255,255,255,0.1);
     }
+
     .fun-tools a:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(155, 89, 182, 0.5);
+      background-color: #8e44ad;
+      transform: scale(1.02);
     }
-    .search-bar {
-      margin: 10px auto;
-      text-align: center;
-    }
-    .search-bar input[type="text"] {
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.1);
-      color: white;
-      margin-right: 5px;
-      transition: all 0.3s ease;
-    }
-    .search-bar input[type="text"]:focus {
-      outline: none;
-      box-shadow: 0 0 10px rgba(155, 89, 182, 0.5);
-      background: rgba(255,255,255,0.2);
-    }
-    .search-bar button {
-      padding: 10px 20px;
-      border-radius: 5px;
-      border: none;
-      background: rgba(155, 89, 182, 0.8);
-      color: white;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .search-bar button:hover {
-      background: rgba(155, 89, 182, 0.9);
-      transform: scale(1.05);
-    }
+
     #random-quote {
       text-align: center;
       margin: 20px;
-      padding: 20px;
+      padding: 10px;
       font-style: italic;
       color: #ddd;
-      transition: opacity 0.5s ease;
-      animation: fadeIn 1s ease-out;
     }
-    @keyframes fadeIn {
-      from { 
-        opacity: 0; 
-        transform: translateY(20px); 
-      }
-      to { 
-        opacity: 1; 
-        transform: translateY(0); 
-      }
-    }
+
     @media (max-width: 768px) {
       main {
         flex-direction: column;
@@ -159,89 +155,14 @@
         max-width: 100%;
       }
 
-      section {
-        margin-bottom: 5px;
-        padding: 0;
-        background: none;
-      }
-
-      .section-header {
-        background-color: #333;
-        padding: 12px 15px;
-        margin: 2px 0;
-        border-radius: 5px;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: bold;
-      }
-
-      .section-header:after {
-        content: '▼';
-        font-size: 12px;
-        transition: transform 0.3s;
-      }
-
-      .section-header.active:after {
-        transform: rotate(180deg);
-      }
-
-      .section-content {
-        display: none;
-        padding: 10px;
-        background-color: #333;
-        border-radius: 0 0 5px 5px;
-        margin-bottom: 5px;
-      }
-
-      .section-content.active {
-        display: block;
-      }
-
-      /* Keep Search Engines and Apps open by default */
-      #search-engines .section-content,
-      #apps .section-content {
-        display: block;
-      }
-
-      .links {
+      .search-container {
         flex-direction: column;
-        gap: 5px;
-      }
-
-      .links a {
-        margin: 2px 0;
-        text-align: center;
-      }
-
-      .fun-tools {
-        margin-top: 5px;
-        padding: 0;
-      }
-
-      .fun-tools .section-content {
-        background-color: #4b0082;
-      }
-
-      .fun-tools a {
-        margin: 5px 0;
-        padding: 8px;
-      }
-
-      .search-bar {
-        margin: 5px 0;
       }
 
       .search-bar input[type="text"] {
         width: calc(100% - 80px);
-        margin-bottom: 5px;
       }
     }
-    section:nth-child(1) { animation-delay: 0.1s; }
-    section:nth-child(2) { animation-delay: 0.2s; }
-    section:nth-child(3) { animation-delay: 0.3s; }
-    section:nth-child(4) { animation-delay: 0.4s; }
   </style>
   <script>
     const quotes = [
@@ -325,51 +246,50 @@
 <body>
 
 <header>
-  <h1>Mothership</h1>
+  <div class="logo-container">
+    <img src="Ronke.jpg" alt="xPollutionx's Mothership">
+  </div>
+  <h1>xPollutionx's Mothership</h1>
+  <div class="search-container">
+    <div class="search-bar">
+      <form action="https://www.google.com/search" method="get">
+        <input type="text" name="q" placeholder="Search Google..." required>
+        <button type="submit" class="search-button">Search</button>
+      </form>
+    </div>
+    <div class="search-bar">
+      <form action="https://www.youtube.com/results" method="get">
+        <input type="text" name="search_query" placeholder="Search YouTube..." required>
+        <button type="submit" class="search-button">Search</button>
+      </form>
+    </div>
+  </div>
 </header>
 
 <main>
   <div class="main-content">
-    <section>
-      <h2>Search Engines</h2>
-      <div class="search-bar">
-        <form action="https://www.google.com/search" method="get">
-          <input type="text" name="q" placeholder="Search Google..." required>
-          <button type="submit">Search</button>
-        </form>
-      </div>
-      <div class="search-bar">
-        <form action="https://www.youtube.com/results" method="get">
-          <input type="text" name="search_query" placeholder="Search YouTube..." required>
-          <button type="submit">Search</button>
-        </form>
-      </div>
-    </section>
-
     <section id="links">
-      <div class="section-header">Hot Links</div>
-      <div class="section-content">
-        <div class="links main-links">
-          <a href="https://discord.com">Discord</a>
-          <a href="https://github.com">GitHub</a>
-          <a href="https://x.com">X.com</a>
-          <a href="https://www.youtube.com">YouTube</a>
-          <a href="https://app.axieinfinity.com">App.Axie</a>
-          <a href="javascript:void(0);" onclick="playRandomVideo()">Saturday Morning Cartoons</a>
-          <a href="https://www.amazon.com">Amazon</a>
-          <a href="https://drive.google.com">Google Drive</a>
-        </div>
+      <h2>Hot Links</h2>
+      <div class="links main-links">
+        <a href="https://discord.com">Discord</a>
+        <a href="https://github.com">GitHub</a>
+        <a href="https://x.com">X.com</a>
+        <a href="https://www.youtube.com">YouTube</a>
+        <a href="https://app.axieinfinity.com">App.Axie</a>
+        <a href="javascript:void(0);" onclick="playRandomVideo()">Saturday Morning Cartoons</a>
+        <a href="https://www.amazon.com">Amazon</a>
+        <a href="https://drive.google.com">Google Drive</a>
       </div>
     </section>
 
-    <section>
+    <section id="games">
       <h2>xPollutionx's Games:</h2>
       <div class="links games">
         <a href="https://xpollutionx.github.io/SnakePlus/" target="_blank" rel="noopener noreferrer">Snake Plus</a>
       </div>
     </section>
 
-    <section>
+    <section id="apps">
       <h2>xPollutionx's Apps:</h2>
       <div class="links main-links">
         <a href="https://xpollutionx.github.io/ConFused/">CoinFused</a>
