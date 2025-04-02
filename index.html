@@ -190,6 +190,19 @@
       background-color: black;
       padding: 20px;
     }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .axie-gif {
+      width: 40px;
+      height: 40px;
+      margin-left: 10px;
+    }
   </style>
   <script>
     const quotes = [
@@ -277,22 +290,20 @@
     <img src="Ronke.jpg" alt="xPollutionx's Mothership">
   </div>
   <h1>xPollutionx's Mothership</h1>
-  <div class="search-container">
+  <div class="header-content">
     <div class="search-bar">
       <form action="https://www.google.com/search" method="get">
         <input type="text" name="q" placeholder="Search Google..." required>
-        <button type="submit" class="search-button">Search</button>
+        <button type="submit">Search</button>
       </form>
     </div>
     <div class="search-bar">
       <form action="https://www.youtube.com/results" method="get">
         <input type="text" name="search_query" placeholder="Search YouTube..." required>
-        <button type="submit" class="search-button">Search</button>
+        <button type="submit">Search</button>
       </form>
     </div>
-    <div class="axie-container">
-      <img src="AxieMechRun.gif" alt="Running Axie">
-    </div>
+    <img src="AxieMechRun.gif" alt="Axie" class="axie-gif">
   </div>
 </header>
 
