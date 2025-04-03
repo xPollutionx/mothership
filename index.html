@@ -172,19 +172,35 @@
 
     /* Mobile centering fix - only addresses centering */
     @media (max-width: 767px) {
-        /* Center the container that holds everything */
-        .search-container {
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            width: 100% !important;
-            flex-direction: row !important;
+        /* Force everything to center */
+        header {
+            text-align: center;
         }
         
-        /* Fix the quote */
+        /* Create a centered container for search bars and axie */
+        .search-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        /* Make the search bars inline */
+        .search-bar {
+            display: inline-block;
+        }
+        
+        /* Put the axie on the same line */
+        .axie-gif {
+            display: inline-block;
+        }
+        
+        /* Ensure the quote is centered */
         #random-quote {
-            text-align: center !important;
-            width: 100% !important;
+            text-align: center;
+            width: 100%;
         }
     }
 
