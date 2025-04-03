@@ -172,54 +172,61 @@
 
     /* Mobile centering fix - only addresses centering */
     @media (max-width: 767px) {
-        /* Remove all previous mobile header styling */
+        /* Center the search buttons */
         .search-container {
-            display: block;
+            position: relative;
             width: 100%;
             text-align: center;
-            margin: 0 auto;
         }
         
-        /* Force center the title */
-        h1 {
-            text-align: center;
-        }
-        
-        /* Center the logo */
-        .logo-container {
-            text-align: center;
-            margin: 0 auto;
-            width: 100%;
-        }
-        
-        /* Wrap search bars in a new centered container */
-        .search-wrapper {
-            display: table;
-            margin: 0 auto;
-            width: auto;
-        }
-        
-        /* Make search bars display as table cells side by side */
+        /* This is key - make the search bars display inline-block and center them */
         .search-bar {
-            display: table-cell;
-            padding: 0 2px;
-        }
-        
-        /* Force center the gif */
-        .axie-gif {
-            text-align: center;
-            width: 100%;
-            display: block;
-            margin: 10px auto;
-        }
-        
-        /* Center the quote */
-        #random-quote {
-            width: 100%;
-            display: block;
-            text-align: center;
+            display: inline-block;
             margin: 0 auto;
         }
+        
+        /* Center the axie */
+        .axie-gif {
+            position: relative;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .axie-gif img {
+            margin: 0 auto;
+            display: inline-block;
+        }
+        
+        /* Center the quote at the bottom */
+        #random-quote {
+            position: relative;
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 767px) {
+      /* Remove all previous mobile styling first */
+      
+      /* Center everything with direct inline styles */
+      .mobile-center {
+        position: relative !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: auto !important;
+        display: table !important;
+        margin: 10px auto !important;
+      }
+      
+      /* Make the quote use the same centering technique */
+      #random-quote {
+        position: relative !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: fit-content !important;
+        max-width: 90% !important;
+        margin: 10px auto !important;
+      }
     }
   </style>
   <script>
@@ -277,30 +284,35 @@
 <body>
 
 <header>
-  <div class="logo-container">
+  <div class="logo-container mobile-center">
     <a href="https://x.com/xPollutionx">
-        <img src="Ronke.jpg" alt="xPollutionx's Mothership">
+      <img src="Ronke.jpg" alt="xPollutionx's Mothership">
     </a>
   </div>
-  <h1><a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a></h1>
-  <div class="search-container">
-    <div class="search-wrapper">
-      <div class="search-bar">
-        <form action="https://www.google.com/search" method="get">
-          <input type="text" name="q" placeholder="" required>
-          <button type="submit" class="search-button">Google Search</button>
-        </form>
-      </div>
-      <div class="search-bar">
-        <form action="https://www.youtube.com/results" method="get">
-          <input type="text" name="search_query" placeholder="" required>
-          <button type="submit" class="search-button">YouTube Search</button>
-        </form>
-      </div>
+  
+  <h1 class="mobile-center">
+    <a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a>
+  </h1>
+  
+  <!-- Search bars in a centered container -->
+  <div class="mobile-center">
+    <div class="search-bar">
+      <form action="https://www.google.com/search" method="get">
+        <input type="text" name="q" placeholder="" required>
+        <button type="submit" class="search-button">Google Search</button>
+      </form>
     </div>
-    <div class="axie-gif">
-      <img id="axie-image" src="AxieBlack01.gif" alt="Axie">
+    <div class="search-bar">
+      <form action="https://www.youtube.com/results" method="get">
+        <input type="text" name="search_query" placeholder="" required>
+        <button type="submit" class="search-button">YouTube Search</button>
+      </form>
     </div>
+  </div>
+  
+  <!-- Axie GIF in its own centered container -->
+  <div class="axie-gif mobile-center">
+    <img id="axie-image" src="AxieBlack01.gif" alt="Axie">
   </div>
 </header>
 
