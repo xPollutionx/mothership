@@ -170,46 +170,42 @@
         }
     }
 
-    /* Mobile header specific fixes */
+    /* Mobile strict centering fixes */
     @media (max-width: 767px) {
-        /* Center header elements */
-        header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 10px 0;
+        /* Strictly center all header content */
+        header * {
+            margin-left: auto !important;
+            margin-right: auto !important;
+            text-align: center !important;
         }
         
-        /* Keep search bars on same line */
+        /* Center search bar container */
         .search-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
             width: 100%;
-            margin: 5px 0;
+            display: block !important;
+            text-align: center !important;
         }
         
-        /* Make search bars fit on same line */
+        /* Stack search bars vertically to ensure they're centered */
         .search-bar {
-            margin: 0 2px;
+            display: block;
+            width: 80%;
+            margin: 10px auto !important;
         }
         
-        .search-bar input {
-            width: 100px;
-        }
-        
-        /* Search buttons more compact */
-        .search-button {
-            padding: 5px;
-            font-size: 0.55em;
-        }
-        
-        /* Ensure GIF is centered below search */
+        /* Center GIF */
         .axie-gif {
             display: block;
-            margin: 10px auto 0;
-            text-align: center;
+            width: 100%;
+            text-align: center !important;
+            margin: 10px auto !important;
+        }
+        
+        /* Strictly center footer quote */
+        #random-quote {
+            width: 100% !important;
+            text-align: center !important;
+            padding: 15px 10px !important;
         }
     }
   </style>
