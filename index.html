@@ -172,91 +172,32 @@
 
     /* Mobile centering fix - only addresses centering */
     @media (max-width: 767px) {
-      .search-container {
-        display: table !important;
-        margin: 0 auto !important;
-        width: auto !important;
+      /* Reset all previous mobile styles */
+      header *, #random-quote {
+        float: none !important;
+        position: static !important;
+        transform: none !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        left: auto !important;
+        right: auto !important;
       }
       
-      .search-bar {
-        display: table-cell !important;
-        vertical-align: middle !important;
-      }
-      
-      .axie-gif {
-        display: table-cell !important;
-        vertical-align: middle !important;
-      }
-      
-      #random-quote {
-        display: table !important;
-        margin: 0 auto !important;
-        width: auto !important;
-        max-width: 90% !important;
-      }
-    }
-
-    /* Add this to remove containers in mobile view */
-    @media (max-width: 767px) {
-      /* For the header items */
+      /* Pure center alignment */
       header {
         text-align: center !important;
       }
       
-      /* Remove container structures */
-      .mobile-center, .search-container {
-        display: contents !important; /* This makes the container "disappear" */
+      /* Center each search bar without changing layout */
+      .search-bar, .search-bar form, .axie-gif {
+        text-align: center !important;
+        width: 100% !important;
       }
       
-      /* Make search bars and axie display inline */
-      .search-bar, .axie-gif {
-        display: inline-block !important;
-        vertical-align: middle !important;
-        margin: 0 5px !important;
-      }
-      
-      /* Center the quote */
+      /* Center the quote text */
       #random-quote {
         text-align: center !important;
         width: 100% !important;
-        margin: 0 auto !important;
-      }
-    }
-
-    /* Add this simple CSS at the end of your stylesheet */
-    @media (max-width: 767px) {
-      /* Force everything to align with the center column */
-      header {
-        width: 100%;
-        text-align: center;
-      }
-      
-      /* Set specific width for search containers to match center column */
-      header form, #random-quote {
-        width: 33.33%; /* Match middle column width */
-        margin-left: auto;
-        margin-right: auto;
-      }
-      
-      /* Make the search bars stack vertically */
-      .search-bar {
-        display: block;
-        margin: 5px auto;
-        width: 100%;
-      }
-      
-      /* Center the Axie */
-      .axie-gif {
-        display: block;
-        margin: 5px auto;
-        text-align: center;
-      }
-      
-      /* Center the quote text and make it match center column */
-      #random-quote {
-        text-align: center;
-        display: block;
-        margin: 0 auto;
       }
     }
   </style>
