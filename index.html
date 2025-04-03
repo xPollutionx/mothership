@@ -222,6 +222,43 @@
         margin: 0 auto !important;
       }
     }
+
+    /* Add this simple CSS at the end of your stylesheet */
+    @media (max-width: 767px) {
+      /* Force everything to align with the center column */
+      header {
+        width: 100%;
+        text-align: center;
+      }
+      
+      /* Set specific width for search containers to match center column */
+      header form, #random-quote {
+        width: 33.33%; /* Match middle column width */
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      /* Make the search bars stack vertically */
+      .search-bar {
+        display: block;
+        margin: 5px auto;
+        width: 100%;
+      }
+      
+      /* Center the Axie */
+      .axie-gif {
+        display: block;
+        margin: 5px auto;
+        text-align: center;
+      }
+      
+      /* Center the quote text and make it match center column */
+      #random-quote {
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+      }
+    }
   </style>
   <script>
     const quotes = [
