@@ -279,40 +279,36 @@
 
 <header>
   <center>
-    <div class="logo-container">
+    <div>
       <a href="https://x.com/xPollutionx">
-        <img src="Ronke.jpg" alt="xPollutionx's Mothership">
+        <img src="Ronke.jpg" alt="xPollutionx's Mothership" style="width: 85px; height: 85px; border-radius: 50%;">
       </a>
     </div>
     
-    <h1>
-      <a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a>
-    </h1>
+    <div>
+      <a href="https://x.com/xPollutionx" style="color: white; text-decoration: none; font-size: 1em;">xPollutionx's Mothership</a>
+    </div>
+    
+    <div style="margin: 10px auto;">
+      <span style="display: inline-block; margin: 0 5px;">
+        <form action="https://www.google.com/search" method="get">
+          <input type="text" name="q" placeholder="" required style="background-color: #333; color: white; border: none; padding: 5px; width: 140px; font-size: 0.6em; font-family: 'Press Start 2P', cursive;">
+          <button type="submit" style="background-color: #9b59b6; color: white; border: none; padding: 5px; cursor: pointer; font-size: 0.6em; font-family: 'Press Start 2P', cursive;">Google Search</button>
+        </form>
+      </span>
+      
+      <span style="display: inline-block; margin: 0 5px;">
+        <form action="https://www.youtube.com/results" method="get">
+          <input type="text" name="search_query" placeholder="" required style="background-color: #333; color: white; border: none; padding: 5px; width: 140px; font-size: 0.6em; font-family: 'Press Start 2P', cursive;">
+          <button type="submit" style="background-color: #9b59b6; color: white; border: none; padding: 5px; cursor: pointer; font-size: 0.6em; font-family: 'Press Start 2P', cursive;">YouTube Search</button>
+        </form>
+      </span>
+      
+      <span style="display: inline-block; vertical-align: middle; margin: 0 5px;">
+        <img id="axie-image" src="AxieBlack01.gif" alt="Axie" style="width: 118px; height: 118px;">
+      </span>
+    </div>
   </center>
-  
-  <!-- Special mobile wrapper with inline centering -->
-  <div class="search-wrapper-mobile">
-    <!-- Use HTML table for guaranteed layout -->
-    <table style="margin: 0 auto; border-collapse: collapse;">
-      <tr>
-        <td>
-          <form action="https://www.google.com/search" method="get">
-            <input type="text" name="q" placeholder="" required>
-            <button type="submit" class="search-button">Google Search</button>
-          </form>
-        </td>
-        <td>
-          <form action="https://www.youtube.com/results" method="get">
-            <input type="text" name="search_query" placeholder="" required>
-            <button type="submit" class="search-button">YouTube Search</button>
-          </form>
-        </td>
-        <td>
-          <img id="axie-image" src="AxieBlack01.gif" alt="Axie" style="width: 118px; height: 118px;">
-        </td>
-      </tr>
-    </table>
-  </div>
 </header>
 
 <div class="content-wrapper">
@@ -353,7 +349,7 @@
   </div>
 </div>
 
-<center id="random-quote"></center>
+<div style="text-align: center; width: 100%; padding: 15px 0; font-size: 0.7em; font-style: italic; color: #ddd; margin: 0 auto;" id="random-quote"></div>
 
 </body>
 </html>
