@@ -88,16 +88,12 @@
       flex: 1;
     }
 
-    .left-column {
-      background-color: #333;
+    .left-column, .right-column {
+      background-color: rgb(94, 67, 109);
     }
 
     .middle-column {
       background-color: #333;
-    }
-
-    .right-column {
-      background-color: rgb(94, 67, 109);
     }
 
     .section-header {
@@ -138,94 +134,11 @@
       margin: 0 auto;
     }
 
-    /* Add these media queries for mobile devices */
-    @media (max-width: 768px) {
-        /* Center header elements on mobile */
-        header {
-            text-align: center;
-        }
-        
-        .search-container {
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .logo-container, h1 {
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* Ensure the quote is properly centered */
-        #random-quote {
-            text-align: center;
-            width: 95%;
-            margin: 0 auto;
-            padding: 15px 10px;
-        }
-        
-        /* Make buttons full width on mobile */
-        .button {
-            width: calc(100% - 10px);
-            margin: 5px auto;
-        }
-    }
-
-    /* Mobile centering fix - only addresses centering */
+    /* Add this minimal mobile css */
     @media (max-width: 767px) {
-      /* Basic reset */
-      * {
-        box-sizing: border-box;
-      }
-      
-      body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        margin: 0;
-        padding: 0;
-      }
-      
-      /* Center the header logo and title */
-      header {
+      /* Center all text in header and footer */
+      header, #random-quote {
         text-align: center;
-        width: 100%;
-      }
-      
-      /* Force search row to be centered */
-      .header-search-row {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        margin: 0 auto;
-      }
-      
-      /* Fix quote to always be at bottom */
-      #random-quote {
-        margin-top: auto;
-        width: 100%;
-        text-align: center;
-        padding: 10px;
-      }
-    }
-
-    /* Add ONLY this CSS at the end of your stylesheet */
-    @media (max-width: 767px) {
-      /* Force header elements to center properly */
-      header {
-        text-align: center !important;
-      }
-      
-      /* Force search container to center */
-      .search-container {
-        text-align: center !important;
-        width: 100% !important;
-      }
-      
-      /* Center the quote at the bottom */
-      #random-quote {
-        text-align: center !important;
-        width: 100% !important;
       }
     }
   </style>
@@ -284,24 +197,30 @@
 <body>
 
 <header>
-  <div style="text-align: center; margin: 10px auto;">
+  <div class="logo-container">
     <a href="https://x.com/xPollutionx">
-      <img src="Ronke.jpg" alt="xPollutionx's Mothership" style="width: 85px; height: 85px; border-radius: 50%;">
+      <img src="Ronke.jpg" alt="xPollutionx's Mothership">
     </a>
   </div>
-  
-  <div style="text-align: center; margin: 5px auto;">
-    <a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a>
-  </div>
-  
-  <div class="header-search-row">
-    <button>Google Search</button>
-    <button>YouTube Search</button>
-    <img src="AxieBlack01.gif" id="axie-image">
+  <h1><a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a></h1>
+  <div class="search-container">
+    <div class="search-bar">
+      <form action="https://www.google.com/search" method="get">
+        <input type="text" name="q" placeholder="" required>
+        <button type="submit" class="search-button">Google Search</button>
+      </form>
+    </div>
+    <div class="search-bar">
+      <form action="https://www.youtube.com/results" method="get">
+        <input type="text" name="search_query" placeholder="" required>
+        <button type="submit" class="search-button">YouTube Search</button>
+      </form>
+    </div>
+    <div class="axie-gif">
+      <img id="axie-image" src="AxieBlack01.gif" alt="Axie">
+    </div>
   </div>
 </header>
-
-<div id="random-quote" style="text-align: center; width: 100%; margin: 10px auto; color: white; font-style: italic;"></div>
 
 <div class="content-wrapper">
   <div class="left-column">
@@ -340,6 +259,8 @@
     <a href="https://app.runwayml.com/video-tools/teams/x35pollution/dashboard" class="button">Runway</a>
   </div>
 </div>
+
+<div id="random-quote"></div>
 
 </body>
 </html>
