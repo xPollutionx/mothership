@@ -172,32 +172,31 @@
 
     /* Mobile centering fix - only addresses centering */
     @media (max-width: 767px) {
-      /* Reset all previous mobile styles */
-      header *, #random-quote {
-        float: none !important;
-        position: static !important;
-        transform: none !important;
+      /* Center the entire header */
+      header {
+        width: 100% !important;
+        text-align: center !important;
+      }
+      
+      /* Force center ALL header content */
+      header * {
+        text-align: center !important;
         margin-left: auto !important;
         margin-right: auto !important;
-        left: auto !important;
-        right: auto !important;
-      }
-      
-      /* Pure center alignment */
-      header {
-        text-align: center !important;
-      }
-      
-      /* Center each search bar without changing layout */
-      .search-bar, .search-bar form, .axie-gif {
-        text-align: center !important;
+        display: block !important;
         width: 100% !important;
       }
       
-      /* Center the quote text */
+      /* Center the search buttons specifically */
+      .search-button {
+        margin: 0 auto !important;
+      }
+      
+      /* Center the quote text at bottom */
       #random-quote {
-        text-align: center !important;
         width: 100% !important;
+        text-align: center !important;
+        margin: 0 auto !important;
       }
     }
   </style>
@@ -327,7 +326,7 @@
   </div>
 </div>
 
-<div style="text-align: center; width: 100%; padding: 15px 0; font-size: 0.7em; font-style: italic; color: #ddd; margin: 0 auto;" id="random-quote"></div>
+<div id="random-quote" style="text-align: center !important; width: 33.33% !important; margin: 0 auto !important; position: relative !important; left: 50% !important; transform: translateX(-50%) !important;"></div>
 
 </body>
 </html>
