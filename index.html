@@ -172,27 +172,54 @@
 
     /* Mobile centering fix - only addresses centering */
     @media (max-width: 767px) {
-      /* Remove everything from previous attempts */
-      header div, header h1, .search-container, .search-bar, .axie-gif, #random-quote {
-        margin: 0 !important;
-        padding: 0 !important;
-        position: static !important;
-        transform: none !important;
-        left: auto !important;
-        display: block !important;
-        width: 100% !important;
-        flex: none !important;
+      .search-container {
+        display: table !important;
+        margin: 0 auto !important;
+        width: auto !important;
       }
       
-      /* Use old-school centering with text-align and center tag */
-      .search-wrapper-mobile {
+      .search-bar {
+        display: table-cell !important;
+        vertical-align: middle !important;
+      }
+      
+      .axie-gif {
+        display: table-cell !important;
+        vertical-align: middle !important;
+      }
+      
+      #random-quote {
+        display: table !important;
+        margin: 0 auto !important;
+        width: auto !important;
+        max-width: 90% !important;
+      }
+    }
+
+    /* Add this to remove containers in mobile view */
+    @media (max-width: 767px) {
+      /* For the header items */
+      header {
         text-align: center !important;
-        width: 100% !important;
       }
       
-      /* Force the quote to center */
+      /* Remove container structures */
+      .mobile-center, .search-container {
+        display: contents !important; /* This makes the container "disappear" */
+      }
+      
+      /* Make search bars and axie display inline */
+      .search-bar, .axie-gif {
+        display: inline-block !important;
+        vertical-align: middle !important;
+        margin: 0 5px !important;
+      }
+      
+      /* Center the quote */
       #random-quote {
         text-align: center !important;
+        width: 100% !important;
+        margin: 0 auto !important;
       }
     }
   </style>
