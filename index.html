@@ -172,51 +172,27 @@
 
     /* Mobile centering fix - only addresses centering */
     @media (max-width: 767px) {
-      /* First, reset any previous mobile styles */
-      header div, header h1, #random-quote {
-        width: auto;
-        position: static;
-        transform: none;
-        left: auto;
-      }
-      
-      /* Center the title and logo */
-      header {
-        text-align: center;
-      }
-      
-      .logo-container, h1 {
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      
-      /* THIS IS THE KEY PART - Make the container flex with NO wrap */
-      .search-container {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        justify-content: center !important;
-        align-items: center !important;
+      /* Remove everything from previous attempts */
+      header div, header h1, .search-container, .search-bar, .axie-gif, #random-quote {
+        margin: 0 !important;
+        padding: 0 !important;
+        position: static !important;
+        transform: none !important;
+        left: auto !important;
+        display: block !important;
         width: 100% !important;
+        flex: none !important;
       }
       
-      /* Keep items on same line */
-      .search-bar, .axie-gif {
-        flex-shrink: 1 !important;
-      }
-      
-      /* Make sure buttons fit */
-      .search-button {
-        padding: 3px !important;
-        font-size: 0.5em !important;
-      }
-      
-      /* Center the quote */
-      #random-quote {
+      /* Use old-school centering with text-align and center tag */
+      .search-wrapper-mobile {
         text-align: center !important;
         width: 100% !important;
-        margin: 0 auto !important;
+      }
+      
+      /* Force the quote to center */
+      #random-quote {
+        text-align: center !important;
       }
     }
   </style>
@@ -275,32 +251,40 @@
 <body>
 
 <header>
-  <div class="logo-container">
-    <a href="https://x.com/xPollutionx">
-      <img src="Ronke.jpg" alt="xPollutionx's Mothership">
-    </a>
-  </div>
+  <center>
+    <div class="logo-container">
+      <a href="https://x.com/xPollutionx">
+        <img src="Ronke.jpg" alt="xPollutionx's Mothership">
+      </a>
+    </div>
+    
+    <h1>
+      <a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a>
+    </h1>
+  </center>
   
-  <h1>
-    <a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a>
-  </h1>
-  
-  <div class="search-container">
-    <div class="search-bar">
-      <form action="https://www.google.com/search" method="get">
-        <input type="text" name="q" placeholder="" required>
-        <button type="submit" class="search-button">Google Search</button>
-      </form>
-    </div>
-    <div class="search-bar">
-      <form action="https://www.youtube.com/results" method="get">
-        <input type="text" name="search_query" placeholder="" required>
-        <button type="submit" class="search-button">YouTube Search</button>
-      </form>
-    </div>
-    <div class="axie-gif">
-      <img id="axie-image" src="AxieBlack01.gif" alt="Axie">
-    </div>
+  <!-- Special mobile wrapper with inline centering -->
+  <div class="search-wrapper-mobile">
+    <!-- Use HTML table for guaranteed layout -->
+    <table style="margin: 0 auto; border-collapse: collapse;">
+      <tr>
+        <td>
+          <form action="https://www.google.com/search" method="get">
+            <input type="text" name="q" placeholder="" required>
+            <button type="submit" class="search-button">Google Search</button>
+          </form>
+        </td>
+        <td>
+          <form action="https://www.youtube.com/results" method="get">
+            <input type="text" name="search_query" placeholder="" required>
+            <button type="submit" class="search-button">YouTube Search</button>
+          </form>
+        </td>
+        <td>
+          <img id="axie-image" src="AxieBlack01.gif" alt="Axie" style="width: 118px; height: 118px;">
+        </td>
+      </tr>
+    </table>
   </div>
 </header>
 
@@ -342,7 +326,7 @@
   </div>
 </div>
 
-<div id="random-quote"></div>
+<center id="random-quote"></center>
 
 </body>
 </html>
