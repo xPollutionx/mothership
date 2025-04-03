@@ -172,30 +172,53 @@
 
     /* Mobile centering fix - only addresses centering */
     @media (max-width: 767px) {
-        /* Center the logo and title */
-        .logo-container, h1 {
-            margin-left: auto !important;
-            margin-right: auto !important;
-            text-align: center !important;
-        }
-        
-        /* Put search bars on the same line and center them */
+        /* Remove all previous mobile header styling */
         .search-container {
-            text-align: center !important;
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin: 0 auto;
         }
         
-        /* Center the GIF */
+        /* Force center the title */
+        h1 {
+            text-align: center;
+        }
+        
+        /* Center the logo */
+        .logo-container {
+            text-align: center;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        /* Wrap search bars in a new centered container */
+        .search-wrapper {
+            display: table;
+            margin: 0 auto;
+            width: auto;
+        }
+        
+        /* Make search bars display as table cells side by side */
+        .search-bar {
+            display: table-cell;
+            padding: 0 2px;
+        }
+        
+        /* Force center the gif */
         .axie-gif {
-            display: block !important;
-            margin: 0 auto !important;
-            text-align: center !important;
+            text-align: center;
+            width: 100%;
+            display: block;
+            margin: 10px auto;
         }
         
         /* Center the quote */
         #random-quote {
-            text-align: center !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
+            width: 100%;
+            display: block;
+            text-align: center;
+            margin: 0 auto;
         }
     }
   </style>
@@ -261,17 +284,19 @@
   </div>
   <h1><a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a></h1>
   <div class="search-container">
-    <div class="search-bar">
-      <form action="https://www.google.com/search" method="get">
-        <input type="text" name="q" placeholder="" required>
-        <button type="submit" class="search-button">Google Search</button>
-      </form>
-    </div>
-    <div class="search-bar">
-      <form action="https://www.youtube.com/results" method="get">
-        <input type="text" name="search_query" placeholder="" required>
-        <button type="submit" class="search-button">YouTube Search</button>
-      </form>
+    <div class="search-wrapper">
+      <div class="search-bar">
+        <form action="https://www.google.com/search" method="get">
+          <input type="text" name="q" placeholder="" required>
+          <button type="submit" class="search-button">Google Search</button>
+        </form>
+      </div>
+      <div class="search-bar">
+        <form action="https://www.youtube.com/results" method="get">
+          <input type="text" name="search_query" placeholder="" required>
+          <button type="submit" class="search-button">YouTube Search</button>
+        </form>
+      </div>
     </div>
     <div class="axie-gif">
       <img id="axie-image" src="AxieBlack01.gif" alt="Axie">
