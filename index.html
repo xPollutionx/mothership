@@ -172,40 +172,42 @@
 
     /* Mobile strict centering fixes */
     @media (max-width: 767px) {
-        /* Strictly center all header content */
-        header * {
-            margin-left: auto !important;
-            margin-right: auto !important;
-            text-align: center !important;
-        }
-        
-        /* Center search bar container */
+        /* Fix header layout */
         .search-container {
-            width: 100%;
-            display: block !important;
-            text-align: center !important;
-        }
-        
-        /* Stack search bars vertically to ensure they're centered */
-        .search-bar {
-            display: block;
-            width: 80%;
-            margin: 10px auto !important;
-        }
-        
-        /* Center GIF */
-        .axie-gif {
-            display: block;
-            width: 100%;
-            text-align: center !important;
-            margin: 10px auto !important;
-        }
-        
-        /* Strictly center footer quote */
-        #random-quote {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            justify-content: center !important;
+            align-items: center !important;
             width: 100% !important;
+        }
+        
+        /* Make search buttons smaller to fit on one line */
+        .search-button {
+            font-size: 0.5em !important;
+            padding: 4px !important;
+            white-space: nowrap !important;
+        }
+        
+        .search-bar input {
+            width: 100px !important;
+        }
+        
+        /* Move GIF below search bars */
+        .axie-gif {
+            position: relative !important;
+            display: block !important;
+            width: 100% !important;
+            margin: 10px auto !important;
             text-align: center !important;
-            padding: 15px 10px !important;
+        }
+        
+        /* Footer quote centering */
+        #random-quote {
+            text-align: center !important;
+            width: 90% !important;
+            margin: 0 auto !important;
+            padding: 10px !important;
         }
     }
   </style>
@@ -265,9 +267,11 @@
 
 <header>
   <div class="logo-container">
-    <img src="Ronke.jpg" alt="xPollutionx's Mothership">
+    <a href="https://x.com/xPollutionx">
+        <img src="Ronke.jpg" alt="xPollutionx's Mothership">
+    </a>
   </div>
-  <h1>xPollutionx's Mothership</h1>
+  <h1><a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a></h1>
   <div class="search-container">
     <div class="search-bar">
       <form action="https://www.google.com/search" method="get">
