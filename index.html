@@ -172,59 +172,51 @@
 
     /* Mobile centering fix - only addresses centering */
     @media (max-width: 767px) {
-        /* Force everything to center */
-        header {
-            text-align: center;
-        }
-        
-        /* Create a centered container for search bars and axie */
-        .search-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            margin: 0 auto;
-        }
-        
-        /* Make the search bars inline */
-        .search-bar {
-            display: inline-block;
-        }
-        
-        /* Put the axie on the same line */
-        .axie-gif {
-            display: inline-block;
-        }
-        
-        /* Ensure the quote is centered */
-        #random-quote {
-            text-align: center;
-            width: 100%;
-        }
-    }
-
-    @media (max-width: 767px) {
-      /* Remove all previous mobile styling first */
-      
-      /* Center everything with direct inline styles */
-      .mobile-center {
-        position: relative !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        width: auto !important;
-        display: table !important;
-        margin: 10px auto !important;
+      /* First, reset any previous mobile styles */
+      header div, header h1, #random-quote {
+        width: auto;
+        position: static;
+        transform: none;
+        left: auto;
       }
       
-      /* Make the quote use the same centering technique */
+      /* Center the title and logo */
+      header {
+        text-align: center;
+      }
+      
+      .logo-container, h1 {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      /* THIS IS THE KEY PART - Make the container flex with NO wrap */
+      .search-container {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+      }
+      
+      /* Keep items on same line */
+      .search-bar, .axie-gif {
+        flex-shrink: 1 !important;
+      }
+      
+      /* Make sure buttons fit */
+      .search-button {
+        padding: 3px !important;
+        font-size: 0.5em !important;
+      }
+      
+      /* Center the quote */
       #random-quote {
-        position: relative !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        width: fit-content !important;
-        max-width: 90% !important;
-        margin: 10px auto !important;
+        text-align: center !important;
+        width: 100% !important;
+        margin: 0 auto !important;
       }
     }
   </style>
@@ -283,18 +275,17 @@
 <body>
 
 <header>
-  <div class="logo-container mobile-center">
+  <div class="logo-container">
     <a href="https://x.com/xPollutionx">
       <img src="Ronke.jpg" alt="xPollutionx's Mothership">
     </a>
   </div>
   
-  <h1 class="mobile-center">
+  <h1>
     <a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a>
   </h1>
   
-  <!-- Search bars in a centered container -->
-  <div class="mobile-center">
+  <div class="search-container">
     <div class="search-bar">
       <form action="https://www.google.com/search" method="get">
         <input type="text" name="q" placeholder="" required>
@@ -307,11 +298,9 @@
         <button type="submit" class="search-button">YouTube Search</button>
       </form>
     </div>
-  </div>
-  
-  <!-- Axie GIF in its own centered container -->
-  <div class="axie-gif mobile-center">
-    <img id="axie-image" src="AxieBlack01.gif" alt="Axie">
+    <div class="axie-gif">
+      <img id="axie-image" src="AxieBlack01.gif" alt="Axie">
+    </div>
   </div>
 </header>
 
