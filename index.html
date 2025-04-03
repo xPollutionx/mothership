@@ -172,31 +172,35 @@
 
     /* Mobile centering fix - only addresses centering */
     @media (max-width: 767px) {
-      /* Center the entire header */
+      /* Reset all previous mobile styles */
+      header *, #random-quote {
+        position: static !important;
+        transform: none !important;
+      }
+      
+      /* Center the header container */
       header {
-        width: 100% !important;
         text-align: center !important;
       }
       
-      /* Force center ALL header content */
-      header * {
-        text-align: center !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        display: block !important;
+      /* Put search bars and Axie on same line and center them */
+      .search-container {
+        display: inline-flex !important;
+        justify-content: center !important;
+        flex-wrap: nowrap !important;
         width: 100% !important;
       }
       
-      /* Center the search buttons specifically */
-      .search-button {
-        margin: 0 auto !important;
+      /* Keep search bars and Axie in line */
+      .search-bar, .axie-gif {
+        display: inline-block !important;
+        vertical-align: middle !important;
       }
       
-      /* Center the quote text at bottom */
+      /* Center the quote */
       #random-quote {
-        width: 100% !important;
         text-align: center !important;
-        margin: 0 auto !important;
+        width: 100% !important;
       }
     }
   </style>
