@@ -172,41 +172,40 @@
 
     /* Mobile centering fix - only addresses centering */
     @media (max-width: 767px) {
-      /* Reset EVERYTHING to default first */
+      /* Basic reset */
       * {
         box-sizing: border-box;
       }
       
-      /* Center logo and title */
-      header {
-        text-align: center;
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
       }
       
-      /* Specifically for the search row */
-      .search-container {
+      /* Center the header logo and title */
+      header {
+        text-align: center;
+        width: 100%;
+      }
+      
+      /* Force search row to be centered */
+      .header-search-row {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 0 auto;
         width: 100%;
-        text-align: center;
+        margin: 0 auto;
       }
       
-      /* Force axie to be on same line */
-      .axie-gif {
-        display: inline-block;
-        vertical-align: middle;
-      }
-      
-      /* Keep quote at bottom and center it */
+      /* Fix quote to always be at bottom */
       #random-quote {
-        position: static;
-        display: block;
-        text-align: center;
+        margin-top: auto;
         width: 100%;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
+        text-align: center;
+        padding: 10px;
       }
     }
   </style>
@@ -275,16 +274,10 @@
     <a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a>
   </div>
   
-  <div style="text-align: center; width: 100%; margin: 5px auto;">
-    <div style="display: inline-block; vertical-align: middle;">
-      <button style="background-color: #9b59b6; border: none; color: white; padding: 5px;">Google Search</button>
-    </div>
-    <div style="display: inline-block; vertical-align: middle;">
-      <button style="background-color: #9b59b6; border: none; color: white; padding: 5px;">YouTube Search</button>
-    </div>
-    <div style="display: inline-block; vertical-align: middle;">
-      <img id="axie-image" src="AxieBlack01.gif" alt="Axie" style="width: 70px; height: 70px;">
-    </div>
+  <div class="header-search-row">
+    <button>Google Search</button>
+    <button>YouTube Search</button>
+    <img src="AxieBlack01.gif" id="axie-image">
   </div>
 </header>
 
