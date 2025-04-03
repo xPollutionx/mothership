@@ -208,6 +208,26 @@
         padding: 10px;
       }
     }
+
+    /* Add ONLY this CSS at the end of your stylesheet */
+    @media (max-width: 767px) {
+      /* Force header elements to center properly */
+      header {
+        text-align: center !important;
+      }
+      
+      /* Force search container to center */
+      .search-container {
+        text-align: center !important;
+        width: 100% !important;
+      }
+      
+      /* Center the quote at the bottom */
+      #random-quote {
+        text-align: center !important;
+        width: 100% !important;
+      }
+    }
   </style>
   <script>
     const quotes = [
