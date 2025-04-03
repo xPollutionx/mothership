@@ -172,43 +172,41 @@
 
     /* Mobile centering fix - only addresses centering */
     @media (max-width: 767px) {
-      /* Reset all previous mobile styles that might interfere */
-      header *, #random-quote {
-        display: block;
-        position: static;
-        float: none;
-        transform: none;
-        white-space: normal;
-        overflow: visible;
-        text-overflow: clip;
+      /* Reset EVERYTHING to default first */
+      * {
+        box-sizing: border-box;
       }
       
-      /* Force true center for the header elements */
+      /* Center logo and title */
       header {
         text-align: center;
       }
       
-      /* Force center alignment for search bars */
-      .search-bar form, .search-button, .axie-gif {
-        margin-left: auto !important;
-        margin-right: auto !important;
-        text-align: center !important;
-        width: auto !important;
-        display: block !important;
-      }
-      
-      /* Fix the search container to true center */
+      /* Specifically for the search row */
       .search-container {
-        width: 100% !important;
-        text-align: center !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
       }
       
-      /* Make sure the quote displays fully and centered */
+      /* Force axie to be on same line */
+      .axie-gif {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      
+      /* Keep quote at bottom and center it */
       #random-quote {
-        text-align: center !important;
-        width: 100% !important;
-        display: block !important;
-        white-space: normal !important;
+        position: static;
+        display: block;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
       }
     }
   </style>
