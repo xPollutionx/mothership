@@ -137,27 +137,22 @@
       margin: 0 auto;
     }
 
-    /* Target and disable ALL media queries of any breakpoint */
-    @media only screen and (max-width: 1920px) {
-      /* This will override ALL smaller breakpoints due to specificity */
-      [class*="mobile"], 
-      .mobile-center, 
-      .search-wrapper-mobile,
-      [class$="-sm"],
-      [class$="-xs"],
-      [class$="-md"] {
-        display: none !important;
+    /* Remove any mobile media queries */
+    @media (max-width: 767px) {
+      /* Reset all basic display properties to default */
+      * {
+        display: inherit;
       }
       
-      /* Force ALL elements to desktop display */
-      * {
-        max-width: none !important;
-        width: auto !important;
-        display: inherit !important;
-        flex-direction: inherit !important;
-        flex-wrap: inherit !important;
-        text-align: inherit !important;
-        position: inherit !important;
+      /* Ensure search containers are visible */
+      .search-container {
+        display: flex !important;
+      }
+      
+      /* Make content fit mobile width */
+      body {
+        min-width: 800px;
+        overflow-x: auto;
       }
     }
   </style>
@@ -490,38 +485,29 @@
   })();
 </script>
 
-<!-- Complete solution to remove ALL mobile-specific code -->
-
-<!-- 1. Remove the viewport meta tag completely -->
+<!-- Simple fix to show desktop version on mobile -->
 <script>
-  // Remove viewport meta tag
+  // Remove any problematic viewport settings
   document.querySelector('meta[name="viewport"]')?.remove();
   
-  // Add a fixed-width viewport that forces desktop view
-  const fixedViewport = document.createElement('meta');
-  fixedViewport.name = 'viewport';
-  fixedViewport.content = 'width=1200, initial-scale=1.0';
-  document.head.appendChild(fixedViewport);
-</script>
-
-<!-- 2. Disable ANY JavaScript that might check for mobile -->
-<script>
-  // Override window innerWidth/innerHeight to always report desktop size
-  Object.defineProperty(window, 'innerWidth', {
-    get: function() { return 1200; }
+  // Add a proper viewport that allows scaling
+  const viewport = document.createElement('meta');
+  viewport.name = 'viewport';
+  viewport.content = 'width=device-width, initial-scale=0.4, maximum-scale=5.0, user-scalable=yes';
+  document.head.appendChild(viewport);
+  
+  // Remove any mobile-specific elements
+  document.addEventListener('DOMContentLoaded', function() {
+    // Find and remove any mobile-only elements
+    document.querySelectorAll('[class*="mobile"]').forEach(el => {
+      el.style.display = 'none';
+    });
+    
+    // Make sure all elements are visible
+    document.querySelectorAll('header, .search-container, .axie-gif, .content-wrapper, #random-quote').forEach(el => {
+      el.style.display = '';
+    });
   });
-  
-  // Disable any matchMedia calls
-  window.matchMedia = function() {
-    return {
-      matches: false,
-      addListener: function() {},
-      removeListener: function() {}
-    };
-  };
-  
-  // Force desktop mode for any user agent sniffing
-  navigator.__proto__.userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36';
 </script>
 
 </body>
