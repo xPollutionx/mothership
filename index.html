@@ -372,45 +372,27 @@
 <!-- Add this at the end of your body tag -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Add background glow effect to all buttons
+    // Target all buttons
     const allButtons = document.querySelectorAll('.button');
     
     allButtons.forEach(button => {
-      // Create a background glow element for each button
-      const glowBackground = document.createElement('div');
-      glowBackground.className = 'button-glow-bg';
+      // Store original background color
+      const originalBg = window.getComputedStyle(button).backgroundColor;
       
-      // Style the glow background
-      glowBackground.style.cssText = `
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #8BFFAE;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        z-index: -1;
-        border-radius: 2px;
-      `;
+      // Add transition for smooth effect
+      button.style.transition = 'background-color 0.3s ease, transform 0.2s ease';
       
-      // Set button to relative positioning if it's not already
-      const computedStyle = window.getComputedStyle(button);
-      if (computedStyle.position === 'static') {
-        button.style.position = 'relative';
-      }
-      
-      // Insert the glow before the button's content
-      button.insertBefore(glowBackground, button.firstChild);
-      
-      // Show glow on hover
+      // Create strong glow effect on hover
       button.addEventListener('mouseenter', function() {
-        glowBackground.style.opacity = '0.6';
+        // Create radial gradient with the green color for glow effect
+        this.style.background = `radial-gradient(circle, #8BFFAE 0%, ${originalBg} 70%)`;
+        this.style.transform = 'scale(1.03)'; // Slight scale effect
       });
       
-      // Hide glow when not hovering
+      // Reset on mouse leave
       button.addEventListener('mouseleave', function() {
-        glowBackground.style.opacity = '0';
+        this.style.background = originalBg;
+        this.style.transform = 'scale(1)';
       });
     });
   });
