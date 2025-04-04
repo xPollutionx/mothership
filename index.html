@@ -280,13 +280,13 @@
       color: black;
       border: 3px solid black;
       border-radius: 20px;
-      padding: 10px 15px;
-      font-size: 14px;
+      padding: 12px 18px;
+      font-size: 16px;
       font-weight: bold;
       text-align: center;
       z-index: 1000;
-      max-width: 150px;
-      min-width: 100px;
+      max-width: 200px;
+      min-width: 150px;
       font-family: 'Press Start 2P', cursive;
     `;
     
@@ -301,7 +301,8 @@
       border-bottom: 3px solid black;
       transform: rotate(45deg);
       bottom: -12px;
-      left: 20px;
+      left: 50%;
+      margin-left: -10px;
     `;
     
     // Add the text container
@@ -310,13 +311,29 @@
     speechBubble.appendChild(pointer);
     document.body.appendChild(speechBubble);
     
+    // Get Axie position
+    const axieImg = document.getElementById('axie-image');
+    
+    // Shared function to position speech bubble above Axie
+    function positionBubble() {
+      if (axieImg) {
+        const axieRect = axieImg.getBoundingClientRect();
+        speechBubble.style.bottom = (window.innerHeight - axieRect.top + 20) + 'px';
+        speechBubble.style.left = (axieRect.left + axieRect.width/2 - 75) + 'px';
+      } else {
+        // Fallback position if Axie isn't found
+        speechBubble.style.bottom = '200px';
+        speechBubble.style.left = '50%';
+        speechBubble.style.transform = 'translateX(-50%)';
+      }
+    }
+    
     // RadioBox hover
     const radioButton = document.querySelector('a[href*="RadioBox"]');
     if (radioButton) {
       radioButton.addEventListener('mouseenter', function() {
         textContainer.textContent = "xPollutionx's Music!!!";
-        speechBubble.style.top = '100px';
-        speechBubble.style.right = '100px';
+        positionBubble();
         speechBubble.style.display = 'block';
       });
       radioButton.addEventListener('mouseleave', function() {
@@ -329,8 +346,7 @@
     if (coinButton) {
       coinButton.addEventListener('mouseenter', function() {
         textContainer.textContent = "xPollutionx's Price Comparison Tool!!!";
-        speechBubble.style.top = '100px';
-        speechBubble.style.right = '100px';
+        positionBubble();
         speechBubble.style.display = 'block';
       });
       coinButton.addEventListener('mouseleave', function() {
@@ -343,8 +359,7 @@
     if (snakeButton) {
       snakeButton.addEventListener('mouseenter', function() {
         textContainer.textContent = "xPollutionx's Snake game w/ some twists!!!";
-        speechBubble.style.top = '100px';
-        speechBubble.style.right = '100px';
+        positionBubble();
         speechBubble.style.display = 'block';
       });
       snakeButton.addEventListener('mouseleave', function() {
