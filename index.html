@@ -253,12 +253,13 @@
   
   <div class="middle-column">
     <div class="section-header">
-      <h2>xPollutionx's Apps:</h2>
+      <h2>xPollutionx's Apps</h2>
     </div>
     <a href="https://xpollutionx.github.io/RadioBox" class="button">RadioBox</a>
     <a href="https://xpollutionx.github.io/ConFused/" class="button">CoinFused</a>
     <a href="https://xpollutionx.github.io/SnakePlus/" class="button">Snake Plus</a>
     <a href="https://xpollutionx.github.io/MindMix/" class="button">MindMix</a>
+    <a href="https://xpollutionx.github.io/432CheckMaker/" class="button">432CheckMaker</a>
   </div>
   
   <div class="right-column">
@@ -588,6 +589,91 @@
       
       // Hide speech bubble when mouse leaves
       mindMixLink.addEventListener('mouseleave', function() {
+        const speechBubble = document.getElementById('custom-speech-bubble');
+        if (speechBubble) {
+          speechBubble.style.display = 'none';
+        }
+        
+        // Reset Axie gif
+        if (typeof resetAxieGif === 'function') {
+          resetAxieGif();
+        }
+      });
+    }
+  });
+</script>
+
+<!-- Add this script to handle the speech bubble for the new link -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Add speech bubble functionality for 432CheckMaker
+    const checkMakerLink = document.querySelector('a[href*="432CheckMaker"]');
+    if (checkMakerLink) {
+      checkMakerLink.addEventListener('mouseenter', function() {
+        // Get or create speech bubble
+        let speechBubble = document.getElementById('custom-speech-bubble');
+        if (!speechBubble) {
+          speechBubble = document.createElement('div');
+          speechBubble.id = 'custom-speech-bubble';
+          speechBubble.style.cssText = `
+            position: fixed;
+            display: none;
+            background-color: white;
+            color: black;
+            border: 3px solid black;
+            border-radius: 20px;
+            padding: 12px 18px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            z-index: 1000;
+            max-width: 200px;
+            min-width: 150px;
+            font-family: 'Press Start 2P', cursive;
+          `;
+          
+          const pointer = document.createElement('div');
+          pointer.style.cssText = `
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-right: 3px solid black;
+            border-bottom: 3px solid black;
+            transform: rotate(45deg);
+            bottom: -12px;
+            left: 50%;
+            margin-left: -10px;
+          `;
+          
+          const textContainer = document.createElement('div');
+          speechBubble.appendChild(textContainer);
+          speechBubble.appendChild(pointer);
+          document.body.appendChild(speechBubble);
+        }
+        
+        // Corrected speech bubble text for 432CheckMaker
+        speechBubble.querySelector('div').textContent = "432 Freq Checker Maker!!!";
+        
+        // Position above Axie
+        const axieImg = document.getElementById('axie-image');
+        if (axieImg) {
+          const axieRect = axieImg.getBoundingClientRect();
+          speechBubble.style.bottom = (window.innerHeight - axieRect.top + 20) + 'px';
+          speechBubble.style.left = (axieRect.left + axieRect.width/2 - 75) + 'px';
+        }
+        
+        // Show speech bubble
+        speechBubble.style.display = 'block';
+        
+        // Change Axie gif
+        if (typeof changeAxieGif === 'function') {
+          changeAxieGif();
+        }
+      });
+      
+      // Hide speech bubble when mouse leaves
+      checkMakerLink.addEventListener('mouseleave', function() {
         const speechBubble = document.getElementById('custom-speech-bubble');
         if (speechBubble) {
           speechBubble.style.display = 'none';
