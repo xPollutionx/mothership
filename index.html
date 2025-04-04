@@ -752,3 +752,46 @@
     }
   });
 </script>
+
+<!-- Add this script to reorder the links in the middle column -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get the middle column
+    const middleColumn = document.querySelector('.middle-column');
+    if (!middleColumn) return;
+    
+    // Get the section header (to insert links after it)
+    const sectionHeader = middleColumn.querySelector('.section-header');
+    if (!sectionHeader) return;
+    
+    // Get all app links
+    const radioBox = middleColumn.querySelector('a[href*="RadioBox"]');
+    const snakePlus = middleColumn.querySelector('a[href*="SnakePlus"]');
+    const checkMaker = middleColumn.querySelector('a[href*="432CheckMaker"]');
+    const mindMix = middleColumn.querySelector('a[href*="MindMix"]');
+    const coinFused = middleColumn.querySelector('a[href*="CoinFused"]');
+    
+    // Remove all links first
+    if (radioBox) radioBox.remove();
+    if (snakePlus) snakePlus.remove();
+    if (checkMaker) checkMaker.remove();
+    if (mindMix) mindMix.remove();
+    if (coinFused) coinFused.remove();
+    
+    // Add them back in the specified order
+    if (coinFused) middleColumn.appendChild(coinFused);
+    if (mindMix) middleColumn.appendChild(mindMix);
+    if (checkMaker) middleColumn.appendChild(checkMaker);
+    if (snakePlus) middleColumn.appendChild(snakePlus);
+    if (radioBox) middleColumn.appendChild(radioBox);
+    
+    // Reverse the order (since we want RadioBox first)
+    const links = Array.from(middleColumn.querySelectorAll('a[href*="github.io"]'));
+    links.reverse();
+    
+    // Reinsert all links in the correct order after the section header
+    links.forEach(link => {
+      sectionHeader.after(link);
+    });
+  });
+</script>
