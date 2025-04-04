@@ -712,8 +712,43 @@
   });
 </script>
 
-<!-- Replace the existing YouTube button with these two side-by-side buttons -->
-<div class="split-button-container">
-  <a href="https://music.youtube.com/" class="split-button button">YouTube Music</a>
-  <a href="https://www.youtube.com" class="split-button button">YouTube</a>
-</div>
+<!-- Remove the split buttons at the bottom completely -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Remove the split buttons at the bottom
+    const splitContainer = document.querySelector('.split-button-container');
+    if (splitContainer) {
+      splitContainer.remove();
+    }
+    
+    // Find the YouTube button in Hot Links section and replace it
+    const youtubeLink = document.querySelector('.left-column a[href*="youtube.com"]');
+    if (youtubeLink) {
+      // Create container for split buttons
+      const splitContainer = document.createElement('div');
+      splitContainer.className = 'split-button-container';
+      splitContainer.style.cssText = 'display: flex; margin: 5px 0;';
+      
+      // Create YouTube Music button
+      const musicButton = document.createElement('a');
+      musicButton.href = 'https://music.youtube.com/';
+      musicButton.className = 'button split-button';
+      musicButton.textContent = 'YouTube Music';
+      musicButton.style.cssText = 'flex: 1; margin: 0; border-right: 1px solid #333;';
+      
+      // Create regular YouTube button
+      const videoButton = document.createElement('a');
+      videoButton.href = 'https://www.youtube.com';
+      videoButton.className = 'button split-button';
+      videoButton.textContent = 'YouTube';
+      videoButton.style.cssText = 'flex: 1; margin: 0;';
+      
+      // Add buttons to container
+      splitContainer.appendChild(musicButton);
+      splitContainer.appendChild(videoButton);
+      
+      // Replace the original YouTube button with the container
+      youtubeLink.parentNode.replaceChild(splitContainer, youtubeLink);
+    }
+  });
+</script>
