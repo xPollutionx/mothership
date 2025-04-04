@@ -376,24 +376,50 @@
     const allButtons = document.querySelectorAll('.button');
     
     allButtons.forEach(button => {
-      // Store original background color
-      const originalBg = window.getComputedStyle(button).backgroundColor;
+      // Create a glow element positioned behind the button
+      const glow = document.createElement('div');
       
-      // Add transition for smooth effect
-      button.style.transition = 'background-color 0.3s ease, transform 0.2s ease';
+      // Position the glow element behind the button
+      glow.style.cssText = `
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #8BFFAE;
+        z-index: -1;
+        display: none;
+        pointer-events: none;
+      `;
       
-      // Create strong glow effect on hover
+      // Make the button's position relative so we can position the glow behind it
+      button.style.position = 'relative';
+      
+      // Insert the glow element
+      button.parentNode.insertBefore(glow, button);
+      
+      // Position the glow exactly behind the button
+      function updateGlowPosition() {
+        const rect = button.getBoundingClientRect();
+        glow.style.width = rect.width + 'px';
+        glow.style.height = rect.height + 'px';
+        glow.style.left = (button.offsetLeft) + 'px';
+        glow.style.top = (button.offsetTop) + 'px';
+      }
+      
+      // Show glow on hover - no transition for immediate appearance
       button.addEventListener('mouseenter', function() {
-        // Create radial gradient with the green color for glow effect
-        this.style.background = `radial-gradient(circle, #8BFFAE 0%, ${originalBg} 70%)`;
-        this.style.transform = 'scale(1.03)'; // Slight scale effect
+        updateGlowPosition();
+        glow.style.display = 'block';
       });
       
-      // Reset on mouse leave
+      // Hide glow immediately when mouse leaves
       button.addEventListener('mouseleave', function() {
-        this.style.background = originalBg;
-        this.style.transform = 'scale(1)';
+        glow.style.display = 'none';
       });
+      
+      // Update position on window resize
+      window.addEventListener('resize', updateGlowPosition);
     });
   });
 </script>
