@@ -369,44 +369,32 @@
   });
 </script>
 
-<!-- Add this at the end of your body tag -->
+<!-- Add this at the end of your body tag, replacing any previous glow script -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     // Target all buttons
     const allButtons = document.querySelectorAll('.button');
-    
+
     allButtons.forEach(button => {
-      // Create a glow element
-      const glow = document.createElement('div');
-      
-      // Style the glow element
-      glow.style.cssText = `
-        position: absolute;
-        border-radius: 4px;
-        background-color: transparent;
-        pointer-events: none;
-        box-shadow: 0 0 20px 10px #8BFFAE;
-        opacity: 0;
-        transition: opacity 0.05s linear;
-        z-index: -1;
-      `;
-      
-      // Insert the glow element
-      document.body.appendChild(glow);
-      
-      // Position the glow on hover
+      // Make button position relative if not already
+      if (window.getComputedStyle(button).position === 'static') {
+        button.style.position = 'relative';
+      }
+      // Ensure default z-index allows for stacking
+      button.style.zIndex = '1';
+
+      // Apply a strong outer box-shadow on hover
       button.addEventListener('mouseenter', function() {
-        const rect = this.getBoundingClientRect();
-        glow.style.width = rect.width + 'px';
-        glow.style.height = rect.height + 'px';
-        glow.style.left = (rect.left + window.scrollX) + 'px';
-        glow.style.top = (rect.top + window.scrollY) + 'px';
-        glow.style.opacity = '1';
+        // Increase z-index to ensure shadow is visible above column backgrounds
+        this.style.zIndex = '10';
+        // Apply a large spread radius for the outer glow effect
+        this.style.boxShadow = '0 0 20px 10px #8BFFAE';
       });
-      
-      // Remove glow on mouse leave
+
+      // Remove shadow and reset z-index when mouse leaves
       button.addEventListener('mouseleave', function() {
-        glow.style.opacity = '0';
+        this.style.boxShadow = 'none';
+        this.style.zIndex = '1'; // Reset z-index
       });
     });
   });
