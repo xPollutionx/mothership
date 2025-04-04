@@ -782,3 +782,125 @@
     });
   });
 </script>
+
+<!-- Add this script to restore speech bubble functionality -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Create or get speech bubble element
+    let speechBubble = document.getElementById('custom-speech-bubble');
+    if (!speechBubble) {
+      speechBubble = document.createElement('div');
+      speechBubble.id = 'custom-speech-bubble';
+      speechBubble.style.cssText = `
+        position: fixed;
+        display: none;
+        background-color: white;
+        color: black;
+        border: 3px solid black;
+        border-radius: 20px;
+        padding: 12px 18px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        z-index: 1000;
+        max-width: 200px;
+        min-width: 150px;
+        font-family: 'Press Start 2P', cursive;
+      `;
+      
+      const pointer = document.createElement('div');
+      pointer.style.cssText = `
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        border-right: 3px solid black;
+        border-bottom: 3px solid black;
+        transform: rotate(45deg);
+        bottom: -12px;
+        left: 50%;
+        margin-left: -10px;
+      `;
+      
+      const textContainer = document.createElement('div');
+      speechBubble.appendChild(textContainer);
+      speechBubble.appendChild(pointer);
+      document.body.appendChild(speechBubble);
+    }
+    
+    // Get all app links
+    const radioBoxLink = document.querySelector('a[href*="RadioBox"]');
+    const snakePlusLink = document.querySelector('a[href*="SnakePlus"]');
+    const checkMakerLink = document.querySelector('a[href*="432CheckMaker"]');
+    const mindMixLink = document.querySelector('a[href*="MindMix"]');
+    const coinFusedLink = document.querySelector('a[href*="ConFused"]');
+    
+    // Function to position bubble above Axie
+    function positionBubble() {
+      const axieImg = document.getElementById('axie-image');
+      if (axieImg) {
+        const axieRect = axieImg.getBoundingClientRect();
+        speechBubble.style.bottom = (window.innerHeight - axieRect.top + 20) + 'px';
+        speechBubble.style.left = (axieRect.left + axieRect.width/2 - 75) + 'px';
+      }
+    }
+    
+    // Function to show speech bubble with text
+    function showSpeech(text) {
+      speechBubble.querySelector('div').textContent = text;
+      positionBubble();
+      speechBubble.style.display = 'block';
+      if (typeof changeAxieGif === 'function') {
+        changeAxieGif();
+      }
+    }
+    
+    // Function to hide speech bubble
+    function hideSpeech() {
+      speechBubble.style.display = 'none';
+      if (typeof resetAxieGif === 'function') {
+        resetAxieGif();
+      }
+    }
+    
+    // Add event listeners for RadioBox
+    if (radioBoxLink) {
+      radioBoxLink.addEventListener('mouseenter', function() {
+        showSpeech("xPollutionx's Music!!!");
+      });
+      radioBoxLink.addEventListener('mouseleave', hideSpeech);
+    }
+    
+    // Add event listeners for Snake Plus
+    if (snakePlusLink) {
+      snakePlusLink.addEventListener('mouseenter', function() {
+        showSpeech("xPollutionx's Snake game w/ some twists!!!");
+      });
+      snakePlusLink.addEventListener('mouseleave', hideSpeech);
+    }
+    
+    // Add event listeners for 432CheckMaker
+    if (checkMakerLink) {
+      checkMakerLink.addEventListener('mouseenter', function() {
+        showSpeech("432 Freq Checker Maker!!!");
+      });
+      checkMakerLink.addEventListener('mouseleave', hideSpeech);
+    }
+    
+    // Add event listeners for MindMix
+    if (mindMixLink) {
+      mindMixLink.addEventListener('mouseenter', function() {
+        showSpeech("xPollutionx's Audio Transformer!!!");
+      });
+      mindMixLink.addEventListener('mouseleave', hideSpeech);
+    }
+    
+    // Add event listeners for CoinFused
+    if (coinFusedLink) {
+      coinFusedLink.addEventListener('mouseenter', function() {
+        showSpeech("xPollutionx's Price Comparison Tool!!!");
+      });
+      coinFusedLink.addEventListener('mouseleave', hideSpeech);
+    }
+  });
+</script>
