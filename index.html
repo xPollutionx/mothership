@@ -280,10 +280,10 @@
       <h2>xPollutionx's Apps</h2>
     </div>
     <a href="https://xpollutionx.github.io/RadioBox" class="button">RadioBox</a>
-    <a href="https://xpollutionx.github.io/ConFused/" class="button">CoinFused</a>
     <a href="https://xpollutionx.github.io/SnakePlus/" class="button">Snake Plus</a>
-    <a href="https://xpollutionx.github.io/MindMix/" class="button">MindMix</a>
     <a href="https://xpollutionx.github.io/432CheckMaker/" class="button">432CheckMaker</a>
+    <a href="https://xpollutionx.github.io/MindMix/" class="button">MindMix</a>
+    <a href="https://xpollutionx.github.io/ConFused/" class="button">CoinFused</a>
   </div>
   
   <div class="right-column">
@@ -753,45 +753,32 @@
   });
 </script>
 
-<!-- Add this script to reorder the links in the middle column -->
+<!-- Add this script to correctly order the middle column apps -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Get the middle column
+    // Target the middle column
     const middleColumn = document.querySelector('.middle-column');
     if (!middleColumn) return;
     
-    // Get the section header (to insert links after it)
-    const sectionHeader = middleColumn.querySelector('.section-header');
-    if (!sectionHeader) return;
+    // Remove all existing app links
+    middleColumn.querySelectorAll('a[href*="github.io"]').forEach(link => link.remove());
     
-    // Get all app links
-    const radioBox = middleColumn.querySelector('a[href*="RadioBox"]');
-    const snakePlus = middleColumn.querySelector('a[href*="SnakePlus"]');
-    const checkMaker = middleColumn.querySelector('a[href*="432CheckMaker"]');
-    const mindMix = middleColumn.querySelector('a[href*="MindMix"]');
-    const coinFused = middleColumn.querySelector('a[href*="CoinFused"]');
+    // The EXACT specified order:
+    const exactOrder = [
+      {name: 'RadioBox', url: 'https://xpollutionx.github.io/RadioBox'},
+      {name: 'Snake Plus', url: 'https://xpollutionx.github.io/SnakePlus/'},
+      {name: '432CheckMaker', url: 'https://xpollutionx.github.io/432CheckMaker/'},
+      {name: 'MindMix', url: 'https://xpollutionx.github.io/MindMix/'},
+      {name: 'CoinFused', url: 'https://xpollutionx.github.io/ConFused/'}
+    ];
     
-    // Remove all links first
-    if (radioBox) radioBox.remove();
-    if (snakePlus) snakePlus.remove();
-    if (checkMaker) checkMaker.remove();
-    if (mindMix) mindMix.remove();
-    if (coinFused) coinFused.remove();
-    
-    // Add them back in the specified order
-    if (coinFused) middleColumn.appendChild(coinFused);
-    if (mindMix) middleColumn.appendChild(mindMix);
-    if (checkMaker) middleColumn.appendChild(checkMaker);
-    if (snakePlus) middleColumn.appendChild(snakePlus);
-    if (radioBox) middleColumn.appendChild(radioBox);
-    
-    // Reverse the order (since we want RadioBox first)
-    const links = Array.from(middleColumn.querySelectorAll('a[href*="github.io"]'));
-    links.reverse();
-    
-    // Reinsert all links in the correct order after the section header
-    links.forEach(link => {
-      sectionHeader.after(link);
+    // Add the links in exactly this order
+    exactOrder.forEach(app => {
+      const link = document.createElement('a');
+      link.href = app.url;
+      link.className = 'button';
+      link.textContent = app.name;
+      middleColumn.appendChild(link);
     });
   });
 </script>
