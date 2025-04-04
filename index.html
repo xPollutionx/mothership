@@ -147,6 +147,22 @@
       .search-container {
         display: none !important; /* Hide the entire search section on mobile */
       }
+      .search-bar {
+        display: none !important; /* Hide only the search bar elements */
+      }
+      .search-container {
+        /* Ensure the container itself still centers its remaining content (the Axie) */
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin-top: 10px; /* Add some space above the Axie */
+      }
+      .axie-gif {
+        /* Remove the left margin that was spacing it from the search bars */
+        margin-left: 0 !important;
+        display: inline-block !important; /* Ensure it displays correctly */
+      }
     }
   </style>
   <script>
