@@ -381,56 +381,84 @@
   document.addEventListener('DOMContentLoaded', function() {
     // Only run on mobile devices
     if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      // Update the YouTube link to try to open app
+      
+      // YouTube app handling
       const youtubeLink = document.querySelector('a[href*="youtube.com"]');
       if (youtubeLink) {
-        youtubeLink.href = 'youtube://';
         youtubeLink.addEventListener('click', function(e) {
           e.preventDefault();
-          // Try to open app first, fall back to website
+          // Store the original href
+          const webUrl = this.href;
+          
+          // Create an iframe to try opening the app without changing window.location
+          const appIntent = document.createElement('iframe');
+          appIntent.style.display = 'none';
+          appIntent.src = 'youtube://';
+          document.body.appendChild(appIntent);
+          
+          // After a short delay, check if we need to redirect to web
           setTimeout(function() {
-            window.location = 'https://www.youtube.com';
-          }, 500);
-          window.location = 'youtube://';
+            document.body.removeChild(appIntent);
+            window.location.href = webUrl;
+          }, 300);
         });
       }
       
-      // Update X (Twitter) link to try to open app
+      // X/Twitter app handling
       const xLink = document.querySelector('a[href*="x.com"]');
       if (xLink) {
         xLink.addEventListener('click', function(e) {
           e.preventDefault();
-          // Try to open app first, fall back to website
+          const webUrl = this.href;
+          
+          const appIntent = document.createElement('iframe');
+          appIntent.style.display = 'none';
+          appIntent.src = 'twitter://';
+          document.body.appendChild(appIntent);
+          
           setTimeout(function() {
-            window.location = 'https://x.com';
-          }, 500);
-          window.location = 'twitter://';
+            document.body.removeChild(appIntent);
+            window.location.href = webUrl;
+          }, 300);
         });
       }
       
-      // Update Google Drive link to try to open app
+      // Google Drive app handling
       const driveLink = document.querySelector('a[href*="drive.google.com"]');
       if (driveLink) {
         driveLink.addEventListener('click', function(e) {
           e.preventDefault();
-          // Try to open app first, fall back to website
+          const webUrl = this.href;
+          
+          const appIntent = document.createElement('iframe');
+          appIntent.style.display = 'none';
+          appIntent.src = 'googledrive://';
+          document.body.appendChild(appIntent);
+          
           setTimeout(function() {
-            window.location = 'https://drive.google.com';
-          }, 500);
-          window.location = 'googledrive://';
+            document.body.removeChild(appIntent);
+            window.location.href = webUrl;
+          }, 300);
         });
       }
       
-      // Update Discord link to try to open app with correct fallback URL
+      // Discord app handling - with specific web URL
       const discordLink = document.querySelector('a[href*="discord.com"]');
       if (discordLink) {
         discordLink.addEventListener('click', function(e) {
           e.preventDefault();
-          // Try to open app first, fall back to specific Discord channel URL
+          
+          // Try opening the Discord app
+          const appIntent = document.createElement('iframe');
+          appIntent.style.display = 'none';
+          appIntent.src = 'discord://';
+          document.body.appendChild(appIntent);
+          
+          // If app doesn't open, go to specific Discord URL
           setTimeout(function() {
-            window.location = 'https://discord.com/channels/@me';
-          }, 500);
-          window.location = 'discord://';
+            document.body.removeChild(appIntent);
+            window.location.href = 'https://discord.com/channels/@me';
+          }, 300);
         });
       }
     }
