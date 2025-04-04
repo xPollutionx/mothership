@@ -163,6 +163,51 @@
         margin-left: 0 !important;
         display: inline-block !important; /* Ensure it displays correctly */
       }
+      /* Center the header text globally for mobile */
+      header {
+        text-align: center !important;
+      }
+      /* Hide the search bars */
+      .search-bar {
+        display: none !important;
+      }
+      /* Hide the original search container div */
+      .search-container {
+        display: none !important;
+      }
+      /* Style the new logo+axie container */
+      .logo-axie-container {
+        display: flex; /* Use flexbox */
+        justify-content: center; /* Center items horizontally */
+        align-items: center; /* Center items vertically */
+        gap: 10px; /* Add space between logo and axie */
+        margin-bottom: 5px; /* Space below this line */
+      }
+      /* Ensure logo container behaves within flex */
+      .logo-container {
+        display: inline-block; /* Or flex-shrink: 0; */
+      }
+      /* Ensure axie behaves within flex and reset margins */
+      .axie-gif {
+        display: inline-block; /* Or flex-shrink: 0; */
+        margin-left: 0 !important; /* Reset margin */
+        vertical-align: middle; /* Align with logo */
+      }
+      /* Center the H1 title */
+      h1 {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: 100%; /* Ensure it takes full width for centering */
+      }
+      /* Center the quote */
+      #random-quote {
+        text-align: center !important;
+        width: 100% !important; /* Ensure full width */
+        margin: 10px auto !important; /* Center block element */
+        display: block !important; /* Ensure it's a block for margin auto */
+        white-space: normal !important; /* Allow wrapping */
+      }
     }
   </style>
   <script>
@@ -220,12 +265,21 @@
 <body>
 
 <header>
-  <div class="logo-container">
-    <a href="https://x.com/xPollutionx">
-      <img src="Ronke.jpg" alt="xPollutionx's Mothership">
-    </a>
+  <!-- New container for logo and axie -->
+  <div class="logo-axie-container">
+    <div class="logo-container">
+      <a href="https://x.com/xPollutionx">
+          <img src="Ronke.jpg" alt="xPollutionx's Mothership">
+      </a>
+    </div>
+    <div class="axie-gif">
+      <img id="axie-image" src="AxieBlack01.gif" alt="Axie">
+    </div>
   </div>
+
   <h1><a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a></h1>
+
+  <!-- Search container (will be hidden on mobile by CSS) -->
   <div class="search-container">
     <div class="search-bar">
       <form action="https://www.google.com/search" method="get">
@@ -239,9 +293,7 @@
         <button type="submit" class="search-button">YouTube Search</button>
       </form>
     </div>
-    <div class="axie-gif">
-      <img id="axie-image" src="AxieBlack01.gif" alt="Axie">
-    </div>
+    <!-- Axie is moved out of here -->
   </div>
 </header>
 
@@ -399,58 +451,43 @@
     const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     if (isMobile) {
-      const deepLinkMappings = {
-        'youtube.com': 'youtube://',
-        'x.com': 'twitter://', // X.com uses the twitter scheme
-        'drive.google.com': 'googledrive://',
-        'discord.com': 'discord://'
-      };
+      const discordLink = document.querySelector('a.button[href*="discord.com"]');
 
-      // Find all relevant links (<a> tags with class "button")
-      const links = document.querySelectorAll('a.button');
+      if (discordLink) {
+        const webUrl = discordLink.href; // Store the original web URL
+        const appUrl = 'discord://'; // Discord app scheme
 
-      links.forEach(link => {
-        // Check if the link's href matches one of our target domains
-        for (const domain in deepLinkMappings) {
-          if (link.href.includes(domain)) {
-            const webUrl = link.href; // Store the original web URL
-            const appUrl = deepLinkMappings[domain];
+        discordLink.addEventListener('click', function(event) {
+          event.preventDefault(); // Stop the browser from navigating immediately
 
-            link.addEventListener('click', function(event) {
-              event.preventDefault(); // Stop the browser from navigating immediately
+          // Try to open the app URL
+          window.location.href = appUrl;
 
-              // Try to open the app URL
-              window.location.href = appUrl;
+          // Fallback: If the app doesn't open after a short delay, go to the web URL
+          const fallbackTimeout = setTimeout(() => {
+            // Check if we are still on the same page before redirecting
+            if (!document.hidden) { // Check visibility state
+               window.location.href = webUrl;
+            }
+          }, 1500); // 1.5 second delay
 
-              // Fallback: If the app doesn't open after a short delay, go to the web URL
-              const fallbackTimeout = setTimeout(() => {
-                // Check if we are still on the same page before redirecting
-                if (!document.hidden) { // Check visibility state
-                   window.location.href = webUrl;
-                }
-              }, 1500); // 1.5 second delay
+          // If the page hides (app likely opened), clear the timeout
+          const visibilityHandler = () => {
+            if (document.visibilityState === 'hidden') {
+              clearTimeout(fallbackTimeout);
+              document.removeEventListener('visibilitychange', visibilityHandler); // Clean up listener
+            }
+          };
+          document.addEventListener('visibilitychange', visibilityHandler);
 
-              // If the page hides (app likely opened), clear the timeout
-              const visibilityHandler = () => {
-                if (document.visibilityState === 'hidden') {
-                  clearTimeout(fallbackTimeout);
-                  document.removeEventListener('visibilitychange', visibilityHandler); // Clean up listener
-                }
-              };
-              document.addEventListener('visibilitychange', visibilityHandler);
-
-              // Older browser/iOS fallback for visibility change
-              const pageHideHandler = () => {
-                 clearTimeout(fallbackTimeout);
-                 window.removeEventListener('pagehide', pageHideHandler); // Clean up listener
-              };
-               window.addEventListener('pagehide', pageHideHandler);
-
-              break; // Stop checking once a match is found for this link
-            });
-          }
-        }
-      });
+          // Older browser/iOS fallback for visibility change
+          const pageHideHandler = () => {
+             clearTimeout(fallbackTimeout);
+             window.removeEventListener('pagehide', pageHideHandler); // Clean up listener
+          };
+           window.addEventListener('pagehide', pageHideHandler);
+        });
+      }
     }
   });
 </script>
