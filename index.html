@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mothership</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
@@ -138,37 +137,27 @@
       margin: 0 auto;
     }
 
-    /* Add this to completely reset any mobile-specific differences */
-    @media (max-width: 767px) {
-      /* Force all elements to display as they do on desktop */
-      .search-container, .search-bar, .axie-gif, header * {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        height: auto !important;
+    /* Target and disable ALL media queries of any breakpoint */
+    @media only screen and (max-width: 1920px) {
+      /* This will override ALL smaller breakpoints due to specificity */
+      [class*="mobile"], 
+      .mobile-center, 
+      .search-wrapper-mobile,
+      [class$="-sm"],
+      [class$="-xs"],
+      [class$="-md"] {
+        display: none !important;
+      }
+      
+      /* Force ALL elements to desktop display */
+      * {
+        max-width: none !important;
         width: auto !important;
-        position: static !important;
-        overflow: visible !important;
-      }
-      
-      /* Reset any mobile-specific styling */
-      .search-container {
-        display: flex !important; /* Match desktop flex layout */
-        justify-content: center !important;
-        align-items: center !important;
-        margin: 5px 0 !important;
-      }
-      
-      /* Reset search bar positioning */
-      .search-bar {
-        margin: 0 5px !important;
-        display: block !important;
-      }
-      
-      /* Ensure Axie is visible */
-      .axie-gif {
-        margin-left: 10px !important;
-        display: block !important;
+        display: inherit !important;
+        flex-direction: inherit !important;
+        flex-wrap: inherit !important;
+        text-align: inherit !important;
+        position: inherit !important;
       }
     }
   </style>
@@ -499,6 +488,40 @@
       }
     }
   })();
+</script>
+
+<!-- Complete solution to remove ALL mobile-specific code -->
+
+<!-- 1. Remove the viewport meta tag completely -->
+<script>
+  // Remove viewport meta tag
+  document.querySelector('meta[name="viewport"]')?.remove();
+  
+  // Add a fixed-width viewport that forces desktop view
+  const fixedViewport = document.createElement('meta');
+  fixedViewport.name = 'viewport';
+  fixedViewport.content = 'width=1200, initial-scale=1.0';
+  document.head.appendChild(fixedViewport);
+</script>
+
+<!-- 2. Disable ANY JavaScript that might check for mobile -->
+<script>
+  // Override window innerWidth/innerHeight to always report desktop size
+  Object.defineProperty(window, 'innerWidth', {
+    get: function() { return 1200; }
+  });
+  
+  // Disable any matchMedia calls
+  window.matchMedia = function() {
+    return {
+      matches: false,
+      addListener: function() {},
+      removeListener: function() {}
+    };
+  };
+  
+  // Force desktop mode for any user agent sniffing
+  navigator.__proto__.userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36';
 </script>
 
 </body>
