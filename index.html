@@ -372,15 +372,15 @@
 <!-- Add this at the end of your body tag -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Target all buttons
-    const allButtons = document.querySelectorAll('.button');
-    
-    allButtons.forEach(button => {
-      // Create a glow element positioned behind the button
-      const glow = document.createElement('div');
+    // Add CSS to document for the glow effect
+    const style = document.createElement('style');
+    style.textContent = `
+      .button {
+        position: relative;
+      }
       
-      // Position the glow element behind the button
-      glow.style.cssText = `
+      .button::before {
+        content: '';
         position: absolute;
         top: 0;
         left: 0;
@@ -388,39 +388,14 @@
         height: 100%;
         background-color: #8BFFAE;
         z-index: -1;
-        display: none;
-        pointer-events: none;
-      `;
-      
-      // Make the button's position relative so we can position the glow behind it
-      button.style.position = 'relative';
-      
-      // Insert the glow element
-      button.parentNode.insertBefore(glow, button);
-      
-      // Position the glow exactly behind the button
-      function updateGlowPosition() {
-        const rect = button.getBoundingClientRect();
-        glow.style.width = rect.width + 'px';
-        glow.style.height = rect.height + 'px';
-        glow.style.left = (button.offsetLeft) + 'px';
-        glow.style.top = (button.offsetTop) + 'px';
+        opacity: 0;
       }
       
-      // Show glow on hover - no transition for immediate appearance
-      button.addEventListener('mouseenter', function() {
-        updateGlowPosition();
-        glow.style.display = 'block';
-      });
-      
-      // Hide glow immediately when mouse leaves
-      button.addEventListener('mouseleave', function() {
-        glow.style.display = 'none';
-      });
-      
-      // Update position on window resize
-      window.addEventListener('resize', updateGlowPosition);
-    });
+      .button:hover::before {
+        opacity: 1;
+      }
+    `;
+    document.head.appendChild(style);
   });
 </script>
 
