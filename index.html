@@ -6,8 +6,9 @@
   <title>Mothership</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
+    /* --- Base Styles (Desktop First) --- */
     html {
-      font-size: 150%;
+      font-size: 150%; /* Base size increase */
     }
 
     body {
@@ -20,201 +21,148 @@
 
     header {
       background-color: black;
-      padding: 10px 0;
+      padding: 15px 0; /* Adjusted padding */
       text-align: center;
       position: relative;
     }
 
     .logo-container img {
-      width: 85px;
+      width: 85px; /* Enlarged Ronke */
       height: 85px;
       border-radius: 50%;
+      vertical-align: middle; /* Align better */
     }
 
     h1 {
-      font-size: 1em;
-      margin: 5px 0;
+      font-size: 1.2em; /* Adjusted size */
+      margin: 10px 0;
+      display: inline-block; /* Keep on same visual line */
+      vertical-align: middle;
+    }
+    h1 a { /* Style for the link inside h1 */
+      color: white;
+      text-decoration: none;
     }
 
     .search-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 5px 0;
+      margin: 10px 0;
     }
 
     .search-bar {
-      margin: 0 5px;
+      margin: 0 10px; /* Adjusted margin */
     }
 
     .search-bar input {
       background-color: #333;
       color: white;
       border: none;
-      padding: 5px;
-      width: 140px;
+      padding: 8px; /* Adjusted padding */
+      width: 180px; /* Adjusted width */
       font-size: 0.6em;
       font-family: 'Press Start 2P', cursive;
+      vertical-align: middle;
     }
 
     .search-button {
       background-color: #9b59b6;
       color: white;
       border: none;
-      padding: 5px;
+      padding: 8px; /* Adjusted padding */
       cursor: pointer;
       font-size: 0.6em;
       font-family: 'Press Start 2P', cursive;
+      vertical-align: middle;
     }
 
     .axie-gif {
-      margin-left: 10px;
+      margin-left: 15px; /* Adjusted margin */
+      display: inline-block; /* Ensure inline display */
+      vertical-align: middle; /* Align with search */
     }
 
     .axie-gif img {
-      width: 118px;
+      width: 118px; /* Enlarged Axie */
       height: 118px;
+      vertical-align: middle; /* Align better */
     }
 
     .content-wrapper {
       width: 90%;
-      max-width: 1200px;
-      margin: 20px auto;
+      max-width: 1200px; /* Adjusted max-width */
+      margin: 30px auto; /* Adjusted margin */
       display: flex;
-      gap: 10px;
+      gap: 15px; /* Adjusted gap */
     }
 
     .left-column, .middle-column, .right-column {
       flex: 1;
+      background-color: #333; /* Default background */
     }
 
-    .left-column, .right-column {
+    .left-column, .right-column { /* Overwrite for purple columns */
       background-color: rgb(94, 67, 109);
     }
 
-    .middle-column {
-      background-color: #333;
-    }
-
     .section-header {
-      padding: 5px 0;
+      padding: 10px 0; /* Adjusted padding */
       text-align: center;
       background-color: rgb(75, 0, 130);
     }
 
     h2 {
-      font-size: 0.8em;
+      font-size: 0.9em; /* Adjusted size */
       margin: 0;
     }
 
+    /* --- Button Styles (Including Glow) --- */
     .button {
       display: block;
       background-color: #9b59b6;
       color: white;
       text-decoration: none;
-      padding: 10px 0;
+      padding: 15px 0; /* Adjusted padding */
       text-align: center;
       margin: 5px;
       font-size: 0.7em;
-      position: relative;
-      z-index: 1;
-      transition: box-shadow 0.1s linear, z-index 0s linear 0.1s;
+      position: relative; /* Needed for z-index */
+      z-index: 1; /* Default stacking */
+      transition: box-shadow 0.1s linear, z-index 0s linear 0.1s; /* Glow transition */
     }
 
     .button:hover {
-      box-shadow: 0 0 20px 10px #8BFFAE;
-      z-index: 10;
-      transition: box-shadow 0.1s linear, z-index 0s linear;
+      box-shadow: 0 0 20px 10px #8BFFAE; /* Apply glow on hover */
+      z-index: 10; /* Bring hovered button forward */
+      transition: box-shadow 0.1s linear, z-index 0s linear; /* Immediate z-index change on hover */
     }
 
     #random-quote {
       text-align: center;
-      padding: 15px 0;
-      font-size: 0.7em;
+      padding: 20px 0; /* Adjusted padding */
+      font-size: 0.8em; /* Adjusted size */
       font-style: italic;
       color: #ddd;
       width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
+      max-width: 1400px; /* Adjusted max-width */
+      margin: 20px auto; /* Adjusted margin */
     }
 
-    /* Add this minimal mobile css */
+    /* --- Minimal Mobile Centering (Pre-Breakage Attempt) --- */
+    /* Keep this minimal to avoid breaking things again */
     @media (max-width: 767px) {
-      /* --- Header Cleanup & Centering --- */
-
-      /* Hide the search bars */
-      .search-bar {
-        display: none !important;
+      header, #random-quote {
+        text-align: center; /* Basic text centering */
       }
-
-      /* Reposition Axie next to Logo using Positioning */
-      header {
-        position: relative; /* Needed for absolute positioning of children */
-        padding-top: 100px; /* Add padding to top to make space for absolutely positioned logo/axie */
-        text-align: center; /* Center h1 text */
-      }
-
-      .logo-container {
-        position: absolute;
-        top: 10px; /* Position near top */
-        left: 50%; /* Start at center */
-        transform: translateX(-100%); /* Shift left by its own width + half gap */
-        margin-left: -5px; /* Half the gap */
-        text-align: right; /* Align content if needed */
-      }
-
-      .axie-gif {
-        position: absolute;
-        top: 10px; /* Align vertically with logo */
-        left: 50%; /* Start at center */
-        transform: translateX(0%); /* Keep it to the right of center */
-        margin-left: 5px; /* Half the gap */
-      }
-
-       /* Center the H1 title below the logo/axie */
-      h1 {
-        display: block !important;
-        width: 100% !important;
-        text-align: center !important;
-        margin: 0 auto !important; /* Center block */
-        padding-top: 5px; /* Add space below logo/axie */
-        position: static; /* Override any absolute positioning */
-        transform: none; /* Reset transform */
-      }
-
-      /* Hide the now empty search container */
-      .search-container {
-         display: none !important;
-      }
-
-
-      /* --- Restore Content Columns --- */
+      /* DO NOT add rules here that hide search or stack columns unless verified */
       .content-wrapper {
-          display: flex; /* Ensure it's still flex */
-          flex-direction: row; /* Keep columns side-by-side */
-          flex-wrap: wrap; /* Allow wrapping if needed, but try to keep side-by-side */
-          width: 95%; /* Use slightly less width */
-          margin: 10px auto; /* Adjust margin */
+        flex-direction: row; /* Ensure columns try to stay side-by-side */
+        flex-wrap: wrap; /* Allow wrapping on very small screens */
       }
       .left-column, .middle-column, .right-column {
-          flex-basis: 30%; /* Adjust basis to fit side-by-side */
-          flex-grow: 1; /* Allow them to grow */
-          min-width: 150px; /* Prevent them getting too small */
-          margin-bottom: 0; /* Remove bottom margin */
-      }
-
-
-      /* --- Footer Quote Centering --- */
-      #random-quote {
-        display: block !important;
-        width: 90% !important; /* Use most of the width */
-        text-align: center !important; /* Center text inside */
-        margin: 20px auto !important; /* Center the block itself, add space */
-        white-space: normal !important; /* Allow wrapping */
-        padding: 10px;
-        position: static; /* Ensure it's not absolutely positioned */
-        transform: none; /* Reset transform */
-        float: none; /* Reset float */
+        flex-basis: 30%; /* Attempt to fit 3 wide */
+        min-width: 120px; /* Minimum width before wrapping */
       }
     }
   </style>
@@ -237,49 +185,148 @@
 
     function displayRandomQuote() {
       const randomIndex = Math.floor(Math.random() * quotes.length);
-      document.getElementById('random-quote').textContent = quotes[randomIndex];
+      const quoteElement = document.getElementById('random-quote');
+      if(quoteElement) { // Check if element exists
+        quoteElement.textContent = quotes[randomIndex];
+      } else {
+        console.error("Element with ID 'random-quote' not found.");
+      }
     }
 
     function playRandomVideo() {
       const videos = [
-        "8ZSifZ30Cog",
-        "videoID2",
-        "videoID3"
+        "8ZSifZ30Cog", // Example video ID
+        "dQw4w9WgXcQ", // Example video ID 2
+        "QH2-TGUlwu4"  // Example video ID 3
+        // Add more video IDs here
       ];
+      const playlistId = "PLubQ2wNsM74e1r33xb0WWccF3VMSzevvu"; // Your playlist ID
       const randomIndex = Math.floor(Math.random() * videos.length);
-      window.location.href = `https://www.youtube.com/watch?v=${videos[randomIndex]}&list=PLubQ2wNsM74e1r33xb0WWccF3VMSzevvu`;
+      window.location.href = `https://www.youtube.com/watch?v=${videos[randomIndex]}&list=${playlistId}&index=${randomIndex + 1}`; // Go to video within playlist
     }
 
     function changeAxieGif() {
-      document.getElementById('axie-image').src = 'AxieBlack03.gif';
+      const axieImage = document.getElementById('axie-image');
+      if (axieImage) axieImage.src = 'AxieBlack03.gif';
     }
 
     function resetAxieGif() {
-      document.getElementById('axie-image').src = 'AxieBlack01.gif';
+      const axieImage = document.getElementById('axie-image');
+      if (axieImage) axieImage.src = 'AxieBlack01.gif';
     }
 
-    window.onload = function() {
-      displayRandomQuote();
-      
-      // Add hover effects to all buttons
-      const buttons = document.querySelectorAll('.button');
-      buttons.forEach(button => {
+    document.addEventListener('DOMContentLoaded', function() {
+      // Create the speech bubble element
+      const speechBubble = document.createElement('div');
+      speechBubble.id = 'custom-speech-bubble';
+      speechBubble.style.cssText = `
+        position: fixed; /* Use fixed to position relative to viewport */
+        display: none;
+        background-color: white;
+        color: black;
+        border: 3px solid black;
+        border-radius: 20px;
+        padding: 12px 18px; /* Slightly larger */
+        font-size: 16px; /* Slightly larger */
+        font-weight: bold;
+        text-align: center;
+        z-index: 1000;
+        max-width: 200px; /* Adjusted */
+        min-width: 150px; /* Adjusted */
+        font-family: 'Press Start 2P', cursive;
+        /* Remove left/bottom positioning for now, set dynamically */
+      `;
+
+      // Create the speech bubble pointer
+      const pointer = document.createElement('div');
+      pointer.style.cssText = `
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        border-right: 3px solid black;
+        border-bottom: 3px solid black;
+        transform: rotate(45deg);
+        bottom: -12px; /* Position pointer at bottom */
+        left: 50%; /* Center pointer horizontally */
+        margin-left: -10px; /* Adjust for pointer width */
+      `;
+
+      // Add the text container
+      const textContainer = document.createElement('div');
+      speechBubble.appendChild(textContainer);
+      speechBubble.appendChild(pointer);
+      document.body.appendChild(speechBubble); // Add bubble to body
+
+      // Get Axie position (do this inside event handlers for accuracy)
+      const axieImg = document.getElementById('axie-image');
+
+      // Shared function to position speech bubble above Axie
+      function positionBubble() {
+        if (axieImg) {
+          const axieRect = axieImg.getBoundingClientRect();
+          // Position bubble above the Axie image
+          // Adjust top position: axie top - bubble height - gap
+          // Estimate bubble height (can refine this) ~80px + padding
+          const bubbleHeightEstimate = 100;
+          const gap = 10; // Space between axie and bubble
+          speechBubble.style.top = (axieRect.top - bubbleHeightEstimate - gap) + 'px';
+          // Center bubble horizontally over axie
+          speechBubble.style.left = (axieRect.left + axieRect.width / 2) + 'px';
+          speechBubble.style.transform = 'translateX(-50%)'; // Center horizontally
+        } else {
+          // Fallback position if Axie isn't found
+          console.error("Axie image not found for positioning bubble.");
+          speechBubble.style.top = '100px';
+          speechBubble.style.left = '50%';
+          speechBubble.style.transform = 'translateX(-50%)';
+        }
+      }
+
+      // Function to attach hover listeners
+      function attachHoverListener(selector, text) {
+        const button = document.querySelector(selector);
+        if (button) {
+          button.addEventListener('mouseenter', function() {
+            textContainer.textContent = text;
+            positionBubble(); // Calculate position just before showing
+            speechBubble.style.display = 'block';
+          });
+          button.addEventListener('mouseleave', function() {
+            speechBubble.style.display = 'none';
+          });
+        } else {
+          console.warn(`Button not found for selector: ${selector}`);
+        }
+      }
+
+      // Attach listeners for app buttons
+      attachHoverListener('a[href*="RadioBox"]', "xPollutionx's Music!!!");
+      attachHoverListener('a[href*="ConFused"]', "xPollutionx's Price Comparison Tool!!!");
+      attachHoverListener('a[href*="SnakePlus"]', "xPollutionx's Snake game w/ some twists!!!");
+
+      // Attach hover listeners for Axie GIF swap to all regular buttons
+      const allButtons = document.querySelectorAll('.button');
+      allButtons.forEach(button => {
         button.addEventListener('mouseenter', changeAxieGif);
         button.addEventListener('mouseleave', resetAxieGif);
       });
-    };
+
+      // Initial quote display
+      displayRandomQuote();
+    });
   </script>
 </head>
 <body>
 
 <header>
-    <!-- Original structure -->
-    <div class="logo-container">
+    <!-- Original HTML structure -->
+    <div class="logo-container" style="display: inline-block; vertical-align: middle;">
         <a href="https://x.com/xPollutionx">
             <img src="Ronke.jpg" alt="xPollutionx's Mothership">
         </a>
     </div>
-    <h1><a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a></h1>
+    <h1><a href="https://x.com/xPollutionx">xPollutionx's Mothership</a></h1>
     <div class="search-container">
         <div class="search-bar">
             <form action="https://www.google.com/search" method="get">
@@ -293,7 +340,6 @@
                 <button type="submit" class="search-button">YouTube Search</button>
             </form>
         </div>
-        <!-- Axie is back inside search-container for desktop -->
         <div class="axie-gif">
             <img id="axie-image" src="AxieBlack01.gif" alt="Axie">
         </div>
@@ -301,153 +347,49 @@
 </header>
 
 <div class="content-wrapper">
-  <div class="left-column">
-    <div class="section-header">
-      <h2>Hot Links</h2>
+    <!-- Left Column -->
+    <div class="left-column">
+        <div class="section-header">
+            <h2>Hot Links</h2>
+        </div>
+        <a href="https://www.youtube.com" class="button">YouTube</a>
+        <a href="https://x.com" class="button">X.com</a>
+        <a href="https://drive.google.com" class="button">Google Drive</a>
+        <a href="https://discord.com" class="button">Discord</a>
+        <a href="https://app.axieinfinity.com" class="button">App.Axie</a>
+        <a href="https://www.amazon.com" class="button">Amazon</a>
+        <a href="https://github.com" class="button">GitHub</a>
+        <a href="javascript:void(0);" onclick="playRandomVideo()" class="button">Saturday Morning Cartoons</a>
     </div>
-    <a href="https://www.youtube.com" class="button">YouTube</a>
-    <a href="https://x.com" class="button">X.com</a>
-    <a href="https://drive.google.com" class="button">Google Drive</a>
-    <a href="https://discord.com" class="button">Discord</a>
-    <a href="https://app.axieinfinity.com" class="button">App.Axie</a>
-    <a href="https://www.amazon.com" class="button">Amazon</a>
-    <a href="https://github.com" class="button">GitHub</a>
-    <a href="javascript:void(0);" onclick="playRandomVideo()" class="button">Saturday Morning Cartoons</a>
-  </div>
-  
-  <div class="middle-column">
-    <div class="section-header">
-      <h2>xPollutionx's Apps:</h2>
+
+    <!-- Middle Column -->
+    <div class="middle-column">
+        <div class="section-header">
+            <h2>xPollutionx's Apps:</h2>
+        </div>
+        <a href="https://xpollutionx.github.io/RadioBox" class="button">RadioBox</a>
+        <a href="https://xpollutionx.github.io/ConFused/" class="button">CoinFused</a>
+        <a href="https://xpollutionx.github.io/SnakePlus/" class="button">Snake Plus</a>
     </div>
-    <a href="https://xpollutionx.github.io/RadioBox" class="button">RadioBox</a>
-    <a href="https://xpollutionx.github.io/ConFused/" class="button">CoinFused</a>
-    <a href="https://xpollutionx.github.io/SnakePlus/" class="button">Snake Plus</a>
-  </div>
-  
-  <div class="right-column">
-    <div class="section-header">
-      <h2>Fun Tools</h2>
+
+    <!-- Right Column -->
+    <div class="right-column">
+        <div class="section-header">
+            <h2>Fun Tools</h2>
+        </div>
+        <a href="https://suno.ai" class="button">Suno</a>
+        <a href="https://chat.openai.com" class="button">ChatGPT</a>
+        <a href="https://www.midjourney.com" class="button">MidJourney</a>
+        <a href="https://klingai.com/" class="button">KlingAI</a>
+        <a href="https://hailuoai.video/" class="button">Hailuo AI</a>
+        <a href="https://dream-machine.lumalabs.ai/" class="button">Luma Labs</a>
+        <a href="https://app.runwayml.com/video-tools/teams/x35pollution/dashboard" class="button">Runway</a>
     </div>
-    <a href="https://suno.ai" class="button">Suno</a>
-    <a href="https://chat.openai.com" class="button">ChatGPT</a>
-    <a href="https://www.midjourney.com" class="button">MidJourney</a>
-    <a href="https://klingai.com/" class="button">KlingAI</a>
-    <a href="https://hailuoai.video/" class="button">Hailuo AI</a>
-    <a href="https://dream-machine.lumalabs.ai/" class="button">Luma Labs</a>
-    <a href="https://app.runwayml.com/video-tools/teams/x35pollution/dashboard" class="button">Runway</a>
-  </div>
 </div>
 
 <div id="random-quote"></div>
 
-<!-- Add this div at the end of your body tag -->
-<div id="speech-bubble" style="position: fixed; display: none; z-index: 1000;">
-  <img src="" width="80" height="auto" alt="Speech">
-</div>
-
-<!-- Add this small script at the end of your body tag -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Create the speech bubble element
-    const speechBubble = document.createElement('div');
-    speechBubble.id = 'custom-speech-bubble';
-    speechBubble.style.cssText = `
-      position: fixed;
-      display: none;
-      background-color: white;
-      color: black;
-      border: 3px solid black;
-      border-radius: 20px;
-      padding: 12px 18px;
-      font-size: 16px;
-      font-weight: bold;
-      text-align: center;
-      z-index: 1000;
-      max-width: 200px;
-      min-width: 150px;
-      font-family: 'Press Start 2P', cursive;
-    `;
-    
-    // Create the speech bubble pointer
-    const pointer = document.createElement('div');
-    pointer.style.cssText = `
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: white;
-      border-right: 3px solid black;
-      border-bottom: 3px solid black;
-      transform: rotate(45deg);
-      bottom: -12px;
-      left: 50%;
-      margin-left: -10px;
-    `;
-    
-    // Add the text container
-    const textContainer = document.createElement('div');
-    speechBubble.appendChild(textContainer);
-    speechBubble.appendChild(pointer);
-    document.body.appendChild(speechBubble);
-    
-    // Get Axie position
-    const axieImg = document.getElementById('axie-image');
-    
-    // Shared function to position speech bubble above Axie
-    function positionBubble() {
-      if (axieImg) {
-        const axieRect = axieImg.getBoundingClientRect();
-        speechBubble.style.bottom = (window.innerHeight - axieRect.top + 20) + 'px';
-        speechBubble.style.left = (axieRect.left + axieRect.width/2 - 75) + 'px';
-      } else {
-        // Fallback position if Axie isn't found
-        speechBubble.style.bottom = '200px';
-        speechBubble.style.left = '50%';
-        speechBubble.style.transform = 'translateX(-50%)';
-      }
-    }
-    
-    // RadioBox hover
-    const radioButton = document.querySelector('a[href*="RadioBox"]');
-    if (radioButton) {
-      radioButton.addEventListener('mouseenter', function() {
-        textContainer.textContent = "xPollutionx's Music!!!";
-        positionBubble();
-        speechBubble.style.display = 'block';
-      });
-      radioButton.addEventListener('mouseleave', function() {
-        speechBubble.style.display = 'none';
-      });
-    }
-    
-    // CoinFused hover
-    const coinButton = document.querySelector('a[href*="ConFused"]');
-    if (coinButton) {
-      coinButton.addEventListener('mouseenter', function() {
-        textContainer.textContent = "xPollutionx's Price Comparison Tool!!!";
-        positionBubble();
-        speechBubble.style.display = 'block';
-      });
-      coinButton.addEventListener('mouseleave', function() {
-        speechBubble.style.display = 'none';
-      });
-    }
-    
-    // Snake hover
-    const snakeButton = document.querySelector('a[href*="SnakePlus"]');
-    if (snakeButton) {
-      snakeButton.addEventListener('mouseenter', function() {
-        textContainer.textContent = "xPollutionx's Snake game w/ some twists!!!";
-        positionBubble();
-        speechBubble.style.display = 'block';
-      });
-      snakeButton.addEventListener('mouseleave', function() {
-        speechBubble.style.display = 'none';
-      });
-    }
-  });
-</script>
-
-<!-- Add this script block at the very end of your <body> tag -->
+<!-- Scripts at the end -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     // Check if it's likely a mobile device
