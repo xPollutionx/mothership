@@ -372,29 +372,26 @@
 <!-- Add this at the end of your body tag, replacing any previous glow script -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Target all buttons
     const allButtons = document.querySelectorAll('.button');
 
     allButtons.forEach(button => {
-      // Make button position relative if not already
+      // Ensure initial styles are set for reliable reset
       if (window.getComputedStyle(button).position === 'static') {
         button.style.position = 'relative';
       }
-      // Ensure default z-index allows for stacking
-      button.style.zIndex = '1';
+      button.style.zIndex = '1'; // Default z-index
+      button.style.boxShadow = 'none'; // Ensure no initial shadow
 
-      // Apply a strong outer box-shadow on hover
+      // Apply glow on hover
       button.addEventListener('mouseenter', function() {
-        // Increase z-index to ensure shadow is visible above column backgrounds
-        this.style.zIndex = '10';
-        // Apply a large spread radius for the outer glow effect
-        this.style.boxShadow = '0 0 20px 10px #8BFFAE';
+        this.style.zIndex = '10'; // Bring forward
+        this.style.boxShadow = '0 0 20px 10px #8BFFAE'; // Apply glow
       });
 
-      // Remove shadow and reset z-index when mouse leaves
+      // Explicitly remove glow and reset z-index on mouse leave
       button.addEventListener('mouseleave', function() {
-        this.style.boxShadow = 'none';
-        this.style.zIndex = '1'; // Reset z-index
+        this.style.boxShadow = 'none'; // Remove glow explicitly
+        this.style.zIndex = '1'; // Reset z-index explicitly
       });
     });
   });
