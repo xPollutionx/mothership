@@ -138,93 +138,15 @@
       margin: 0 auto;
     }
 
-    /* DESKTOP-SPECIFIC CSS */
-    /* Base styles for desktop first */
-    .search-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 5px 0;
-    }
-
-    .search-bar {
-      margin: 0 5px;
-    }
-
-    .axie-gif {
-      margin-left: 10px;
-    }
-
-    /* MOBILE-SPECIFIC CSS */
+    /* Add this minimal mobile css */
     @media (max-width: 767px) {
-      /* Center header text */
-      header {
+      /* Center all text in header and footer */
+      header, #random-quote {
         text-align: center;
       }
-      
-      /* Hide search bars ONLY on mobile */
-      .search-bar {
+      .search-container {
         display: none !important;
       }
-      
-      /* Move Axie to be next to logo on mobile */
-      .axie-gif {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        margin: 0;
-      }
-      
-      /* Center the quote */
-      #random-quote {
-        text-align: center;
-        width: 100%;
-        margin: 0 auto;
-      }
-    }
-
-    /* Use Flexbox on the header to reorder elements */
-    header {
-      display: flex;
-      flex-wrap: wrap; /* Allow items to wrap if needed */
-      justify-content: center; /* Center items horizontally */
-      align-items: center; /* Align items vertically */
-      text-align: center; /* Fallback centering */
-    }
-
-    /* Define the visual order */
-    .logo-container { order: 1; flex-shrink: 0; } /* Logo first */
-    .axie-gif {
-      order: 2; /* Axie second */
-      margin-left: 10px !important; /* Space from logo */
-      margin-top: 0; /* Reset vertical margin */
-      display: inline-block !important; /* Ensure it's visible */
-      vertical-align: middle; /* Align nicely with logo */
-      flex-shrink: 0;
-    }
-    h1 {
-      order: 3; /* Title third */
-      width: 100%; /* Span full width */
-      margin-top: 5px; /* Add space above */
-      flex-basis: 100%; /* Force it to a new line */
-    }
-    .search-container {
-      order: 4; /* Original container last */
-      /* Hide the container but keep it for the Axie */
-       width: 0; height: 0; overflow: hidden; margin: 0; padding: 0; border: 0;
-       /* We only need the .axie-gif from inside it, which we visually repositioned using 'order' */
-    }
-    .search-bar {
-      display: none !important; /* Explicitly hide search bars */
-    }
-
-    /* Center the quote */
-    #random-quote {
-      text-align: center !important;
-      width: 100% !important;
-      margin: 10px auto !important;
-      display: block !important;
-      white-space: normal !important;
     }
   </style>
   <script>
@@ -282,29 +204,29 @@
 <body>
 
 <header>
-    <div class="logo-container">
-        <a href="https://x.com/xPollutionx">
-            <img src="Ronke.jpg" alt="xPollutionx's Mothership">
-        </a>
+  <div class="logo-container">
+    <a href="https://x.com/xPollutionx">
+      <img src="Ronke.jpg" alt="xPollutionx's Mothership">
+    </a>
+  </div>
+  <h1><a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a></h1>
+  <div class="search-container">
+    <div class="search-bar">
+      <form action="https://www.google.com/search" method="get">
+        <input type="text" name="q" placeholder="" required>
+        <button type="submit" class="search-button">Google Search</button>
+      </form>
     </div>
-    <h1><a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a></h1>
-    <div class="search-container">
-        <div class="search-bar">
-            <form action="https://www.google.com/search" method="get">
-                <input type="text" name="q" placeholder="" required>
-                <button type="submit" class="search-button">Google Search</button>
-            </form>
-        </div>
-        <div class="search-bar">
-            <form action="https://www.youtube.com/results" method="get">
-                <input type="text" name="search_query" placeholder="" required>
-                <button type="submit" class="search-button">YouTube Search</button>
-            </form>
-        </div>
-        <div class="axie-gif">
-            <img id="axie-image" src="AxieBlack01.gif" alt="Axie">
-        </div>
+    <div class="search-bar">
+      <form action="https://www.youtube.com/results" method="get">
+        <input type="text" name="search_query" placeholder="" required>
+        <button type="submit" class="search-button">YouTube Search</button>
+      </form>
     </div>
+    <div class="axie-gif">
+      <img id="axie-image" src="AxieBlack01.gif" alt="Axie">
+    </div>
+  </div>
 </header>
 
 <div class="content-wrapper">
@@ -315,7 +237,7 @@
     <a href="https://www.youtube.com" class="button">YouTube</a>
     <a href="https://x.com" class="button">X.com</a>
     <a href="https://drive.google.com" class="button">Google Drive</a>
-    <a href="https://discord.com/channels/@me" class="button">Discord</a>
+    <a href="https://discord.com" class="button">Discord</a>
     <a href="https://app.axieinfinity.com" class="button">App.Axie</a>
     <a href="https://www.amazon.com" class="button">Amazon</a>
     <a href="https://github.com" class="button">GitHub</a>
@@ -454,29 +376,61 @@
   });
 </script>
 
-<!-- Add this script block at the very end of your <body> tag -->
+<!-- Add this script to enable app links on mobile -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Check if it's likely a mobile device
-    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-    if (isMobile) {
-      // Update Discord link for deep linking
-      const discordLink = document.querySelector('a.button[href="https://discord.com/channels/@me"]');
+    // Only run on mobile devices
+    if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      // Update the YouTube link to try to open app
+      const youtubeLink = document.querySelector('a[href*="youtube.com"]');
+      if (youtubeLink) {
+        youtubeLink.href = 'youtube://';
+        youtubeLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          // Try to open app first, fall back to website
+          setTimeout(function() {
+            window.location = 'https://www.youtube.com';
+          }, 500);
+          window.location = 'youtube://';
+        });
+      }
       
+      // Update X (Twitter) link to try to open app
+      const xLink = document.querySelector('a[href*="x.com"]');
+      if (xLink) {
+        xLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          // Try to open app first, fall back to website
+          setTimeout(function() {
+            window.location = 'https://x.com';
+          }, 500);
+          window.location = 'twitter://';
+        });
+      }
+      
+      // Update Google Drive link to try to open app
+      const driveLink = document.querySelector('a[href*="drive.google.com"]');
+      if (driveLink) {
+        driveLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          // Try to open app first, fall back to website
+          setTimeout(function() {
+            window.location = 'https://drive.google.com';
+          }, 500);
+          window.location = 'googledrive://';
+        });
+      }
+      
+      // Update Discord link to try to open app with correct fallback URL
+      const discordLink = document.querySelector('a[href*="discord.com"]');
       if (discordLink) {
-        const webUrl = 'https://discord.com/channels/@me'; // Correct web URL
-        const appUrl = 'discord://'; // Discord app scheme
-        
-        discordLink.addEventListener('click', function(event) {
-          event.preventDefault();
-          window.location.href = appUrl;
-          
-          setTimeout(() => {
-            if (!document.hidden) {
-              window.location.href = webUrl;
-            }
-          }, 1500);
+        discordLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          // Try to open app first, fall back to specific Discord channel URL
+          setTimeout(function() {
+            window.location = 'https://discord.com/channels/@me';
+          }, 500);
+          window.location = 'discord://';
         });
       }
     }
