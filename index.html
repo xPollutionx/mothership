@@ -137,6 +137,30 @@
       margin: 0 auto;
     }
 
+    .split-button-container {
+      display: flex;
+      margin: 5px 0;
+    }
+    
+    .split-button {
+      flex: 1;
+      background-color: #9b59b6;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      font-size: 0.7em;
+      padding: 10px 0;
+      transition: background-color 0.3s;
+    }
+    
+    .split-button:first-child {
+      border-right: 1px solid #333;
+    }
+    
+    .split-button:hover {
+      background-color: #8e44ad;
+    }
+
     /* Remove any mobile media queries */
     @media (max-width: 767px) {
       /* Reset all basic display properties to default */
@@ -687,3 +711,9 @@
     }
   });
 </script>
+
+<!-- Replace the existing YouTube button with these two side-by-side buttons -->
+<div class="split-button-container">
+  <a href="https://music.youtube.com/" class="split-button button">YouTube Music</a>
+  <a href="https://www.youtube.com" class="split-button button">YouTube</a>
+</div>
