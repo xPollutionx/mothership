@@ -140,71 +140,82 @@
 
     /* Add this minimal mobile css */
     @media (max-width: 767px) {
-      /* --- General Mobile Resets & Centering --- */
-      header, #random-quote {
-        width: 100% !important; /* Ensure full width for centering context */
-        text-align: center !important; /* Center inline/text content */
-        float: none !important; /* Remove any floats */
-        position: static !important; /* Reset positioning */
-        margin-left: auto !important; /* Center block elements */
-        margin-right: auto !important; /* Center block elements */
-      }
+      /* --- Header Cleanup & Centering --- */
 
-      /* --- Header Specific Centering --- */
-
-      /* Hide search bars */
+      /* Hide the search bars */
       .search-bar {
         display: none !important;
       }
-      /* Hide the container they were in */
-       .search-container {
-        display: none !important;
-       }
 
-
-      /* Center the logo+axie container itself */
-      .logo-axie-container {
-        display: inline-flex; /* Treat as inline-block but allow flex alignment */
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        margin: 0 auto 5px auto; /* Center the block horizontally */
-        width: auto; /* Allow it to size based on content */
-        text-align: center; /* Fallback centering */
+      /* Reposition Axie next to Logo using Positioning */
+      header {
+        position: relative; /* Needed for absolute positioning of children */
+        padding-top: 100px; /* Add padding to top to make space for absolutely positioned logo/axie */
+        text-align: center; /* Center h1 text */
       }
 
-      /* Ensure children behave */
-       .logo-container, .axie-gif {
-        display: inline-block;
-        vertical-align: middle;
-        margin: 0; /* Reset margins */
-       }
+      .logo-container {
+        position: absolute;
+        top: 10px; /* Position near top */
+        left: 50%; /* Start at center */
+        transform: translateX(-100%); /* Shift left by its own width + half gap */
+        margin-left: -5px; /* Half the gap */
+        text-align: right; /* Align content if needed */
+      }
 
-      /* Center the H1 title block and its text */
+      .axie-gif {
+        position: absolute;
+        top: 10px; /* Align vertically with logo */
+        left: 50%; /* Start at center */
+        transform: translateX(0%); /* Keep it to the right of center */
+        margin-left: 5px; /* Half the gap */
+      }
+
+       /* Center the H1 title below the logo/axie */
       h1 {
-        display: block !important; /* Ensure it's a block */
-        width: 100% !important; /* Take full width */
-        text-align: center !important; /* Center text inside */
-        margin: 5px auto !important; /* Center the block itself */
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        margin: 0 auto !important; /* Center block */
+        padding-top: 5px; /* Add space below logo/axie */
+        position: static; /* Override any absolute positioning */
+        transform: none; /* Reset transform */
+      }
+
+      /* Hide the now empty search container */
+      .search-container {
+         display: none !important;
+      }
+
+
+      /* --- Restore Content Columns --- */
+      .content-wrapper {
+          display: flex; /* Ensure it's still flex */
+          flex-direction: row; /* Keep columns side-by-side */
+          flex-wrap: wrap; /* Allow wrapping if needed, but try to keep side-by-side */
+          width: 95%; /* Use slightly less width */
+          margin: 10px auto; /* Adjust margin */
+      }
+      .left-column, .middle-column, .right-column {
+          flex-basis: 30%; /* Adjust basis to fit side-by-side */
+          flex-grow: 1; /* Allow them to grow */
+          min-width: 150px; /* Prevent them getting too small */
+          margin-bottom: 0; /* Remove bottom margin */
       }
 
 
       /* --- Footer Quote Centering --- */
       #random-quote {
-        display: block !important; /* Ensure it's a block */
-        white-space: normal !important; /* Allow text wrapping */
-        padding: 15px 10px !important; /* Add some padding */
-        /* Centering is handled by the rule at the top */
+        display: block !important;
+        width: 90% !important; /* Use most of the width */
+        text-align: center !important; /* Center text inside */
+        margin: 20px auto !important; /* Center the block itself, add space */
+        white-space: normal !important; /* Allow wrapping */
+        padding: 10px;
+        position: static; /* Ensure it's not absolutely positioned */
+        transform: none; /* Reset transform */
+        float: none; /* Reset float */
       }
-
-      /* Keep the 3-column layout for content */
-       .content-wrapper {
-           flex-direction: column; /* Stack columns vertically on mobile */
-       }
-        .left-column, .middle-column, .right-column {
-           width: 100%; /* Make columns full width */
-           margin-bottom: 10px; /* Add space between stacked columns */
-       }
     }
   </style>
   <script>
@@ -262,36 +273,31 @@
 <body>
 
 <header>
-  <!-- New container for logo and axie -->
-  <div class="logo-axie-container">
+    <!-- Original structure -->
     <div class="logo-container">
-      <a href="https://x.com/xPollutionx">
-          <img src="Ronke.jpg" alt="xPollutionx's Mothership">
-      </a>
+        <a href="https://x.com/xPollutionx">
+            <img src="Ronke.jpg" alt="xPollutionx's Mothership">
+        </a>
     </div>
-    <div class="axie-gif">
-      <img id="axie-image" src="AxieBlack01.gif" alt="Axie">
+    <h1><a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a></h1>
+    <div class="search-container">
+        <div class="search-bar">
+            <form action="https://www.google.com/search" method="get">
+                <input type="text" name="q" placeholder="" required>
+                <button type="submit" class="search-button">Google Search</button>
+            </form>
+        </div>
+        <div class="search-bar">
+            <form action="https://www.youtube.com/results" method="get">
+                <input type="text" name="search_query" placeholder="" required>
+                <button type="submit" class="search-button">YouTube Search</button>
+            </form>
+        </div>
+        <!-- Axie is back inside search-container for desktop -->
+        <div class="axie-gif">
+            <img id="axie-image" src="AxieBlack01.gif" alt="Axie">
+        </div>
     </div>
-  </div>
-
-  <h1><a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a></h1>
-
-  <!-- Search container (will be hidden on mobile by CSS) -->
-  <div class="search-container">
-    <div class="search-bar">
-      <form action="https://www.google.com/search" method="get">
-        <input type="text" name="q" placeholder="" required>
-        <button type="submit" class="search-button">Google Search</button>
-      </form>
-    </div>
-    <div class="search-bar">
-      <form action="https://www.youtube.com/results" method="get">
-        <input type="text" name="search_query" placeholder="" required>
-        <button type="submit" class="search-button">YouTube Search</button>
-      </form>
-    </div>
-    <!-- Axie is moved out of here -->
-  </div>
 </header>
 
 <div class="content-wrapper">
