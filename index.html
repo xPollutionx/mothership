@@ -262,5 +262,61 @@
 
 <div id="random-quote"></div>
 
+<!-- Add this div at the end of your body tag -->
+<div id="speech-bubble" style="position: fixed; display: none; z-index: 1000;">
+  <img src="" width="80" height="auto" alt="Speech">
+</div>
+
+<!-- Add this small script at the end of your body tag -->
+<script>
+  // Simple speech bubble functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const speechBubble = document.getElementById('speech-bubble');
+    const speechImg = speechBubble.querySelector('img');
+    
+    // RadioBox hover
+    const radioButton = document.querySelector('a[href*="RadioBox"]');
+    if (radioButton) {
+      radioButton.addEventListener('mouseenter', function() {
+        speechImg.src = 'SpeechRadioBox.png';
+        speechBubble.style.display = 'block';
+        speechBubble.style.top = '120px';
+        speechBubble.style.right = '10px';
+      });
+      radioButton.addEventListener('mouseleave', function() {
+        speechBubble.style.display = 'none';
+      });
+    }
+    
+    // CoinFused hover
+    const coinButton = document.querySelector('a[href*="ConFused"]');
+    if (coinButton) {
+      coinButton.addEventListener('mouseenter', function() {
+        speechImg.src = 'SpeechCoinFuse.png';
+        speechBubble.style.display = 'block';
+        speechBubble.style.top = '120px';
+        speechBubble.style.right = '10px';
+      });
+      coinButton.addEventListener('mouseleave', function() {
+        speechBubble.style.display = 'none';
+      });
+    }
+    
+    // Snake hover
+    const snakeButton = document.querySelector('a[href*="SnakePlus"]');
+    if (snakeButton) {
+      snakeButton.addEventListener('mouseenter', function() {
+        speechImg.src = 'SpeechSnakeGame.png';
+        speechBubble.style.display = 'block';
+        speechBubble.style.top = '120px';
+        speechBubble.style.right = '10px';
+      });
+      snakeButton.addEventListener('mouseleave', function() {
+        speechBubble.style.display = 'none';
+      });
+    }
+  });
+</script>
+
 </body>
 </html>
