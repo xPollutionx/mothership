@@ -1,87 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>xPollutionx's CoinFused</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mothership</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    html {
+      font-size: 150%;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+      font-family: 'Press Start 2P', cursive;
+    }
+
+    header {
+      background-color: black;
+      padding: 10px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .logo-container img {
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-size: 1em;
+      margin: 5px 0;
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 5px 0;
+    }
+
+    .search-bar {
+      margin: 0 5px;
+    }
+
+    .search-bar input {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 5px;
+      width: 140px;
+      font-size: 0.6em;
+      font-family: 'Press Start 2P', cursive;
+    }
+
+    .search-button {
+      background-color: #9b59b6;
+      color: white;
+      border: none;
+      padding: 5px;
+      cursor: pointer;
+      font-size: 0.6em;
+      font-family: 'Press Start 2P', cursive;
+    }
+
+    .axie-gif {
+      margin-left: 10px;
+    }
+
+    .axie-gif img {
+      width: 118px;
+      height: 118px;
+    }
+
+    .content-wrapper {
+      width: 90%;
+      max-width: 1200px;
+      margin: 20px auto;
+      display: flex;
+      gap: 10px;
+    }
+
+    .left-column, .middle-column, .right-column {
+      flex: 1;
+    }
+
+    .left-column, .right-column {
+      background-color: rgb(94, 67, 109);
+    }
+
+    .middle-column {
+      background-color: #333;
+    }
+
+    .section-header {
+      padding: 5px 0;
+      text-align: center;
+      background-color: rgb(75, 0, 130);
+    }
+
+    h2 {
+      font-size: 0.8em;
+      margin: 0;
+    }
+
+    .button {
+      display: block;
+      background-color: #9b59b6;
+      color: white;
+      text-decoration: none;
+      padding: 10px 0;
+      text-align: center;
+      margin: 5px;
+      font-size: 0.7em;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #8e44ad;
+    }
+
+    #random-quote {
+      text-align: center;
+      padding: 15px 0;
+      font-size: 0.7em;
+      font-style: italic;
+      color: #ddd;
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Add this minimal mobile css */
+    @media (max-width: 767px) {
+      /* Center all text in header and footer */
+      header, #random-quote {
+        text-align: center;
+      }
+    }
+  </style>
+  <script>
+    const quotes = [
+      "What lies behind us and what lies before us are tiny matters compared to what lies within us. — Ralph Waldo Emerson",
+      "You are the universe expressing itself as a human for a little while. — Eckhart Tolle",
+      "We must be willing to let go of the life we have planned so as to have the life that is waiting for us. — Joseph Campbell",
+      "Let yourself be silently drawn by the strange pull of what you really love. It will not lead you astray. — Rumi",
+      "If you follow your bliss, doors will open for you that wouldn't have opened for anyone else. — Joseph Campbell",
+      "Reality is merely an illusion, albeit a very persistent one. — Albert Einstein",
+      "Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment. — Buddha",
+      "Forever is composed of nows. — Emily Dickinson",
+      "Love is not something you do. Love is the way you are. — Eckhart Tolle",
+      "What you think, you become. What you feel, you attract. What you imagine, you create. — Buddha",
+      "Fear is the cheapest room in the house. I would like to see you living in better conditions. — Hafiz",
+      "You don't see the world as it is, you see it as you are. — Anaïs Nin",
+      "Between stimulus and response, there is a space. In that space is our power to choose our response. In our response lies our growth and our freedom. — Viktor Frankl"
+    ];
+
+    function displayRandomQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById('random-quote').textContent = quotes[randomIndex];
+    }
+
+    function playRandomVideo() {
+      const videos = [
+        "8ZSifZ30Cog",
+        "videoID2",
+        "videoID3"
+      ];
+      const randomIndex = Math.floor(Math.random() * videos.length);
+      window.location.href = `https://www.youtube.com/watch?v=${videos[randomIndex]}&list=PLubQ2wNsM74e1r33xb0WWccF3VMSzevvu`;
+    }
+
+    function changeAxieGif() {
+      document.getElementById('axie-image').src = 'AxieBlack03.gif';
+    }
+
+    function resetAxieGif() {
+      document.getElementById('axie-image').src = 'AxieBlack01.gif';
+    }
+
+    window.onload = function() {
+      displayRandomQuote();
+      
+      // Add hover effects to all buttons
+      const buttons = document.querySelectorAll('.button');
+      buttons.forEach(button => {
+        button.addEventListener('mouseenter', changeAxieGif);
+        button.addEventListener('mouseleave', resetAxieGif);
+      });
+    };
+  </script>
 </head>
 <body>
-    <div class="container">
-        <h1><a href="https://x.com/xPollutionx" style="text-decoration: none; color: inherit;">xPollutionx's CoinFused</a></h1>
-        <p class="tagline">Compare prices and find the best value between different quantities and measurements</p>
-        <div id="result" style="text-align: center; font-size: 18px; margin-bottom: 20px;"></div>
-        <div class="calculator">
-            <div class="item-table" id="item1-table">
-                <h2>Item 1</h2>
-                <div>
-                    <label for="item1-name">Name:</label><br><br>
-                    <input type="text" id="item1-name">
-                    <label for="item1-quantity">Number of Items Being Purchased:</label>
-                    <input type="number" id="item1-quantity" value="1" step="any">
-                    <label for="item1-unit-amount">Number of Items in Each Purchase:</label>
-                    <input type="number" id="item1-unit-amount" value="1" step="any">
-                    <label for="item1-weight">Weight of Item:</label>
-                    <input type="number" id="item1-weight" value="1" step="any">
-                    <label for="item1-unit-type">Unit of Measurement:</label><br><br>
-                    <select id="item1-unit-type">
-                        <option value="liters">Liters</option>
-                        <option value="fl oz">Fl Oz</option>
-                        <option value="gallons">Gallons</option>
-                        <option value="milliliters">Milliliters</option>
-                        <option value="grams">Grams</option>
-                        <option value="kilograms">Kilograms</option>
-                        <option value="ounces">Ounces</option>
-                        <option value="half ounces">Half Ounces</option>
-                        <option value="eighth ounces">Eighth Ounces</option>
-                        <option value="pounds">Pounds</option>
-                        <option value="quarts">Quarts</option>
-                        <option value="pints">Pints</option>
-                        <option value="units">Units</option>
-                    </select>
-                    <label for="item1-price">Price:</label>
-                    <input type="number" id="item1-price" step="any">
-                    <label for="item1-sale">Sale Price (if any):</label>
-                    <input type="number" id="item1-sale" step="any">
-                </div>
-            </div>
-            <div class="item-table" id="item2-table">
-                <h2>Item 2</h2>
-                <div>
-                    <label for="item2-name">Name:</label><br><br>
-                    <input type="text" id="item2-name">
-                    <label for="item2-quantity">Number of Items Being Purchased:</label>
-                    <input type="number" id="item2-quantity" value="1" step="any">
-                    <label for="item2-unit-amount">Number of Items in Each Purchase:</label>
-                    <input type="number" id="item2-unit-amount" value="1" step="any">
-                    <label for="item2-weight">Weight of Item:</label>
-                    <input type="number" id="item2-weight" value="1" step="any">
-                    <label for="item2-unit-type">Unit of Measurement:</label><br><br>
-                    <select id="item2-unit-type">
-                        <option value="liters">Liters</option>
-                        <option value="fl oz">Fl Oz</option>
-                        <option value="gallons">Gallons</option>
-                        <option value="milliliters">Milliliters</option>
-                        <option value="grams">Grams</option>
-                        <option value="kilograms">Kilograms</option>
-                        <option value="ounces">Ounces</option>
-                        <option value="half ounces">Half Ounces</option>
-                        <option value="eighth ounces">Eighth Ounces</option>
-                        <option value="pounds">Pounds</option>
-                        <option value="quarts">Quarts</option>
-                        <option value="pints">Pints</option>
-                        <option value="units">Units</option>
-                    </select>
-                    <label for="item2-price">Price:</label>
-                    <input type="number" id="item2-price" step="any">
-                    <label for="item2-sale">Sale Price (if any):</label>
-                    <input type="number" id="item2-sale" step="any">
-                </div>
-            </div>
-            <div style="clear:both;"></div>
-            <button id="compare-btn">Compare</button>
-        </div>
+
+<header>
+  <div class="logo-container">
+    <a href="https://x.com/xPollutionx">
+      <img src="Ronke.jpg" alt="xPollutionx's Mothership">
+    </a>
+  </div>
+  <h1><a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a></h1>
+  <div class="search-container">
+    <div class="search-bar">
+      <form action="https://www.google.com/search" method="get">
+        <input type="text" name="q" placeholder="" required>
+        <button type="submit" class="search-button">Google Search</button>
+      </form>
     </div>
-    <script src="script.js"></script>
+    <div class="search-bar">
+      <form action="https://www.youtube.com/results" method="get">
+        <input type="text" name="search_query" placeholder="" required>
+        <button type="submit" class="search-button">YouTube Search</button>
+      </form>
+    </div>
+    <div class="axie-gif">
+      <img id="axie-image" src="AxieBlack01.gif" alt="Axie">
+    </div>
+  </div>
+</header>
+
+<div class="content-wrapper">
+  <div class="left-column">
+    <div class="section-header">
+      <h2>Hot Links</h2>
+    </div>
+    <a href="https://www.youtube.com" class="button">YouTube</a>
+    <a href="https://x.com" class="button">X.com</a>
+    <a href="https://drive.google.com" class="button">Google Drive</a>
+    <a href="https://discord.com" class="button">Discord</a>
+    <a href="https://app.axieinfinity.com" class="button">App.Axie</a>
+    <a href="https://www.amazon.com" class="button">Amazon</a>
+    <a href="https://github.com" class="button">GitHub</a>
+    <a href="javascript:void(0);" onclick="playRandomVideo()" class="button">Saturday Morning Cartoons</a>
+  </div>
+  
+  <div class="middle-column">
+    <div class="section-header">
+      <h2>xPollutionx's Apps:</h2>
+    </div>
+    <a href="https://xpollutionx.github.io/RadioBox" class="button">RadioBox</a>
+    <a href="https://xpollutionx.github.io/ConFused/" class="button">CoinFused</a>
+    <a href="https://xpollutionx.github.io/SnakePlus/" class="button">Snake Plus</a>
+  </div>
+  
+  <div class="right-column">
+    <div class="section-header">
+      <h2>Fun Tools</h2>
+    </div>
+    <a href="https://suno.ai" class="button">Suno</a>
+    <a href="https://chat.openai.com" class="button">ChatGPT</a>
+    <a href="https://www.midjourney.com" class="button">MidJourney</a>
+    <a href="https://klingai.com/" class="button">KlingAI</a>
+    <a href="https://hailuoai.video/" class="button">Hailuo AI</a>
+    <a href="https://dream-machine.lumalabs.ai/" class="button">Luma Labs</a>
+    <a href="https://app.runwayml.com/video-tools/teams/x35pollution/dashboard" class="button">Runway</a>
+  </div>
+</div>
+
+<div id="random-quote"></div>
+
 </body>
 </html>
