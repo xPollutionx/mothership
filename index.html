@@ -379,86 +379,77 @@
 <!-- Add this script to enable app links on mobile -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Only run on mobile devices
+    // ONLY handle app intents on mobile, nothing else changes
     if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       
-      // YouTube app handling
-      const youtubeLink = document.querySelector('a[href*="youtube.com"]');
-      if (youtubeLink) {
-        youtubeLink.addEventListener('click', function(e) {
-          e.preventDefault();
-          // Store the original href
-          const webUrl = this.href;
-          
-          // Create an iframe to try opening the app without changing window.location
-          const appIntent = document.createElement('iframe');
-          appIntent.style.display = 'none';
-          appIntent.src = 'youtube://';
-          document.body.appendChild(appIntent);
-          
-          // After a short delay, check if we need to redirect to web
-          setTimeout(function() {
-            document.body.removeChild(appIntent);
-            window.location.href = webUrl;
-          }, 300);
-        });
-      }
-      
-      // X/Twitter app handling
-      const xLink = document.querySelector('a[href*="x.com"]');
-      if (xLink) {
-        xLink.addEventListener('click', function(e) {
-          e.preventDefault();
-          const webUrl = this.href;
-          
-          const appIntent = document.createElement('iframe');
-          appIntent.style.display = 'none';
-          appIntent.src = 'twitter://';
-          document.body.appendChild(appIntent);
-          
-          setTimeout(function() {
-            document.body.removeChild(appIntent);
-            window.location.href = webUrl;
-          }, 300);
-        });
-      }
-      
-      // Google Drive app handling
-      const driveLink = document.querySelector('a[href*="drive.google.com"]');
-      if (driveLink) {
-        driveLink.addEventListener('click', function(e) {
-          e.preventDefault();
-          const webUrl = this.href;
-          
-          const appIntent = document.createElement('iframe');
-          appIntent.style.display = 'none';
-          appIntent.src = 'googledrive://';
-          document.body.appendChild(appIntent);
-          
-          setTimeout(function() {
-            document.body.removeChild(appIntent);
-            window.location.href = webUrl;
-          }, 300);
-        });
-      }
-      
-      // Discord app handling - with specific web URL
+      // Fix Discord link to always go to /channels/@me
       const discordLink = document.querySelector('a[href*="discord.com"]');
       if (discordLink) {
+        // Update the href directly 
+        discordLink.href = "https://discord.com/channels/@me";
+        
+        // Add app opening capability
         discordLink.addEventListener('click', function(e) {
           e.preventDefault();
           
-          // Try opening the Discord app
-          const appIntent = document.createElement('iframe');
-          appIntent.style.display = 'none';
-          appIntent.src = 'discord://';
-          document.body.appendChild(appIntent);
+          // Try to open Discord app
+          window.location.href = 'discord://';
           
-          // If app doesn't open, go to specific Discord URL
+          // Fall back to web after delay
           setTimeout(function() {
-            document.body.removeChild(appIntent);
-            window.location.href = 'https://discord.com/channels/@me';
-          }, 300);
+            window.location.href = "https://discord.com/channels/@me";
+          }, 500);
+        });
+      }
+      
+      // Handle other app links without changing original functionality
+      const youtubeLink = document.querySelector('a[href*="youtube.com"]');
+      if (youtubeLink) {
+        const origUrl = youtubeLink.href;
+        youtubeLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Try app first
+          window.location.href = 'youtube://';
+          
+          // Fall back to web after delay
+          setTimeout(function() {
+            window.location.href = origUrl;
+          }, 500);
+        });
+      }
+      
+      // X.com
+      const xLink = document.querySelector('a[href*="x.com"]');
+      if (xLink) {
+        const origUrl = xLink.href;
+        xLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Try app first
+          window.location.href = 'twitter://';
+          
+          // Fall back to web after delay
+          setTimeout(function() {
+            window.location.href = origUrl;
+          }, 500);
+        });
+      }
+      
+      // Google Drive
+      const driveLink = document.querySelector('a[href*="drive.google.com"]');
+      if (driveLink) {
+        const origUrl = driveLink.href;
+        driveLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Try app first
+          window.location.href = 'googledrive://';
+          
+          // Fall back to web after delay
+          setTimeout(function() {
+            window.location.href = origUrl;
+          }, 500);
         });
       }
     }
