@@ -209,6 +209,50 @@
         white-space: normal !important; /* Allow wrapping */
       }
     }
+
+    /* Use Flexbox on the header to reorder elements */
+    header {
+      display: flex;
+      flex-wrap: wrap; /* Allow items to wrap if needed */
+      justify-content: center; /* Center items horizontally */
+      align-items: center; /* Align items vertically */
+      text-align: center; /* Fallback centering */
+    }
+
+    /* Define the visual order */
+    .logo-container { order: 1; flex-shrink: 0; } /* Logo first */
+    .axie-gif {
+      order: 2; /* Axie second */
+      margin-left: 10px !important; /* Space from logo */
+      margin-top: 0; /* Reset vertical margin */
+      display: inline-block !important; /* Ensure it's visible */
+      vertical-align: middle; /* Align nicely with logo */
+      flex-shrink: 0;
+    }
+    h1 {
+      order: 3; /* Title third */
+      width: 100%; /* Span full width */
+      margin-top: 5px; /* Add space above */
+      flex-basis: 100%; /* Force it to a new line */
+    }
+    .search-container {
+      order: 4; /* Original container last */
+      /* Hide the container but keep it for the Axie */
+       width: 0; height: 0; overflow: hidden; margin: 0; padding: 0; border: 0;
+       /* We only need the .axie-gif from inside it, which we visually repositioned using 'order' */
+    }
+    .search-bar {
+      display: none !important; /* Explicitly hide search bars */
+    }
+
+    /* Center the quote */
+    #random-quote {
+      text-align: center !important;
+      width: 100% !important;
+      margin: 10px auto !important;
+      display: block !important;
+      white-space: normal !important;
+    }
   </style>
   <script>
     const quotes = [
