@@ -138,14 +138,37 @@
       margin: 0 auto;
     }
 
-    /* Add this minimal mobile css */
+    /* Add this to completely reset any mobile-specific differences */
     @media (max-width: 767px) {
-      /* Center all text in header and footer */
-      header, #random-quote {
-        text-align: center;
+      /* Force all elements to display as they do on desktop */
+      .search-container, .search-bar, .axie-gif, header * {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: auto !important;
+        width: auto !important;
+        position: static !important;
+        overflow: visible !important;
       }
+      
+      /* Reset any mobile-specific styling */
       .search-container {
-        display: none !important;
+        display: flex !important; /* Match desktop flex layout */
+        justify-content: center !important;
+        align-items: center !important;
+        margin: 5px 0 !important;
+      }
+      
+      /* Reset search bar positioning */
+      .search-bar {
+        margin: 0 5px !important;
+        display: block !important;
+      }
+      
+      /* Ensure Axie is visible */
+      .axie-gif {
+        margin-left: 10px !important;
+        display: block !important;
       }
     }
   </style>
@@ -383,7 +406,7 @@
     if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       
       // Fix Discord link to always go to /channels/@me
-      const discordLink = document.querySelector('a[href*="discord.com"]');
+      const discordLink = document.querySelector('a[href*="https://discord.com/channels/@me"]');
       if (discordLink) {
         // Update the href directly 
         discordLink.href = "https://discord.com/channels/@me";
@@ -454,6 +477,28 @@
       }
     }
   });
+</script>
+
+<!-- Add this minimal script that ONLY changes the Discord link and nothing else -->
+<script>
+  // Run this code immediately without waiting for DOMContentLoaded
+  (function() {
+    // Use a more specific selector to target exactly the Discord link
+    var links = document.querySelectorAll('a');
+    
+    // Loop through all links to find Discord
+    for (var i = 0; i < links.length; i++) {
+      if (links[i].href && links[i].href.includes('discord.com')) {
+        // Directly set the href using setAttribute to avoid any issues
+        links[i].setAttribute('href', 'https://discord.com/channels/@me');
+        
+        // Also set the HTML attribute to be extra sure
+        links[i].outerHTML = links[i].outerHTML.replace(/href=".*?discord\.com.*?"/, 'href="https://discord.com/channels/@me"');
+        
+        console.log("Discord link updated to: https://discord.com/channels/@me");
+      }
+    }
+  })();
 </script>
 
 </body>
