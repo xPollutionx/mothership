@@ -376,14 +376,37 @@
     const allButtons = document.querySelectorAll('.button');
     
     allButtons.forEach(button => {
-      // Add glow on hover using inset box-shadow
+      // Create a glow element
+      const glow = document.createElement('div');
+      
+      // Style the glow element
+      glow.style.cssText = `
+        position: absolute;
+        border-radius: 4px;
+        background-color: transparent;
+        pointer-events: none;
+        box-shadow: 0 0 20px 10px #8BFFAE;
+        opacity: 0;
+        transition: opacity 0.05s linear;
+        z-index: -1;
+      `;
+      
+      // Insert the glow element
+      document.body.appendChild(glow);
+      
+      // Position the glow on hover
       button.addEventListener('mouseenter', function() {
-        this.style.boxShadow = 'inset 0 0 20px 5px #8BFFAE';
+        const rect = this.getBoundingClientRect();
+        glow.style.width = rect.width + 'px';
+        glow.style.height = rect.height + 'px';
+        glow.style.left = (rect.left + window.scrollX) + 'px';
+        glow.style.top = (rect.top + window.scrollY) + 'px';
+        glow.style.opacity = '1';
       });
       
-      // Remove glow when mouse leaves
+      // Remove glow on mouse leave
       button.addEventListener('mouseleave', function() {
-        this.style.boxShadow = 'none';
+        glow.style.opacity = '0';
       });
     });
   });
