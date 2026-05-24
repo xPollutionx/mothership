@@ -42,28 +42,91 @@
       margin: 5px 0;
     }
 
-    .search-bar {
-      margin: 0 5px;
+    /* Streaming Tiles Layout */
+    .tiles-wrapper {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-right: 15px;
     }
 
-    .search-bar input {
+    .tile-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 90px;
+      height: 90px;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease, border-color 0.2s ease;
+      border: 3px solid #222;
+      box-sizing: border-box;
+      padding: 10px;
       background-color: #333;
-      color: white;
-      border: none;
-      padding: 5px;
-      width: 140px;
-      font-size: 0.6em;
-      font-family: 'Press Start 2P', cursive;
     }
 
-    .search-button {
-      background-color: #9b59b6;
-      color: white;
-      border: none;
-      padding: 5px;
-      cursor: pointer;
-      font-size: 0.6em;
-      font-family: 'Press Start 2P', cursive;
+    /* CRT Scanline Overlay Effect */
+    .tile-link::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.08),
+        rgba(255, 255, 255, 0.08) 50%,
+        rgba(0, 0, 0, 0.15) 50%,
+        rgba(0, 0, 0, 0.15)
+      );
+      background-size: 100% 4px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Selectable/Hover Highlight Glow */
+    .tile-link:hover {
+      transform: scale(1.08);
+      z-index: 5;
+      border-color: #ff9900;
+      box-shadow: 0 0 0 3px #ffd700, 0 0 15px rgba(255, 100, 0, 0.8), 0 8px 16px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Brand Background Colors */
+    .tile-youtube {
+      background: #a9cbd7; /* Light cyan-grey CRT background */
+    }
+    .tile-netflix {
+      background: #a9cbd7; /* Light cyan-grey CRT background */
+    }
+    .tile-disney {
+      background: linear-gradient(135deg, #102e52, #18467a); /* Dark cyan-blue */
+    }
+    .tile-fandango {
+      background: #111a24; /* Very dark slate/navy */
+    }
+    .tile-paramount {
+      background: #005cff; /* Bright Paramount Blue */
+    }
+    .tile-tubi {
+      background: #1a1454; /* Deep purple/indigo */
+    }
+
+    /* Image Assets inside Tiles */
+    .tile-link img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      z-index: 1;
+      display: block;
+      transition: transform 0.2s ease;
+    }
+
+    .tile-link:hover img {
+      transform: scale(1.04);
     }
 
     .axie-gif {
@@ -242,17 +305,25 @@
   </div>
   <h1><a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a></h1>
   <div class="search-container">
-    <div class="search-bar">
-      <form action="https://www.google.com/search" method="get">
-        <input type="text" name="q" placeholder="" required>
-        <button type="submit" class="search-button">Google Search</button>
-      </form>
-    </div>
-    <div class="search-bar">
-      <form action="https://www.youtube.com/results" method="get">
-        <input type="text" name="search_query" placeholder="" required>
-        <button type="submit" class="search-button">YouTube Search</button>
-      </form>
+    <div class="tiles-wrapper">
+      <a href="https://www.youtube.com" target="_blank" class="tile-link tile-youtube" title="YouTube">
+        <img src="youtube.svg" alt="YouTube">
+      </a>
+      <a href="https://www.netflix.com" target="_blank" class="tile-link tile-netflix" title="Netflix">
+        <img src="netflix.svg" alt="Netflix">
+      </a>
+      <a href="https://www.disneyplus.com" target="_blank" class="tile-link tile-disney" title="Disney Plus">
+        <img src="disney.svg" alt="Disney Plus">
+      </a>
+      <a href="https://www.vudu.com" target="_blank" class="tile-link tile-fandango" title="Fandango at Home">
+        <img src="fandango.svg" alt="Fandango at Home">
+      </a>
+      <a href="https://www.paramountplus.com" target="_blank" class="tile-link tile-paramount" title="Paramount Plus">
+        <img src="paramount.svg" alt="Paramount Plus">
+      </a>
+      <a href="https://www.tubitv.com" target="_blank" class="tile-link tile-tubi" title="Tubi">
+        <img src="tubi.svg" alt="Tubi">
+      </a>
     </div>
     <div class="axie-gif">
       <img id="axie-image" src="AxieBlack01.gif" alt="Axie">
@@ -292,14 +363,12 @@
     <div class="section-header">
       <h2>Fun Tools</h2>
     </div>
+    <a href="https://gemini.google.com/" class="button">Gemini</a>
+    <a href="https://grok.com/" class="button">Grok</a>
+    <a href="https://chatgpt.com/" class="button">Chat GPT</a>
     <a href="https://claude.ai/" class="button">Claude</a>
-    <a href="https://suno.ai" class="button">Suno</a>
-    <a href="https://chat.openai.com" class="button">ChatGPT</a>
-    <a href="https://www.midjourney.com" class="button">MidJourney</a>
-    <a href="https://klingai.com/" class="button">KlingAI</a>
-    <a href="https://hailuoai.video/" class="button">Hailuo AI</a>
-    <a href="https://dream-machine.lumalabs.ai/" class="button">Luma Labs</a>
-    <a href="https://app.runwayml.com/video-tools/teams/x35pollution/dashboard" class="button">Runway</a>
+    <a href="https://suno.com/" class="button">Suno</a>
+    <a href="https://www.midjourney.com/" class="button">Midjourney</a>
   </div>
 </div>
 
