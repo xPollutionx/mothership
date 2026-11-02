@@ -2,239 +2,141 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mothership</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
-    html {
-      font-size: 150%;
+    :root {
+      --gap: clamp(4px, 1vmin, 10px);
+      /* Reserve room for the title, quote, padding, and gaps at normal zoom. */
+      --tile-size: min(90px, calc((100svh - 180px) / 7), calc((100vw - 96px) / 7));
+      font-size: clamp(8px, min(1.3vw, 1.9svh), 16px);
     }
 
+    * { box-sizing: border-box; }
+
     body {
-      margin: 0;
-      padding: 0;
-      background-color: black;
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 12px 0;
+      background: black;
       color: white;
       font-family: 'Press Start 2P', cursive;
     }
 
-    header {
-      background-color: black;
-      padding: 10px 0;
-      text-align: center;
-      position: relative;
-    }
-
-    .logo-container img {
-      width: 85px;
-      height: 85px;
-      border-radius: 50%;
-    }
-
+    header { text-align: center; }
     h1 {
-      font-size: 1em;
-      margin: 5px 0;
+      font-size: clamp(10px, 2vw, 22px);
+      line-height: 1.5;
+      margin: 0 0 var(--gap);
     }
 
     .search-container {
       display: flex;
-      justify-content: center;
       align-items: center;
-      margin: 5px 0;
+      gap: var(--gap);
     }
 
-    /* Shared TV and AI tile layout */
-    .tile-rows {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .tiles-wrapper {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      margin-right: 15px;
-    }
-
+    .tiles-wrapper { display: flex; gap: var(--gap); }
     .tile-link {
       display: flex;
-      justify-content: center;
+      flex: 0 0 var(--tile-size);
       align-items: center;
-      width: 90px;
-      height: 90px;
+      justify-content: center;
+      width: var(--tile-size);
+      height: var(--tile-size);
+      border: 3px solid #222;
       border-radius: 10px;
+      padding: clamp(3px, 1vmin, 10px);
       position: relative;
-      overflow: hidden;
+      background: #333;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
       transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease, border-color 0.2s ease;
-      border: 3px solid #222;
-      box-sizing: border-box;
-      padding: 10px;
-      background-color: #333;
     }
 
-    /* Selectable/Hover Highlight Glow */
-    .tile-link:hover {
+    .tile-link:hover, .tile-link:focus-visible {
       transform: scale(1.08);
       z-index: 5;
       border-color: #d6a2e8;
       box-shadow: 0 0 0 3px #c87beb, 0 0 20px rgba(186, 85, 211, 0.85), 0 8px 16px rgba(0, 0, 0, 0.6);
     }
 
-    /* Brand Background Colors */
-    .tile-youtube {
-      background: #ffffff;
-    }
-    .tile-netflix {
-      background: #ffffff;
-    }
-    .tile-disney {
-      background: #03173d;
-    }
-    .tile-fandango {
-      background: #0c111c;
-    }
-    .tile-paramount {
-      background: #0064ff;
-    }
-    .tile-tubi {
-      background: #130934;
-    }
+    .tile-youtube, .tile-netflix { background: #fff; }
+    .tile-disney { background: #03173d; }
+    .tile-fandango { background: #0c111c; }
+    .tile-paramount { background: #0064ff; }
+    .tile-tubi { background: #130934; }
+    .ai-tiles { flex-direction: column; }
+    .ai-tiles .tile-link { background: #fff; }
+    .ai-tiles .tile-claude { background: #faf3eb; }
 
-    .ai-tiles .tile-link {
-      background-color: #fff;
-    }
-
-    .ai-tiles img {
-      width: 100%;
-      height: 100%;
-    }
-
-    .ai-tiles .tile-claude {
-      background-color: #faf3eb;
-    }
-
-    /* Image Assets inside Tiles */
     .tile-link img {
+      display: block;
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
-      z-index: 3;
-      display: block;
       transition: transform 0.2s ease;
     }
-
-    .tile-link:hover img {
-      transform: scale(1.04);
-    }
-
-    .axie-gif {
-      margin-left: 10px;
-    }
-
-    .axie-gif img {
-      width: 118px;
-      height: 118px;
-    }
+    .ai-tiles img { width: 100%; height: 100%; }
+    .tile-link:hover img, .tile-link:focus-visible img { transform: scale(1.04); }
+    .axie-gif img { display: block; width: var(--tile-size); height: var(--tile-size); }
 
     .content-wrapper {
-      width: 90%;
-      max-width: 1200px;
-      margin: 20px auto;
-      display: flex;
-      gap: 10px;
+      display: grid;
+      grid-template-columns: var(--tile-size) minmax(0, 1fr) minmax(0, 1fr);
+      gap: var(--gap);
+      margin: calc(var(--gap) * 1.5) 0;
     }
-
     .left-column, .middle-column {
-      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+      min-width: 0;
+      padding-bottom: var(--gap);
     }
-
-    .left-column {
-      background-color: rgb(94, 67, 109);
-    }
-
-    .middle-column {
-      background-color: #333;
-    }
-
-    .section-header {
-      padding: 5px 0;
-      text-align: center;
-      background-color: rgb(75, 0, 130);
-    }
-
-    h2 {
-      font-size: 0.8em;
-      margin: 0;
-    }
+    .left-column { background: rgb(94, 67, 109); }
+    .middle-column { background: #333; }
+    .section-header { background: rgb(75, 0, 130); padding: var(--gap) 4px; text-align: center; }
+    h2 { font-size: clamp(7px, min(1.1vw, 1.8svh), 16px); line-height: 1.6; margin: 0; overflow-wrap: anywhere; }
 
     .button {
-      display: block;
-      background-color: #9b59b6;
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+      margin: 0 var(--gap);
+      padding: 2px 4px;
+      background: #9b59b6;
       color: white;
       text-decoration: none;
-      padding: 10px 0;
       text-align: center;
-      margin: 5px;
-      font-size: 0.7em;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
       position: relative;
       z-index: 1;
-      transition: box-shadow 0.1s linear, z-index 0s linear 0.1s;
+      transition: box-shadow 0.1s linear;
+    }
+    .button:hover, .button:focus-visible { box-shadow: 0 0 20px 10px #8BFFAE; z-index: 10; }
+    .split-button-container { display: flex; flex: 1; min-height: 0; }
+    .left-column .split-button-container { margin: 0 var(--gap) !important; }
+    .split-button { flex: 1; }
+    .split-button:hover { background: #8e44ad; }
+
+    @media (max-width: 480px) {
+      .split-button { font-size: 0.75rem; }
+      .split-button-container { flex: 2; }
     }
 
-    .button:hover {
-      box-shadow: 0 0 20px 10px #8BFFAE;
-      z-index: 10;
-      transition: box-shadow 0.1s linear, z-index 0s linear;
-    }
+    #custom-speech-bubble { pointer-events: none; }
 
     #random-quote {
       text-align: center;
-      padding: 15px 0;
-      font-size: 0.7em;
+      font-size: 0.75rem;
+      line-height: 1.6;
       font-style: italic;
       color: #ddd;
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .split-button-container {
-      display: flex;
-      margin: 5px 0;
-    }
-    
-    .split-button {
-      flex: 1;
-      background-color: #9b59b6;
-      color: white;
-      text-decoration: none;
-      text-align: center;
-      font-size: 0.7em;
-      padding: 10px 0;
-      transition: background-color 0.3s;
-    }
-    
-    .split-button:first-child {
-      border-right: 1px solid #333;
-    }
-    
-    .split-button:hover {
-      background-color: #8e44ad;
-    }
-
-    /* Remove any mobile media queries */
-    @media (max-width: 767px) {
-      /* Ensure search containers are visible */
-      .search-container {
-        display: flex !important;
-      }
-      
-      /* Make content fit mobile width */
-      body {
-        min-width: 800px;
-        overflow-x: auto;
-      }
+      margin: 0;
     }
   </style>
   <script>
@@ -292,14 +194,8 @@
 <body>
 
 <header>
-  <div class="logo-container">
-    <a href="https://x.com/xPollutionx">
-      <img src="Ronke.jpg" alt="xPollutionx's Mothership">
-    </a>
-  </div>
   <h1><a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a></h1>
   <div class="search-container">
-    <div class="tile-rows">
       <div class="tiles-wrapper">
         <a href="https://www.youtube.com" class="tile-link tile-youtube" title="YouTube">
           <img src="youtube.svg" alt="YouTube">
@@ -320,6 +216,13 @@
           <img src="tubi.svg" alt="Tubi">
         </a>
       </div>
+    <div class="axie-gif">
+      <img id="axie-image" src="AxieBlack01.gif" alt="Axie">
+    </div>
+  </div>
+</header>
+
+<main class="content-wrapper">
       <nav class="tiles-wrapper ai-tiles" aria-label="AI tools">
         <a href="https://claude.ai/" class="tile-link tile-claude" title="Claude">
           <img src="assets/ai/claude.svg" alt="Claude">
@@ -340,14 +243,6 @@
           <img src="assets/ai/midjourney.svg" alt="Midjourney">
         </a>
       </nav>
-    </div>
-    <div class="axie-gif">
-      <img id="axie-image" src="AxieBlack01.gif" alt="Axie">
-    </div>
-  </div>
-</header>
-
-<div class="content-wrapper">
   <div class="left-column">
     <div class="section-header">
       <h2>Hot Links</h2>
@@ -374,7 +269,7 @@
     <a href="https://xpollutionx.github.io/ConFused/" class="button">CoinFused</a>
     <a href="https://xpollutionx.github.io/WattCover/" class="button">WattCover</a>
   </div>
-</div>
+</main>
 
 <div id="random-quote"></div>
 
@@ -587,30 +482,7 @@
   })();
 </script>
 
-<!-- Simple fix to show desktop version on mobile -->
-<script>
-  // Remove any problematic viewport settings
-  document.querySelector('meta[name="viewport"]')?.remove();
-  
-  // Add a proper viewport that allows scaling
-  const viewport = document.createElement('meta');
-  viewport.name = 'viewport';
-  viewport.content = 'width=device-width, initial-scale=0.4, maximum-scale=5.0, user-scalable=yes';
-  document.head.appendChild(viewport);
-  
-  // Remove any mobile-specific elements
-  document.addEventListener('DOMContentLoaded', function() {
-    // Find and remove any mobile-only elements
-    document.querySelectorAll('[class*="mobile"]').forEach(el => {
-      el.style.display = 'none';
-    });
-    
-    // Make sure all elements are visible
-    document.querySelectorAll('header, .search-container, .axie-gif, .content-wrapper, #random-quote').forEach(el => {
-      el.style.display = '';
-    });
-  });
-</script>
+
 
 <!-- Add this script to remove the colon and add the speech bubble -->
 <script>
@@ -916,18 +788,25 @@
     // Function to position bubble above Axie
     function positionBubble() {
       const axieImg = document.getElementById('axie-image');
-      if (axieImg) {
-        const axieRect = axieImg.getBoundingClientRect();
-        speechBubble.style.bottom = (window.innerHeight - axieRect.top + 20) + 'px';
-        speechBubble.style.left = (axieRect.left + axieRect.width/2 - 75) + 'px';
-      }
+      if (!axieImg) return;
+      const rect = axieImg.getBoundingClientRect();
+      const width = speechBubble.offsetWidth;
+      const height = speechBubble.offsetHeight;
+      // Keep the bubble inside the screen, below Axie when space permits.
+      speechBubble.style.bottom = 'auto';
+      speechBubble.style.left = Math.max(12, Math.min(window.innerWidth - width - 12, rect.left + rect.width / 2 - width / 2)) + 'px';
+      speechBubble.style.top = Math.max(12, Math.min(window.innerHeight - height - 12, rect.bottom + 12)) + 'px';
+      const pointer = speechBubble.children[1];
+      pointer.style.bottom = 'auto';
+      pointer.style.top = '-12px';
+      pointer.style.transform = 'rotate(225deg)';
     }
-    
+
     // Function to show speech bubble with text
     function showSpeech(text) {
       speechBubble.querySelector('div').textContent = text;
-      positionBubble();
       speechBubble.style.display = 'block';
+      positionBubble();
       if (typeof changeAxieGif === 'function') {
         changeAxieGif();
       }
