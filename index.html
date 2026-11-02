@@ -42,7 +42,13 @@
       margin: 5px 0;
     }
 
-    /* Streaming Tiles Layout */
+    /* Shared TV and AI tile layout */
+    .tile-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
     .tiles-wrapper {
       display: flex;
       gap: 12px;
@@ -95,6 +101,19 @@
       background: #130934;
     }
 
+    .ai-tiles .tile-link {
+      background-color: #fff;
+    }
+
+    .ai-tiles img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .ai-tiles .tile-claude {
+      background-color: #faf3eb;
+    }
+
     /* Image Assets inside Tiles */
     .tile-link img {
       max-width: 100%;
@@ -126,11 +145,11 @@
       gap: 10px;
     }
 
-    .left-column, .middle-column, .right-column {
+    .left-column, .middle-column {
       flex: 1;
     }
 
-    .left-column, .right-column {
+    .left-column {
       background-color: rgb(94, 67, 109);
     }
 
@@ -280,25 +299,47 @@
   </div>
   <h1><a href="https://x.com/xPollutionx" style="color: white; text-decoration: none;">xPollutionx's Mothership</a></h1>
   <div class="search-container">
-    <div class="tiles-wrapper">
-      <a href="https://www.youtube.com" class="tile-link tile-youtube" title="YouTube">
-        <img src="youtube.svg" alt="YouTube">
-      </a>
-      <a href="https://www.netflix.com" class="tile-link tile-netflix" title="Netflix">
-        <img src="netflix.svg" alt="Netflix">
-      </a>
-      <a href="https://www.disneyplus.com" class="tile-link tile-disney" title="Disney Plus">
-        <img src="disney.svg" alt="Disney Plus">
-      </a>
-      <a href="https://www.vudu.com" class="tile-link tile-fandango" title="Fandango at Home">
-        <img src="fandango.svg" alt="Fandango at Home">
-      </a>
-      <a href="https://www.paramountplus.com" class="tile-link tile-paramount" title="Paramount Plus">
-        <img src="paramount.svg" alt="Paramount Plus">
-      </a>
-      <a href="https://www.tubitv.com" class="tile-link tile-tubi" title="Tubi">
-        <img src="tubi.svg" alt="Tubi">
-      </a>
+    <div class="tile-rows">
+      <div class="tiles-wrapper">
+        <a href="https://www.youtube.com" class="tile-link tile-youtube" title="YouTube">
+          <img src="youtube.svg" alt="YouTube">
+        </a>
+        <a href="https://www.netflix.com" class="tile-link tile-netflix" title="Netflix">
+          <img src="netflix.svg" alt="Netflix">
+        </a>
+        <a href="https://www.disneyplus.com" class="tile-link tile-disney" title="Disney Plus">
+          <img src="disney.svg" alt="Disney Plus">
+        </a>
+        <a href="https://www.vudu.com" class="tile-link tile-fandango" title="Fandango at Home">
+          <img src="fandango.svg" alt="Fandango at Home">
+        </a>
+        <a href="https://www.paramountplus.com" class="tile-link tile-paramount" title="Paramount Plus">
+          <img src="paramount.svg" alt="Paramount Plus">
+        </a>
+        <a href="https://www.tubitv.com" class="tile-link tile-tubi" title="Tubi">
+          <img src="tubi.svg" alt="Tubi">
+        </a>
+      </div>
+      <nav class="tiles-wrapper ai-tiles" aria-label="AI tools">
+        <a href="https://claude.ai/" class="tile-link tile-claude" title="Claude">
+          <img src="assets/ai/claude.svg" alt="Claude">
+        </a>
+        <a href="https://chatgpt.com/" class="tile-link tile-chatgpt" title="ChatGPT">
+          <img src="assets/ai/chatgpt.svg" alt="ChatGPT">
+        </a>
+        <a href="https://grok.com/" class="tile-link tile-grok" title="Grok">
+          <img src="assets/ai/grok.svg" alt="Grok">
+        </a>
+        <a href="https://gemini.google.com/" class="tile-link tile-gemini" title="Gemini">
+          <img src="assets/ai/gemini.svg" alt="Gemini">
+        </a>
+        <a href="https://suno.com/" class="tile-link tile-suno" title="Suno">
+          <img src="assets/ai/suno.svg" alt="Suno">
+        </a>
+        <a href="https://www.midjourney.com/" class="tile-link tile-midjourney" title="Midjourney">
+          <img src="assets/ai/midjourney.svg" alt="Midjourney">
+        </a>
+      </nav>
     </div>
     <div class="axie-gif">
       <img id="axie-image" src="AxieBlack01.gif" alt="Axie">
@@ -332,18 +373,6 @@
     <a href="https://xpollutionx.github.io/MindMix/" class="button">MindMix</a>
     <a href="https://xpollutionx.github.io/ConFused/" class="button">CoinFused</a>
     <a href="https://xpollutionx.github.io/WattCover/" class="button">WattCover</a>
-  </div>
-  
-  <div class="right-column">
-    <div class="section-header">
-      <h2>Fun Tools</h2>
-    </div>
-    <a href="https://gemini.google.com/" class="button">Gemini</a>
-    <a href="https://grok.com/" class="button">Grok</a>
-    <a href="https://chatgpt.com/" class="button">Chat GPT</a>
-    <a href="https://claude.ai/" class="button">Claude</a>
-    <a href="https://suno.com/" class="button">Suno</a>
-    <a href="https://www.midjourney.com/" class="button">Midjourney</a>
   </div>
 </div>
 

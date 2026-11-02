@@ -1,0 +1,1 @@
+AI brand logos downloaded from [Lobe Icons](https://github.com/lobehub/lobe-icons/tree/8064bdc847be0a94c956c00440eb67586af2871f/packages/static-svg/icons), licensed under the included MIT license. ChatGPT uses the OpenAI mark. Brand marks belong to their respective owners.
